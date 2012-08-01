@@ -1,0 +1,97 @@
+39,20
+ooooooooooooooooooooooooooooooooooooooo
+o                                     o
+o                oooooooooooo    e    o
+o                oooooooooooo         o
+o                          oo         o
+o                          oo         o
+o                          oo         o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+os                                    o
+ooooooooooooooooooooooooooooooooooooooo
+
+39,20
+ooooooooooooooooooooooooooooooooooooooo
+o                  e                  o
+o      oooooooooooo                   o
+o      oooooooooooo                   o
+o                oo                   o
+o                oo                   o
+o                oo                   o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+os                                    o
+ooooooooooooooooooooooooooooooooooooooo
+
+39,14
+ooooooooooooooooooooooooooooooooooooooo
+o                                     o
+o                                     o
+o   s                        oooooo   o
+o                                     o
+ooooooooooo        ooooo              o
+o       o       oooo                  o
+o       o          o                  o
+o       oooo    oooo       oooooooo   o
+o                          oe         o
+o                          ooooo      o
+o                                     o
+o                              o      o
+ooooooooooooooooooooooooooooooooooooooo
+
+12,6
+oooooooooooo
+o      oe  o
+o      ooo o
+o   s      o
+o          o
+oooooooooooo
+
+12,6
+oooooooooooo
+o      oeo o
+o      ooo o
+o   s      o
+o          o
+oooooooooooo
+
+39,20
+ooooooooooooooooooooooooooooooooooooooo
+o                                    eo
+o  oooooooooooooooooooooooooooooooooooo
+o               oooooooooooo          o
+o                         oo          o
+o                         oo          o
+o                         oo          o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+o                                     o
+os                                    o
+ooooooooooooooooooooooooooooooooooooooo
