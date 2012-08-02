@@ -91,7 +91,7 @@ void Delay()
 int Astar()
 {
 	priority_queue<Position> open_set;
-	memset(extend_set, false, sizeof(extend_set));
+	memset(closed_set, false, sizeof(closed_set));
 	memset(extend_set, false, sizeof(extend_set));
 
 	extend_set[pos_start.x][pos_start.y] = true;
