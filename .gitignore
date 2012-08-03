@@ -1,4 +1,12 @@
-# from: https://github.com/github/gitignore
+# for code::bloks
+bin\
+obj\
+*.cbp
+*.depend
+*.layout
+
+
+# below from: https://github.com/github/gitignore
 
 # Compiled Object files
 *.slo
