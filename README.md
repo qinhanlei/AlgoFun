@@ -14,7 +14,7 @@ So... live and learn, just for fun. :)
 Subjects list
 ------------
 1. Searching (almost path search, until now)
-    * Simple A\*(A star) algorithm demo.
+    * Simple A\*(A star) algorithm demo.  
         ps: to open the file "map.txt", recommend vim or others more powerful Editor.
     * Simple Breadth-first search modified from A\* algorithm.   
         ps: same as before.  
