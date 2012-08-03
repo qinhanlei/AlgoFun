@@ -96,7 +96,7 @@ o                                     o
 os                                    o
 ooooooooooooooooooooooooooooooooooooooo
 
-50,50
+26,50
 oooooooooooooooooooooooooooooooooooooooooooooooooo
 os        oo  o oo  o      ooo     oo     o   oo o
 oo    o  oo ooo o o   oooo o o o       o o       o
@@ -121,29 +121,5 @@ ooo      o o   oo o       o   oo     o  o o   oo o
 o    oo oo  o ooo      o   o     o   o          oo
 o o      oooo           o   o    o      ooo   oo o
 oo     o o   o     o  o    oo o    o     o      oo
-o  oo o     o     oo o oooooo  o        o   o    o
-oo oo          o   o o   o    o   o  o    o o   oo
-o      o o  oo  o  o oo  ooo         o   o o     o
-oo   o        o o o     oo      o     o         oo
-o  o  o o oo o    o    o  o oo o o  oo      oo   o
-oo   oooo   o o  o    ooo  oo    o  o o    ooooooo
-o      o ooo      ooo  o      o  o o      oo   o o
-o  o  ooo      o  oo     ooo  o o  o o     o     o
-o      oo    o  o    o   o o     o    ooo  oo oo o
-o    o o o         oo o     oo    o  o  ooo  o   o
-o  o   o   o    o o o        o            o    o o
-o  o  oo   o oo  o  o  o oo o  o o o  ooo    o o o
-oo  o   oo  o   ooo  o  oo  oo ooo o  o  o oo    o
-o o  oo  oo   o     o   o    o oo    oo  oo  oo  o
-o  o o  oo  o  o      o oo oo   ooo o o  o   oo oo
-ooo  o   o oo     ooo      oo      o  oo ooo o   o
-o    o  o   oo o  oo  o     ooo oo  o  oo  o ooo o
-o    o  oooooo  o o      o                oo   ooo
-oo       o      o     o   o  o    o  o     o  oooo
-o   o   oo o  o    o  oo   o   o oooo  o      o  o
-o  o o   oo    o  ooooo o    o  oooo  oo   o     o
-o  o   o o  ooo  o       o       o   o  o o   o  o
-o  o oo o o    oo  oo    o             o         o
-oo   oo oo o oo  o  o   o    o o oo    o         o
 o  o   o   oo o  o            oo    o           eo
 oooooooooooooooooooooooooooooooooooooooooooooooooo
