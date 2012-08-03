@@ -74,7 +74,6 @@ void Delay()
 void Dfs_prepare()
 {
 	memset(closed_set, false, sizeof(closed_set));
-	memset(extend_set, false, sizeof(extend_set));
 }
 
 int Dfs(Position top)
@@ -82,17 +81,19 @@ int Dfs(Position top)
     if (top == pos_goal) return top.step;
     closed_set[top.x][top.y] = true;
     //system("cls"); DisplayMaze(); Delay(); //system("pause");
-    for (int i = 0; i < DIR_NUM; ++i) {
+    for (int i = 0; i <= DIR_NUM; ++i) {
         int tx = top.x + DIR_X[i];
         int ty = top.y + DIR_Y[i];
-        if (extend_set[tx][ty]) continue;
         if (maze_map[tx][ty] == 'o') continue;
+        if (extend_set[tx][ty]) continue;
         extend_set[tx][ty] = true;
         dir_pre[tx][ty] = i;
-        Dfs(Position(tx, ty, top.step + 1));
+        int ret = Dfs(Position(tx, ty, top.step + 1));
+        if (ret >= 0) return ret;
         // backtracking
         //extend_set[tx][ty] = false;
     }
+    return -1;
 }
 
 int main ()
