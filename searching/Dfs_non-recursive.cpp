@@ -24,7 +24,7 @@ bool extend_set[Max][Max];
 // preceding direction
 int dir_pre[Max][Max];
 
-const int DIR_NUM = 4;
+const int DIR_NUM = 8;
 const int DIR_X[] = {-1, 1,  0, 0, -1, -1, 1, 1};
 const int DIR_Y[] = { 0, 0, -1, 1,  1, -1, 1,-1};
 
@@ -86,7 +86,7 @@ int Dfs()
 		// remove from open set, add to closed set
 		open_set.pop();
 		closed_set[top.x][top.y] = true;
-		system("cls"); DisplayMaze(); Delay(); //system("pause");
+		//system("cls"); DisplayMaze(); Delay(); //system("pause");
 		for (int i = 0; i < DIR_NUM; ++i) {
 			int tx = top.x + DIR_X[i];
 			int ty = top.y + DIR_Y[i];
