@@ -124,15 +124,15 @@ int main ()
 
 		clock_t st = clock();
 		// search
-		int minstep = Bfs();
+		int result = Bfs();
 		clock_t et = clock();
 		printf("search cost time: %lfs\n", (double)(et - st)/CLOCKS_PER_SEC);
 
-		if (minstep == -1) {
-			puts("This maze have no solution");
+		if (result == -1) {
+			puts("This maze is no solution");
 			continue;
 		} else {
-			printf("The solution of minimal steps is %d : \n", minstep);
+			printf("The path need %d steps \n", result);
 			Position tmp = pos_goal;
 			// get path
 			while (true) {
