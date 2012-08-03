@@ -20,7 +20,7 @@ int maze_row;
 char maze_map[Max][Max];
 
 bool closed_set[Max][Max];
-bool extend_set[Max][Max];
+//bool extend_set[Max][Max];
 // preceding direction
 int dir_pre[Max][Max];
 
@@ -31,7 +31,7 @@ const int DIR_Y[] = { 0, 0, -1, 1,  1, -1, 1,-1};
 struct Position {
 	int x, y;
 	int step;
-	Position() {}
+	Position():x(0), y(0), step(0) {}
 	Position(int a, int b):x(a), y(b), step(0) {}
 	Position(int a, int b, int c):x(a), y(b), step(c) {}
 	bool operator == (const Position &a) const {
@@ -46,8 +46,8 @@ void DisplayMaze()
 		for (int j = 0; j < maze_col; ++j) {
 			if (closed_set[i][j] && maze_map[i][j] == ' ') {
 				printf("%c", CH_CLOSED);
-			} else if (extend_set[i][j] && maze_map[i][j] == ' ') {
-				printf("%c", CH_EXTEND);
+//			} else if (extend_set[i][j] && maze_map[i][j] == ' ') {
+//				printf("%c", CH_EXTEND);
 			} else {
 				printf("%c", maze_map[i][j]);
 			}
@@ -80,18 +80,17 @@ int Dfs(Position top)
 {
     if (top == pos_goal) return top.step;
     closed_set[top.x][top.y] = true;
-    //system("cls"); DisplayMaze(); Delay(); //system("pause");
-    for (int i = 0; i <= DIR_NUM; ++i) {
+    system("cls"); DisplayMaze(); Delay(); //system("pause");
+    for (int i = 0; i < DIR_NUM; ++i) {
         int tx = top.x + DIR_X[i];
         int ty = top.y + DIR_Y[i];
         if (maze_map[tx][ty] == 'o') continue;
-        if (extend_set[tx][ty]) continue;
-        extend_set[tx][ty] = true;
+        if (closed_set[tx][ty]) continue;
         dir_pre[tx][ty] = i;
         int ret = Dfs(Position(tx, ty, top.step + 1));
         if (ret >= 0) return ret;
         // backtracking
-        //extend_set[tx][ty] = false;
+        //closed_set[tx][ty] = false;
     }
     return -1;
 }
