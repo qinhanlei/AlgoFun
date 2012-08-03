@@ -96,7 +96,7 @@ o                                     o
 os                                    o
 ooooooooooooooooooooooooooooooooooooooo
 
-26,50
+50,26
 oooooooooooooooooooooooooooooooooooooooooooooooooo
 os        oo  o oo  o      ooo     oo     o   oo o
 oo    o  oo ooo o o   oooo o o o       o o       o
