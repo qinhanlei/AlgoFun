@@ -36,6 +36,18 @@ Subjects list
     * ...
 
 2. Sorting (planning)
+    note: at first I want use C++ create a generic sorting lib, but STL works well and  
+        I am inexpertness at C++ template programming. so I decide use C do some thing I never have.
+    * Bubble Sort, very easy, simple, instability, the first sorting algorithm that I learned,  
+        I miss that good old days.
+    * Select Sort
+    * Insert Sort
+    * Shell Sort
+    * Heap Sort
+    * Merge Sort
+    * Quick Sort
+    * ...
+
 
 3. Numeric (planning)
 
