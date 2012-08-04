@@ -14,7 +14,7 @@ void bubble_sort(void *base, size_t num, size_t size,
 			void *a = (char*)base + j * size;
 			void *b = (char*)base + (j + 1) * size;
 			if (cmp_func(a, b) > 0) {
-				algofun_swap(a, b, size);
+				generic_swap(a, b, size);
 				key = 1;
 			}
 		}

@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 // use for reference from Linux kernel source
-inline void algofun_swap(void *a, void *b, int size)
+inline void generic_swap(void *a, void *b, int size)
 {
 	char tmp, *p = (char *)a, *q = (char *)b;
 	while (size--) {
