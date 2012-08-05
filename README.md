@@ -28,23 +28,27 @@ Subjects
 ------------
 1. Searching (almost path search, until now)
     * Simple A\*(A star) algorithm demo.  
-        ps: to open the file "map.txt", recommend vim or others more powerful Editor.
+        PS: To open the file "map.txt", recommend vim or others more powerful Editor.
     * Simple BFS(Breadth-first) search modified from A\* algorithm.   
-        ps: same as before.  
+        PS: Same as before.  
     * Simple DFS(Depth-first search), recursive and non-recursive(use stack) implement.
     * IDA\*(Iterative Deepening A Star), recursive and non-recursive.
     * ...
 
 2. Sorting (doing)  
-    note: at first I want use C++ create a generic sorting lib, but STL works well and  
-        I am inexpertness at C++ template programming. so I decide use C do some thing I have never done.
+   note: At first I want use C++ create a generic sorting lib, but STL works well and  
+        I am inexpertness at C++ template programming. so I decide use C do some thing I have never done.  
+        sorting algorithms below are all implement as the C standard library function qsort().
     * Bubble Sort, easy, simple, stable, the first sorting algorithm that I learned, I miss that good old days.
+        + Cocktail Sort, a Bubble Sort variant. doing...  
     * Select Sort, more simple, faster than Bubble Sort. but, unstable.
-    * Insert Sort
+    * Insert Sort, the fast O(n^2) sort algorithm.
+        + Binary Insert Sort, a binary optimize.  
     * Shell Sort
     * Heap Sort
     * Merge Sort
     * Quick Sort
+        + Intro Sort 
     * ...
 
 
