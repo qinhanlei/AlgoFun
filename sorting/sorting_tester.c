@@ -5,6 +5,7 @@
 
 #include "common.h"
 #include "bubble_sort.h"
+#include "select_sort.h"
 
 #define MAX_INPUT 10
 #define MaxN 1000000
@@ -114,7 +115,7 @@ int main(int argc, char *argv[])
 		case 0:
 			{
 				memcpy(num_buf, num_input, sizeof(num_input[0])*total);
-				puts("\nthere are %d random numbers.\n", total);
+				printf("\nthere are %d random numbers.\n", total);
 				break;
 			}
 		case 1:
@@ -125,6 +126,11 @@ int main(int argc, char *argv[])
 		case 2:
 			{
 				bubble_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+				break;
+			}
+		case 3:
+			{
+				select_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
 				break;
 			}
 		case 99:
