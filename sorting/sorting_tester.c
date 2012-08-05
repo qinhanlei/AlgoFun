@@ -81,10 +81,9 @@ int read_data()
 int main(int argc, char *argv[])
 {
 	int i, index;
-
-	char is_quit = 0;
-	char input_str[MAX_INPUT] = {0};
 	int input_len = 0;
+	char input_str[MAX_INPUT] = {0};
+	char is_quit = 0;
 
 	clock_t time_start, time_end;
 

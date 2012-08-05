@@ -5,7 +5,7 @@
 // use for reference from Linux kernel source
 void generic_swap(void *a, void *b, int size)
 {
-	char tmp, *p = (char *)a, *q = (char *)b;
+	char tmp, *p = a, *q = b;
 	while (size--) {
 		tmp = *p;
 		*p++ = *q;
