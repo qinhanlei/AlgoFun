@@ -22,6 +22,26 @@ void print_array(int arr[], size_t n)
 	printf("\n");
 }
 
+int cmp_int(const void* a, const void* b)
+{
+	return *(int*)a - *(int*)b;
+}
+
+int tmpA[MaxN];
+int tmpB[MaxN];
+// is array content equal
+int is_array_equal(const int arrA[], const int arrB[], size_t n)
+{
+	memcpy(tmpA, arrA, sizeof(arrA[0]) * n);
+	memcpy(tmpB, arrB, sizeof(arrB[0]) * n);
+	qsort(tmpA, n, sizeof(tmpA[0]), cmp_int);
+	qsort(tmpB, n, sizeof(tmpB[0]), cmp_int);
+	if (memcmp(tmpA, tmpB, sizeof(tmpA[0]) * n) == 0)
+		return 1;
+	else 
+		return 0;
+}
+
 int is_ordered(int arr[], size_t n)
 {
 	size_t i;
@@ -56,11 +76,6 @@ int read_data()
 	}
 	printf("got %d random numbers from file.\n", total);
 	return 1;
-}
-
-int cmp_int(const void* a, const void* b)
-{
-	return *(int*)a - *(int*)b;
 }
 
 int main(int argc, char *argv[])
@@ -166,11 +181,18 @@ int main(int argc, char *argv[])
 		}
 
 		// is that sort operate
-		if (index >= 2 && index <= 9) {
-			if (is_ordered(num_buf, total))
-				printf("\nsort successed. ");
-			else
-				printf("\nsort failed. ");
+		if (index > 0 && index <= 9) {
+			if (is_array_equal(num_buf, num_input, total)) {
+				if (is_ordered(num_buf, total))
+					printf("\nsort successed. ");
+				else
+					printf("\nsort failed. ");
+			} else {
+				printf("\nsort error: value changed. \n"
+					"\tdo other sorting, please restore random state first. \n"
+					"\tcheck your algorithm.");
+				//memcpy(num_buf, num_input, sizeof(num_input[0])*total);
+			}
 			printf("\ncost time: %lf second \n", difftime(time_end, time_start)/CLK_TCK);
 		}
 	}
