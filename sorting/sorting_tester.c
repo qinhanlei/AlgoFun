@@ -10,7 +10,7 @@
 #include "insert_sort.h"
 
 #define MAX_INPUT 64
-#define MaxN 1000000
+#define MAX_NUM 1000000
 
 void print_array(int arr[], size_t n)
 {
@@ -27,8 +27,8 @@ int cmp_int(const void* a, const void* b)
 	return *(int*)a - *(int*)b;
 }
 
-int tmpA[MaxN];
-int tmpB[MaxN];
+int tmpA[MAX_NUM];
+int tmpB[MAX_NUM];
 // is array content equal
 int is_array_equal(const int arrA[], const int arrB[], size_t n)
 {
@@ -53,9 +53,9 @@ int is_ordered(int arr[], size_t n)
 
 int total = 0;
 // the data of original
-int num_input[MaxN] = {0};
+int num_input[MAX_NUM] = {0};
 // the data to sort
-int num_buf[MaxN] = {0};
+int num_buf[MAX_NUM] = {0};
 
 int read_data()
 {
@@ -69,7 +69,7 @@ int read_data()
 	total = 0;
 	while (fscanf(fin, "%d", &tmp) != EOF) {
 		num_input[total++] = tmp;
-		if (total >= MaxN) {
+		if (total >= MAX_NUM) {
 			puts("file content error, too more data!");
 			return 0;
 		}
