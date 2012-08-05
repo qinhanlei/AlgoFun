@@ -5,6 +5,13 @@ obj\
 *.depend
 *.layout
 
+# for visual studio
+debug\
+release\
+*.ncb
+*.user
+*.suo
+
 
 # below from: https://github.com/github/gitignore
 
