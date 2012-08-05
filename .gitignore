@@ -6,8 +6,8 @@ obj\
 *.layout
 
 # for visual studio
-debug\
-release\
+Debug\
+Release\
 *.ncb
 *.user
 *.suo
