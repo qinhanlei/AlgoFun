@@ -1,13 +1,15 @@
 
 #include <time.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "common.h"
 #include "bubble_sort.h"
 #include "select_sort.h"
+#include "insert_sort.h"
 
-#define MAX_INPUT 10
+#define MAX_INPUT 64
 #define MaxN 1000000
 
 void print_array(int arr[], size_t n)
@@ -43,7 +45,7 @@ int read_data()
 		puts("open file \"random_num.txt\" error!");
 		return 0;
 	}
-	
+
 	total = 0;
 	while (fscanf(fin, "%d", &tmp) != EOF) {
 		num_input[total++] = tmp;
@@ -52,7 +54,7 @@ int read_data()
 			return 0;
 		}
 	}
-	printf("got %d numbers from file.\n", total);
+	printf("got %d random numbers from file.\n", total);
 	return 1;
 }
 
@@ -66,7 +68,7 @@ int main(int argc, char *argv[])
 	int i, index;
 
 	char is_quit = 0;
-	char input_str[64] = {0};
+	char input_str[MAX_INPUT] = {0};
 	int input_len = 0;
 
 	clock_t time_start, time_end;
@@ -77,24 +79,26 @@ int main(int argc, char *argv[])
 	memcpy(num_buf, num_input, sizeof(num_input[0])*total);
 
 	while (1) {
-		puts("\n************* Sorting *************");
-		puts("\t0.restore random state.");
-		puts("\t1.view all numbers\n");
-
-		puts("\t2.bubble_sort");
-		puts("\t3.select_sort");
-		puts("\t4.insert_sort\n");
-
-		puts("\t5.shell_sort");
-		puts("\t6.heap_sort");
-		puts("\t7.merge_sort\n");
-
-		puts("\t8.quick_sort");
-		puts("\t9.qsort -- C std");
-
-		puts("\n\t99.Exit");
-		puts("***********************************");
-		printf("\tSelect (0~10): ");
+		puts("");
+		puts("======================================");
+		puts("               Sorting ");
+		puts("--------------------------------------");
+		puts("\t00. restore random state.");
+		puts("\t01. view all numbers");
+		puts("----------------O(n^2)----------------");
+		puts("\t02. bubble_sort");
+		puts("\t03. select_sort");
+		puts("\t04. insert_sort");
+		puts("\t05. binary_insert_sort");
+		puts("---------------O(nlogn)---------------");
+		puts("\t06. shell_sort");
+		puts("\t07. heap_sort");
+		puts("\t08. merge_sort");
+		puts("\t09. quick_sort");
+		puts("--------------------------------------");
+		puts("\t99. exit");
+		puts("======================================");
+		printf("\tinput number: ");
 
 		fgets(input_str, sizeof(input_str), stdin);
 		input_len = strlen(input_str) - 1;
@@ -133,6 +137,36 @@ int main(int argc, char *argv[])
 				select_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
 				break;
 			}
+		case 4:
+			{
+				insert_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+				break;
+			}
+		case 5:
+			{
+				puts("\ndoing...\n");
+				break;
+			}
+		case 6:
+			{
+				puts("\ndoing...\n");
+				break;
+			}
+		case 7:
+			{
+				puts("\ndoing...\n");
+				break;
+			}
+		case 8:
+			{
+				puts("\ndoing...\n");
+				break;
+			}
+		case 9:
+			{
+				puts("\ndoing...\n");
+				break;
+			}
 		case 99:
 			{
 				is_quit = 1;
@@ -140,23 +174,23 @@ int main(int argc, char *argv[])
 			}
 		default:
 			{
-				printf("\nDoing... or Wrong input !!");
+				puts("\nwrong input!");
 				continue;
 			}
 		}
 		time_end = clock();
 
 		if (is_quit) {
-			puts("see you :)");
+			puts("\nsee you :)\n");
 			break;
 		}
 
 		// is that sort operate
 		if (index >= 2 && index <= 9) {
-			if (is_ordered(num_buf, total)) 
-				printf("\nSort successed. ");
-			else 
-				printf("\nSort unsuccess!!!. ");
+			if (is_ordered(num_buf, total))
+				printf("\nsort successed. ");
+			else
+				printf("\nsort failed. ");
 			printf("\ncost time: %lf second \n", difftime(time_end, time_start)/CLK_TCK);
 		}
 	}
