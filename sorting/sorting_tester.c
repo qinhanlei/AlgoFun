@@ -84,9 +84,9 @@ int main(int argc, char *argv[])
 		puts("               Sorting ");
 		puts("--------------------------------------");
 		puts("\t00. restore random state.");
-		puts("\t01. view all numbers");
 		puts("----------------O(n^2)----------------");
-		puts("\t02. bubble_sort");
+		puts("\t01. bubble_sort");
+		puts("\t02. cocktail_sort (variant from bubble sort)");
 		puts("\t03. select_sort");
 		puts("\t04. insert_sort");
 		puts("\t05. binary_insert_sort");
@@ -96,6 +96,7 @@ int main(int argc, char *argv[])
 		puts("\t08. merge_sort");
 		puts("\t09. quick_sort");
 		puts("--------------------------------------");
+		puts("\t98. view all numbers");
 		puts("\t99. exit");
 		puts("======================================");
 		printf("\tinput number: ");
@@ -117,66 +118,45 @@ int main(int argc, char *argv[])
 		time_start = clock();
 		switch (index) {
 		case 0:
-			{
-				memcpy(num_buf, num_input, sizeof(num_input[0])*total);
-				printf("\nthere are %d random numbers.\n", total);
-				break;
-			}
+			memcpy(num_buf, num_input, sizeof(num_input[0])*total);
+			printf("\nthere are %d random numbers.\n", total);
+			break;
 		case 1:
-			{
-				print_array(num_buf, total);
-				break;
-			}
+			bubble_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			break;
 		case 2:
-			{
-				bubble_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
-				break;
-			}
+			cocktail_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			break;
 		case 3:
-			{
-				select_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
-				break;
-			}
+			select_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			break;
 		case 4:
-			{
-				insert_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
-				break;
-			}
+			insert_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			break;
 		case 5:
-			{
-				puts("\ndoing...\n");
-				break;
-			}
+			puts("\ndoing...\n");
+			break;
 		case 6:
-			{
-				puts("\ndoing...\n");
-				break;
-			}
+			puts("\ndoing...\n");
+			break;
 		case 7:
-			{
-				puts("\ndoing...\n");
-				break;
-			}
+			puts("\ndoing...\n");
+			break;
 		case 8:
-			{
-				puts("\ndoing...\n");
-				break;
-			}
+			puts("\ndoing...\n");
+			break;
 		case 9:
-			{
-				puts("\ndoing...\n");
-				break;
-			}
+			puts("\ndoing...\n");
+			break;
+		case 98:
+			print_array(num_buf, total);
+			break;
 		case 99:
-			{
-				is_quit = 1;
-				break;
-			}
+			is_quit = 1;
+			break;
 		default:
-			{
-				puts("\nwrong input!");
-				continue;
-			}
+			puts("\nwrong input!");
+			continue;
 		}
 		time_end = clock();
 
