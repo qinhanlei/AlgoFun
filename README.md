@@ -24,7 +24,7 @@ So, I just list some thing thought of, below:
 3. Algorithm is beautiful, graceful, magnificent... I hope more and more   
     guys like it, and... I'm not going be a uglifier.
 
-Subjects list
+Subjects
 ------------
 1. Searching (almost path search, until now)
     * Simple A\*(A star) algorithm demo.  
@@ -35,9 +35,9 @@ Subjects list
     * IDA\*(Iterative Deepening A Star), recursive and non-recursive.
     * ...
 
-2. Sorting (planning)
+2. Sorting (doing)  
     note: at first I want use C++ create a generic sorting lib, but STL works well and  
-        I am inexpertness at C++ template programming. so I decide use C do some thing I never have.
+        I am inexpertness at C++ template programming. so I decide use C do some thing I have never done.
     * Bubble Sort, easy, simple, stabe, the first sorting algorithm that I learned, I miss that good old days.
     * Select Sort
     * Insert Sort
@@ -62,7 +62,7 @@ Subjects list
 
 Licence
 -------
-undetermined...
+undetermined...  
 If you want copy, use, reproduction or distribute it, please tell me, I will be happy. :)
 
 Contacts
