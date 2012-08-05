@@ -1,17 +1,18 @@
+*.swp
+
 
 # for code::bloks
 
-bin\
-obj\
-*.cbp
+bin/
+obj/
 *.depend
 *.layout
 
 
 # for visual studio
 
-*\debug\*
-*\release\*
+[Dd]ebug/
+[Rr]elease/
 *.ncb
 *.user
 *.suo
