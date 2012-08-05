@@ -1,13 +1,17 @@
+
 # for code::bloks
+
 bin\
 obj\
 *.cbp
 *.depend
 *.layout
 
+
 # for visual studio
-Debug\
-Release\
+
+*\debug\*
+*\release\*
 *.ncb
 *.user
 *.suo
