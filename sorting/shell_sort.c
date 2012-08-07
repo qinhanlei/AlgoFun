@@ -37,7 +37,7 @@ void shell_sort(void *base, size_t num, size_t size,
 	if (tmp == NULL) return;
 	// loop gap, let global looks orderly
 	for (gap = num / 2; gap > 0; gap /= 2) {
-		// like bubble sort below, made slow. :(
+		// insertion sort below, works well. :)
 		for (i = gap; i < num; ++i) {
 			a = ch_base + i * size; // current
 			memcpy(tmp, a, size);
