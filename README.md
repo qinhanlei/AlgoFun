@@ -25,6 +25,7 @@ guys like it, and... I'm not going be a uglifier.
 
 ##Subjects
 ###0. Data Structure (planning) 
+* Dance link
 * Disjoint Set.
 * Tree
     * AVL Tree.
@@ -59,6 +60,7 @@ guys like it, and... I'm not going be a uglifier.
 * ...
 
 ###3. Numeric (planning)
+* Big Integer. old code, will be reforming.
 
 ###4. Combinatorial (planning)
 

@@ -8,9 +8,10 @@
 #include "bubble_sort.h"
 #include "select_sort.h"
 #include "insert_sort.h"
+#include "shell_sort.h"
 
 #define MAX_INPUT 64
-#define MAX_NUM 1000000
+#define MAX_NUM 1200000
 
 void print_array(int arr[], size_t n)
 {
@@ -139,7 +140,8 @@ int main(int argc, char *argv[])
 			bubble_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
 			break;
 		case 2:
-			cocktail_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			puts("\ndoing...\n");
+			//cocktail_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
 			break;
 		case 3:
 			select_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
@@ -151,7 +153,7 @@ int main(int argc, char *argv[])
 			puts("\ndoing...\n");
 			break;
 		case 6:
-			puts("\ndoing...\n");
+			shell_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
 			break;
 		case 7:
 			puts("\ndoing...\n");
