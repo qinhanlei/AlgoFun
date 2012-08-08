@@ -191,7 +191,6 @@ void binary_shell_sort(void *base, size_t num, size_t size,
 	if (tmp == NULL) return;
 	// loop gap, let global looks orderly
 	for (gap = num / 2; gap > 0; gap /= 2) {
-		// insertion sort below, works well. :)
 		for (i = gap; i < num; ++i) {
 			memcpy(tmp, ch_base + i * size, size);
 			left = i % gap; // notice!
@@ -204,17 +203,22 @@ void binary_shell_sort(void *base, size_t num, size_t size,
 				if (cmp_func(tmp, a) >= 0) left = mid + gap;
 				else right = mid - gap;
 			}
+			/*
+			a = ch_base + left * size;
+			b = ch_base + i * size;
+			while (b >= a) {
+				memcpy(b, b - gap * size, size);
+				b -= gap * size;
+			}
+			if (b != ch_base + i * size) 
+				memcpy(b + gap * size, tmp, size);//*/
+			a = ch_base + i * size;
 			for (j = i - gap; j >= left; j -= gap) {
-				b = ch_base + j * size; // element[j-gap]
-				a = b + gap * size; // element[j];
+				b = ch_base + j * size;
 				memcpy(a, b, size);
+				a = b;
 			}
-			if (i != j + gap) {
-				//a = ch_base + left * size;
-				//memcpy(a, tmp, size);
-				//memcpy(ch_base + left * size, tmp, size);
-				memcpy(b, tmp, size);
-			}
+			if (i != j + gap) memcpy(a, tmp, size);//*/
 		}
 	}
 	free(tmp);
