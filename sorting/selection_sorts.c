@@ -1,4 +1,4 @@
-#include "select_sort.h"
+#include "selection_sorts.h"
 
 #include "common.h"
 
@@ -20,4 +20,11 @@ void select_sort(void *base, size_t num, size_t size,
 		b = ch_base + i * size;
 		if (a != b) generic_swap(a, b, size);
 	}
+}
+
+void heap_sort(void *base, size_t num, size_t size, 
+			   int (*cmp_func)(const void*, const void*))
+{
+	//TODO:heap_sort
+	base;num;size;cmp_func;
 }

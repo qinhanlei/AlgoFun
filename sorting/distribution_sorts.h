@@ -1,0 +1,6 @@
+#ifndef _ALGOFUN_DISTRIBUTION_SORTS_H
+#define _ALGOFUN_DISTRIBUTION_SORTS_H
+
+void radix_sort();
+
+#endif //_ALGOFUN_DISTRIBUTION_SORTS_H

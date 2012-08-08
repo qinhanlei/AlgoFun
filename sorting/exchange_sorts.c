@@ -1,4 +1,4 @@
-#include "bubble_sort.h"
+#include "exchange_sorts.h"
 
 #include "common.h"
 
@@ -28,4 +28,12 @@ void cocktail_sort(void *base, size_t num, size_t size,
 				   int (*cmp_func)(const void*, const void*))
 {
 	//TODO:cocktail_sort
+	base;num;size;cmp_func;
+}
+
+void quick_sort(void *base, size_t num, size_t size, 
+				int (*cmp_func)(const void*, const void*))
+{
+	//TODO:quick_sort
+	base;num;size;cmp_func;
 }

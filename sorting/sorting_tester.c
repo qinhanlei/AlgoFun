@@ -5,10 +5,11 @@
 #include <string.h>
 
 #include "common.h"
-#include "bubble_sort.h"
-#include "select_sort.h"
-#include "insert_sort.h"
-#include "shell_sort.h"
+#include "distribution_sorts.h"
+#include "exchange_sorts.h"
+#include "insertion_sorts.h"
+#include "merge_sorts.h"
+#include "selection_sorts.h"
 
 #define MAX_INPUT 64
 #define MAX_NUM 1200000
@@ -75,11 +76,11 @@ int read_data()
 			return 0;
 		}
 	}
-	printf("got %d random numbers from file.\n", total);
+	
 	return 1;
 }
 
-int main(int argc, char *argv[])
+int main(void/*int argc, char *argv[]*/)
 {
 	int i, index;
 	int input_len = 0;
@@ -93,28 +94,33 @@ int main(int argc, char *argv[])
 	}
 	memcpy(num_buf, num_input, sizeof(num_input[0])*total);
 
-	while (1) {
-		puts("");
-		puts("======================================");
-		puts("               Sorting ");
-		puts("--------------------------------------");
-		puts("\t00. restore random state.");
-		puts("----------------O(n^2)----------------");
-		puts("\t01. bubble_sort");
-		puts("\t02. cocktail_sort (variant from bubble sort)");
-		puts("\t03. select_sort");
-		puts("\t04. insert_sort");
-		puts("\t05. binary_insert_sort");
-		puts("---------------O(nlogn)---------------");
-		puts("\t06. shell_sort");
-		puts("\t07. heap_sort");
-		puts("\t08. merge_sort");
-		puts("\t09. quick_sort");
-		puts("--------------------------------------");
-		puts("\t98. view all numbers");
-		puts("\t99. exit");
-		puts("======================================");
-		printf("\tinput number: ");
+	do {
+		puts("==============================================");
+		printf("               Sorting (%d integers)\n", total);
+		puts("-----------------Exchange sorts---------------");
+		puts("               10. bubble_sort");
+		puts("               11. cocktail_sort");
+		puts("               12. quick_sort");
+		puts("-----------------Selection sorts--------------");
+		puts("               20. select_sort");
+		puts("               21. heap_sort");
+		puts("-----------------Insertion sorts--------------");
+		puts("               30. insert_sort");
+		puts("               31. binary_insert_sort");
+		puts("               32. shell_sort");
+		puts("-----------------Merge sorts------------------");
+		puts("               40. merge_sort");
+		puts("-----------------Distribution sorts-----------");
+		puts("               50. counting_sort");
+		puts("               51. radix_sort");
+		puts("-----------------Hybrid sorts-----------------");
+		puts("               60. intro_sort");
+		puts("-------------------COMMAND--------------------");
+		puts("               00. restore random state.");
+		puts("               01. view all numbers");
+		puts("               09. exit");
+		puts("==============================================");
+		printf("input index number: ", total);
 
 		fgets(input_str, sizeof(input_str), stdin);
 		input_len = strlen(input_str) - 1;
@@ -132,42 +138,57 @@ int main(int argc, char *argv[])
 
 		time_start = clock();
 		switch (index) {
+			// --- Exchange sorts
+		case 10:
+			bubble_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			break;
+		case 11:
+			puts("\ndoing...\n");
+			//cocktail_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			break;
+		case 13:
+			puts("\ndoing...\n");
+			break;
+			// --- Selection sorts
+		case 20:
+			select_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			break;
+		case 21:
+			puts("\ndoing...\n");
+			break;
+			// --- Insertion sorts
+		case 30:
+			insert_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			break;
+		case 31:
+			binary_insert_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			break;
+		case 32:
+			shell_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			break;
+			// --- Merge sorts
+		case 40:
+			puts("\ndoing...\n");
+			break;
+			// --- Distribution sorts
+		case 50:
+			puts("\ndoing...\n");
+			break;
+		case 51:
+			puts("\ndoing...\n");
+			break;
+			// Hybrid sorts
+		case 60:
+			puts("\ndoing...\n");
+			break;
 		case 0:
 			memcpy(num_buf, num_input, sizeof(num_input[0])*total);
 			printf("\nthere are %d random numbers.\n", total);
 			break;
 		case 1:
-			bubble_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
-			break;
-		case 2:
-			puts("\ndoing...\n");
-			//cocktail_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
-			break;
-		case 3:
-			select_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
-			break;
-		case 4:
-			insert_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
-			break;
-		case 5:
-			binary_insert_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
-			break;
-		case 6:
-			shell_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
-			break;
-		case 7:
-			puts("\ndoing...\n");
-			break;
-		case 8:
-			puts("\ndoing...\n");
-			break;
-		case 9:
-			puts("\ndoing...\n");
-			break;
-		case 98:
 			print_array(num_buf, total);
 			break;
-		case 99:
+		case 9:
 			is_quit = 1;
 			break;
 		default:
@@ -182,7 +203,7 @@ int main(int argc, char *argv[])
 		}
 
 		// is that sort operate
-		if (index > 0 && index <= 9) {
+		if (index > 9 && index <= 90) {
 			if (is_array_equal(num_buf, num_input, total)) {
 				if (is_ordered(num_buf, total))
 					printf("\nsort successed. ");
@@ -196,7 +217,8 @@ int main(int argc, char *argv[])
 			}
 			printf("\ncost time: %lf second \n", difftime(time_end, time_start)/CLK_TCK);
 		}
-	}
-	system("pause");
+		system("pause");
+		system("cls");
+	} while (!is_quit);
 	return 0;
 }
