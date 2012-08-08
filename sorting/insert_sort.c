@@ -84,11 +84,14 @@ void insert_sort(void *base, size_t num, size_t size,
 			
 			b = ch_base + i * size; // current
 			a = b - size; // preceding
-			while (cmp_func(tmp, a) < 0) { // unguarded while cause EXP
+			// unguarded while cause EXP, the key of efficiency
+			while (cmp_func(tmp, a) < 0)
 				a -= size;
-			}
 			memmove(a + 2 * size, a + size, b - a - size);
 			memcpy(a + size, tmp, size);//*/
+			/*a += size;
+			memmove(a + size, a, b - a);
+			memcpy(a, tmp, size);//*/
 		}
 	}
 	free(tmp);
@@ -98,6 +101,32 @@ void insert_sort(void *base, size_t num, size_t size,
 void binary_insert_sort(void *base, size_t num, size_t size, 
 						int (*cmp_func)(const void*, const void*))
 {
-	//TODO:binary_insert_sort
+	char *ch_base = base;
+	char *a = NULL, *b = NULL;
+	size_t i, left, right, mid;
+	char *tmp = malloc(size);
+	if (tmp == NULL) return;
+	for (i = 1; i < num; ++i) {
+		// store the [i]th element
+		memcpy(tmp, ch_base + i * size, size);
+		if (cmp_func(tmp, ch_base) < 0) { 
+			// less than current minimum, move at once.
+			memmove(ch_base + size, ch_base, i * size);
+			memcpy(ch_base, tmp, size);
+		} else {
+			left = 0;
+			right = i - 1;
+			while (left <= right) {
+				mid = (left + right) / 2;
+				a = ch_base + mid * size;
+				if (cmp_func(tmp, a) >= 0) left = mid + 1;
+				else right = mid - 1;
+			}
+			b = ch_base + i * size; // current
+			a = ch_base + left * size;
+			memmove(a + size, a, b - a);
+			memcpy(a, tmp, size); // move tmp to element[left]
+		}
+	}
+	free(tmp);
 }
-

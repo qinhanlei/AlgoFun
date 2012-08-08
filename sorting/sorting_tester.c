@@ -150,7 +150,7 @@ int main(int argc, char *argv[])
 			insert_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
 			break;
 		case 5:
-			puts("\ndoing...\n");
+			binary_insert_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
 			break;
 		case 6:
 			shell_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);

@@ -54,4 +54,5 @@ void shell_sort(void *base, size_t num, size_t size,
 			if (i != j) memcpy(a, tmp, size);
 		}
 	}
+	free(tmp);
 }
