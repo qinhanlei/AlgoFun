@@ -5,12 +5,18 @@
 // use for reference from Linux kernel source
 void generic_swap(void *a, void *b, int size)
 {
-	char tmp, *p = a, *q = b;
-	while (size--) {
-		tmp = *p;
-		*p++ = *q;
-		*q++ = tmp;
-	}
+	char *tmp = malloc(size);
+	if (tmp == NULL) return;
+	memcpy(tmp, a, size);
+	memcpy(a, b, size);
+	memcpy(b, tmp, size);
+	free(tmp);
+	//char tmp, *p = a, *q = b;
+	//while (size--) {
+	//	tmp = *p;
+	//	*p++ = *q;
+	//	*q++ = tmp;
+	//}
 }
 
 

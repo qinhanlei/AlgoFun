@@ -136,24 +136,23 @@ void shell_sort_1(void *base, size_t num, size_t size,
 {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL;
-	size_t i, j, gap;
+	size_t i, gap;
+	int j; //note: (j -= gap) may let unsigned j overflow
 	// loop gap, let global looks orderly
 	for (gap = num / 2; gap > 0; gap /= 2) {
 		// like bubble sort below, made slow. :(
 		for (i = gap; i < num; ++i) {
-			for (j = i - gap; /*j >= 0*/; j -= gap) {
-				a = ch_base + j * size; // current
-				b = a + gap * size; // after
-				if (cmp_func(b, a) < 0)
-					generic_swap(a, b, size);
-				//note: (j -= gap) may let unsigned j overflow
-				if (j < gap) break;
+			a = ch_base + i * size; // current
+			for (j = i - gap; j >= 0; j -= gap) {
+				b = ch_base + j * size; // preceding
+				if (cmp_func(a, b) < 0) generic_swap(a, b, size);
+				a = b;
 			}
 		}
 	}
 }
 
-void shell_sort(void *base, size_t num, size_t size, 
+void shell_sort_2(void *base, size_t num, size_t size, 
 				int (*cmp_func)(const void*, const void*))
 {
 	char *ch_base = base;

@@ -12,10 +12,8 @@ void select_sort(void *base, size_t num, size_t size,
 		a = ch_base + i * size;
 		for (j = i + 1; j < num; ++j) {
 			b = ch_base + j * size;
-			if (com_func(b, a) < 0) {
-				// point to minimum element
-				a = b;
-			}
+			if (com_func(b, a) < 0)
+				a = b; // point to minimum element
 		}
 		b = ch_base + i * size;
 		if (a != b) generic_swap(a, b, size);

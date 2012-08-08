@@ -108,8 +108,9 @@ int main(void/*int argc, char *argv[]*/)
 		puts("-----------------Insertion sorts--------------");
 		puts("               30. insert_sort");
 		puts("               31. binary_insert_sort");
-		puts("               32. shell_sort");
-		puts("               33. binary_shell_sort");
+		puts("               32. shell_sort_1");
+		puts("               33. shell_sort_2");
+		puts("               34. binary_shell_sort");
 		puts("-----------------Merge sorts------------------");
 		puts("               40. merge_sort");
 		puts("-----------------Distribution sorts-----------");
@@ -166,9 +167,12 @@ int main(void/*int argc, char *argv[]*/)
 			binary_insert_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
 			break;
 		case 32:
-			shell_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			shell_sort_1(num_buf, total, sizeof(num_buf[0]), cmp_int);
 			break;
 		case 33:
+			shell_sort_2(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			break;
+		case 34:
 			binary_shell_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
 			break;
 			// --- Merge sorts
