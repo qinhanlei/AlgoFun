@@ -7,12 +7,13 @@
 #include "common.h"
 #include "distribution_sorts.h"
 #include "exchange_sorts.h"
+#include "hybrid_sorts.h"
 #include "insertion_sorts.h"
 #include "merge_sorts.h"
 #include "selection_sorts.h"
 
 #define MAX_INPUT 64
-#define MAX_NUM 1200000
+#define MAX_NUM 2200000
 
 void print_array(int arr[], size_t n)
 {
@@ -108,6 +109,7 @@ int main(void/*int argc, char *argv[]*/)
 		puts("               30. insert_sort");
 		puts("               31. binary_insert_sort");
 		puts("               32. shell_sort");
+		puts("               33. binary_shell_sort");
 		puts("-----------------Merge sorts------------------");
 		puts("               40. merge_sort");
 		puts("-----------------Distribution sorts-----------");
@@ -166,6 +168,9 @@ int main(void/*int argc, char *argv[]*/)
 		case 32:
 			shell_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
 			break;
+		case 33:
+			binary_shell_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			break;
 			// --- Merge sorts
 		case 40:
 			puts("\ndoing...\n");
@@ -206,9 +211,9 @@ int main(void/*int argc, char *argv[]*/)
 		if (index > 9 && index <= 90) {
 			if (is_array_equal(num_buf, num_input, total)) {
 				if (is_ordered(num_buf, total))
-					printf("\nsort successed. ");
+					printf("\nsort successed. :)");
 				else
-					printf("\nsort failed. ");
+					printf("\nsort failed! :(");
 			} else {
 				printf("\nsort error: value changed. \n"
 					"\tdo other sorting, please restore random state first. \n"
@@ -217,8 +222,8 @@ int main(void/*int argc, char *argv[]*/)
 			}
 			printf("\ncost time: %lf second \n", difftime(time_end, time_start)/CLK_TCK);
 		}
-		system("pause");
-		system("cls");
+		//system("pause");
+		//system("cls");
 	} while (!is_quit);
 	return 0;
 }

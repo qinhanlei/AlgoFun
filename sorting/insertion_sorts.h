@@ -13,7 +13,7 @@ void binary_insert_sort(void *base, size_t num, size_t size,
 
 // simple implement 
 // first as the code at "The C++ Programming Language", 
-// but never mind, bubble sort is boring.
+// but it is slow, cause bubble sort.
 void shell_sort_1(void *base, size_t num, size_t size, 
 				  int (*cmp_func)(const void*, const void*));
 

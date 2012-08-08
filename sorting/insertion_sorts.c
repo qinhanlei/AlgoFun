@@ -3,6 +3,7 @@
 
 #include <string.h>
 #include <stdlib.h>
+#include <assert.h>
 
 void insert_sort_1(void *base, size_t num, size_t size, 
 				 int (*cmp_func)(const void*, const void*))
@@ -143,9 +144,8 @@ void shell_sort_1(void *base, size_t num, size_t size,
 			for (j = i - gap; /*j >= 0*/; j -= gap) {
 				a = ch_base + j * size; // current
 				b = a + gap * size; // after
-				if (cmp_func(b, a) < 0) {
+				if (cmp_func(b, a) < 0)
 					generic_swap(a, b, size);
-				}
 				//note: (j -= gap) may let unsigned j overflow
 				if (j < gap) break;
 			}
@@ -158,7 +158,8 @@ void shell_sort(void *base, size_t num, size_t size,
 {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL;
-	size_t i, j, gap;
+	size_t i, gap;
+	int j; //notice: j-gap may less than zero
 	char *tmp = malloc(size);
 	if (tmp == NULL) return;
 	// loop gap, let global looks orderly
@@ -169,15 +170,11 @@ void shell_sort(void *base, size_t num, size_t size,
 			memcpy(tmp, a, size);
 			for (j = i - gap; j >= 0; j -= gap) {
 				b = ch_base + j * size;
-				if (cmp_func(tmp, b) < 0) {
-					memcpy(a, b, size);
-					a = b;
-				} else 
-					break;
-				//note: (j -= gap) may let unsigned j overflow
-				if (j < gap) break;
+				if (cmp_func(tmp, b) >= 0) break;
+				memcpy(a, b, size);
+				a = b;
 			}
-			if (i != j) memcpy(a, tmp, size);
+			if (i != j + gap) memcpy(a, tmp, size);
 		}
 	}
 	free(tmp);
@@ -186,6 +183,39 @@ void shell_sort(void *base, size_t num, size_t size,
 void binary_shell_sort(void *base, size_t num, size_t size, 
 					   int (*cmp_func)(const void*, const void*))
 {
-	//TODO:
-	base;num;size;cmp_func;
+	char *ch_base = base;
+	char *a = NULL, *b = NULL;
+	size_t i, gap, t;
+	int j, left, right, mid;
+	char *tmp = malloc(size);
+	if (tmp == NULL) return;
+	// loop gap, let global looks orderly
+	for (gap = num / 2; gap > 0; gap /= 2) {
+		// insertion sort below, works well. :)
+		for (i = gap; i < num; ++i) {
+			memcpy(tmp, ch_base + i * size, size);
+			left = i % gap; // notice!
+			right = i - gap;
+			while (left <= right) {
+				// shrink to no gap, binary, and back
+				t = (right - left) / gap + 1;
+				mid = t / 2 * gap + left;
+				a = ch_base + mid * size;
+				if (cmp_func(tmp, a) >= 0) left = mid + gap;
+				else right = mid - gap;
+			}
+			for (j = i - gap; j >= left; j -= gap) {
+				b = ch_base + j * size; // element[j-gap]
+				a = b + gap * size; // element[j];
+				memcpy(a, b, size);
+			}
+			if (i != j + gap) {
+				//a = ch_base + left * size;
+				//memcpy(a, tmp, size);
+				//memcpy(ch_base + left * size, tmp, size);
+				memcpy(b, tmp, size);
+			}
+		}
+	}
+	free(tmp);
 }

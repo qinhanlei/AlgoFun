@@ -58,7 +58,6 @@ int read_data()
 			return 0;
 		}
 	}
-	printf("got %d random numbers from file.\n", total);
 	return 1;
 }
 
@@ -76,22 +75,20 @@ int main(int argc, char *argv[])
 	}
 	memcpy(num_buf, num_input, sizeof(num_input[0])*total);
 
-	while (1) {
-		puts("");
-		puts("======================================");
-		puts("               Std Sorting ");
-		puts("--------------------------------------");
-		puts("\t00. restore random state.");
-		puts("----------------O(n^2)----------------");
-		puts("\t01. qsort C std");
-		puts("\t02. sort C++ STL");
-		puts("\t03. stable_sort C++ STL");
-		puts("\t04. heap_sort C++ STL");
-		puts("--------------------------------------");
-		puts("\t98. view all numbers");
-		puts("\t99. exit");
-		puts("======================================");
-		printf("\tinput number: ");
+	do {
+		puts("==============================================");
+		printf("             Std Sorting (%d integers)\n", total);
+		puts("----------------------------------------------");
+		puts("              10. qsort C std");
+		puts("              11. sort C++ STL");
+		puts("              12. stable_sort C++ STL");
+		puts("              13. heap_sort C++ STL");
+		puts("----------------------------------------------");
+		puts("              00. restore random state.");
+		puts("              01. view all numbers");
+		puts("              09. exit");
+		puts("==============================================");
+		printf("\tinput index number: ");
 
 		fgets(input_str, sizeof(input_str), stdin);
 		input_len = strlen(input_str) - 1;
@@ -109,27 +106,27 @@ int main(int argc, char *argv[])
 
 		time_start = clock();
 		switch (index) {
+		case 10:
+			qsort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			break;
+		case 11:
+			sort(num_buf, num_buf + total);
+			break;
+		case 12:
+			stable_sort(num_buf, num_buf + total);
+			break;
+		case 13:
+			make_heap(num_buf, num_buf + total);
+			sort_heap(num_buf, num_buf + total);
+			break;
 		case 0:
 			memcpy(num_buf, num_input, sizeof(num_input[0])*total);
 			printf("\nthere are %d random numbers.\n", total);
 			break;
 		case 1:
-			qsort(num_buf, total, sizeof(num_buf[0]), cmp_int);
-			break;
-		case 2:
-			sort(num_buf, num_buf + total);
-			break;
-		case 3:
-			stable_sort(num_buf, num_buf + total);
-			break;
-		case 4:
-			make_heap(num_buf, num_buf + total);
-			sort_heap(num_buf, num_buf + total);
-			break;
-		case 98:
 			print_array(num_buf, total);
 			break;
-		case 99:
+		case 9:
 			is_quit = 1;
 			break;
 		default:
@@ -144,14 +141,15 @@ int main(int argc, char *argv[])
 		}
 
 		// is that sort operate
-		if (index > 0 && index <= 9) {
+		if (index > 9 && index <= 90) {
 		    if(is_ordered(num_buf, total))
                 puts("\nsort success.");
             else
                 puts("\nsort failed!");
 			printf("\ncost time: %lf second \n", difftime(time_end, time_start)/CLK_TCK);
 		}
-	}
-	system("pause");
+        system("pause");
+		system("cls");
+	} while (!is_quit);
 	return 0;
 }
