@@ -49,6 +49,7 @@ int main()
 
         fflush(fout);
     }
+    fclose(fout);
 
     return 0;
 }

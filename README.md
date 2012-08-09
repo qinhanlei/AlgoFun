@@ -47,15 +47,23 @@ guys like it, and... I'm not going be a uglifier.
 * ...
 
 ###2. Sorting (doing)  
-* Bubble Sort, easy, simple, stable, the first sorting algorithm that I learned, I miss that good old days.
+* Exchange Sorts
+    * Bubble Sort, easy, simple, stable, the first sorting algorithm that I learned, I miss that good old days.
     * Cocktail Sort, a Bubble Sort variant. doing...  
-* Select Sort, more simple, faster than Bubble Sort. but, unstable.
-* Insert Sort, the fast O(n^2) sort algorithm.
+    * Quick Sort
+* Selection Sorts
+    * Select Sort, more simple, faster than Bubble Sort. but, unstable.
+    * Heap Sort
+* Insertion Sorts 
+    * Insert Sort, the fast O(n^2) sort algorithm, and some optimize like binary.
     * Binary Insert Sort, a binary optimize.  
-* Shell Sort
-* Heap Sort
-* Merge Sort
-* Quick Sort
+    * Shell Sort, some try trial like binary optimize but got slower :(
+* Merge Sorts
+    * Merge sort 
+    * ...
+* Distribution Sorts
+    * Radix Sort 
+* Hybrid Sorts 
     * Intro Sort 
 * ...
 
@@ -80,6 +88,10 @@ If you want copy, use, reproduction or distribute it, please tell me, I will be 
 just e-mail me now. 
 
 #Thanks
-42
+* 42
+* World Peace
+* Stand my poor English
+
+
 
 
