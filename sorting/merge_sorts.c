@@ -1,6 +1,7 @@
 #include "merge_sorts.h"
 #include "common.h"
 
+/*
 static void merge(void *base, size_t left, size_t mid, size_t right,
 				  int (*cmp_func)(const void*, const void*))
 {
@@ -19,5 +20,5 @@ void merge_sort(void *left, size_t num, size_t size,
 		merge_sort(mid, num2, size, cmp_func);
 		merge(left, mid, right, size, cmp_func);
 	}
-}
+}//*/
 

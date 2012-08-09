@@ -74,10 +74,11 @@ int read_data()
 		num_input[total++] = tmp;
 		if (total >= MAX_NUM) {
 			puts("file content error, too more data!");
+			fclose(fin);
 			return 0;
 		}
 	}
-	
+	fclose(fin);
 	return 1;
 }
 
@@ -121,6 +122,7 @@ int main(void/*int argc, char *argv[]*/)
 		puts("-------------------COMMAND--------------------");
 		puts("               00. restore random state.");
 		puts("               01. view all numbers");
+		puts("               08. re-read data from file");
 		puts("               09. exit");
 		puts("==============================================");
 		printf("input index number: ", total);
@@ -196,6 +198,10 @@ int main(void/*int argc, char *argv[]*/)
 			break;
 		case 1:
 			print_array(num_buf, total);
+			break;
+		case 8:
+			read_data();
+			printf("\nthere are %d random numbers.\n", total);
 			break;
 		case 9:
 			is_quit = 1;

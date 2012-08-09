@@ -1,6 +1,7 @@
 #include "common.h"
 
 #include <stdlib.h>
+#include <string.h>
 
 // use for reference from Linux kernel source
 void generic_swap(void *a, void *b, int size)
