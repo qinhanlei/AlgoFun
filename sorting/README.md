@@ -17,6 +17,6 @@ Here, cmp\_int is a function which function prototype like below:
 
 Note 
 ----
-I delete the file "random\_num.txt" (cause it may changed frequently) you can generate it use "gen\_random\_num2file.c" or manunally.
-I usually write comment by C++ style "//", so do I in C code. it may got error in some old C compiler, sorry for the inconvenience.
-In practice, the std qsort() is recommended in C, and the sort() or stable_sort() in C++.
+1. I delete the file "random\_num.txt" (cause it may changed frequently) you can generate it use "gen\_random\_num2file.c" or manunally.  
+2. I usually write comment by C++ style "//", so do I in C code. it may got error in some old C compiler, sorry for the inconvenience.  
+3. In practice, the std qsort() is recommended in C, and the sort() or stable_sort() in C++.
