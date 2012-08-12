@@ -147,8 +147,7 @@ int main(void/*int argc, char *argv[]*/)
 			bubble_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
 			break;
 		case 11:
-			puts("\ndoing...\n");
-			//cocktail_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			cocktail_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
 			break;
 		case 13:
 			puts("\ndoing...\n");
@@ -171,7 +170,7 @@ int main(void/*int argc, char *argv[]*/)
 			binary_shell_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
 			break;
 		case 33:
-			shell_sort_1(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			shell_sort_2(num_buf, total, sizeof(num_buf[0]), cmp_int);
 			break;
 			// --- Merge sorts
 		case 40:
@@ -197,6 +196,7 @@ int main(void/*int argc, char *argv[]*/)
 			break;
 		case 8:
 			read_data();
+			memcpy(num_buf, num_input, sizeof(num_input[0])*total);
 			printf("\nthere are %d random numbers.\n", total);
 			break;
 		case 9:
@@ -213,10 +213,9 @@ int main(void/*int argc, char *argv[]*/)
 			break;
 		}
 
-		printf("\ncost time: %lf second.\n", difftime(time_end, time_start)/CLK_TCK);
-
 		// is that sort operate
 		if (index > 9 && index <= 90) {
+			printf("\ncost time: %lf second.\n", difftime(time_end, time_start)/CLK_TCK);
 			if (is_array_equal(num_buf, num_input, total)) {
 				if (is_ordered(num_buf, total))
 					puts("sort successed. :)");
