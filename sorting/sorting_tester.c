@@ -13,7 +13,7 @@
 #include "selection_sorts.h"
 
 #define MAX_INPUT 64
-#define MAX_NUM 2200000
+#define MAX_NUM 900000
 
 void print_array(int arr[], size_t n)
 {
@@ -100,15 +100,20 @@ int main(void/*int argc, char *argv[]*/)
 		puts("\n==============================================");
 		printf("               Sorting (%d integers)\n", total);
 		puts("-----------------Exchange sorts---------------");
-		puts("               10. bubble_sort");
-		puts("               11. cocktail_sort");
+		if (total <= 5000) {
+			puts("               10. bubble_sort"); // 9w
+			puts("               11. cocktail_sort");
+		}
 		puts("               12. quick_sort");
 		puts("-----------------Selection sorts--------------");
-		puts("               20. select_sort");
+		if (total <= 20000)
+			puts("               20. select_sort");
 		puts("               21. heap_sort");
 		puts("-----------------Insertion sorts--------------");
-		puts("               30. insert_sort");
-		puts("               31. binary_insert_sort");
+		if (total <= 20000)
+			puts("               30. insert_sort");
+		if (total <= 200000)
+			puts("               31. binary_insert_sort");
 		puts("               32. binary_shell_sort");
 		puts("               33. shell_sort");
 		puts("-----------------Merge sorts------------------");
@@ -149,8 +154,8 @@ int main(void/*int argc, char *argv[]*/)
 		case 11:
 			cocktail_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
 			break;
-		case 13:
-			puts("\ndoing...\n");
+		case 12:
+			quick_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
 			break;
 			// --- Selection sorts
 		case 20:
