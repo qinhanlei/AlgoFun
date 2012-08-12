@@ -97,7 +97,7 @@ int main(void/*int argc, char *argv[]*/)
 	memcpy(num_buf, num_input, sizeof(num_input[0])*total);
 
 	do {
-		puts("==============================================");
+		puts("\n==============================================");
 		printf("               Sorting (%d integers)\n", total);
 		puts("-----------------Exchange sorts---------------");
 		puts("               10. bubble_sort");
@@ -109,9 +109,8 @@ int main(void/*int argc, char *argv[]*/)
 		puts("-----------------Insertion sorts--------------");
 		puts("               30. insert_sort");
 		puts("               31. binary_insert_sort");
-		puts("               32. shell_sort_1");
-		puts("               33. shell_sort_2");
-		puts("               34. binary_shell_sort");
+		puts("               32. binary_shell_sort");
+		puts("               33. shell_sort");
 		puts("-----------------Merge sorts------------------");
 		puts("               40. merge_sort");
 		puts("-----------------Distribution sorts-----------");
@@ -125,7 +124,7 @@ int main(void/*int argc, char *argv[]*/)
 		puts("               08. re-read data from file");
 		puts("               09. exit");
 		puts("==============================================");
-		printf("input index number: ", total);
+		printf("          input index number: ", total);
 
 		fgets(input_str, sizeof(input_str), stdin);
 		input_len = strlen(input_str) - 1;
@@ -169,17 +168,14 @@ int main(void/*int argc, char *argv[]*/)
 			binary_insert_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
 			break;
 		case 32:
-			shell_sort_1(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			binary_shell_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
 			break;
 		case 33:
-			shell_sort_2(num_buf, total, sizeof(num_buf[0]), cmp_int);
-			break;
-		case 34:
-			binary_shell_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			shell_sort_1(num_buf, total, sizeof(num_buf[0]), cmp_int);
 			break;
 			// --- Merge sorts
 		case 40:
-			puts("\ndoing...\n");
+			merge_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
 			break;
 			// --- Distribution sorts
 		case 50:
@@ -217,20 +213,21 @@ int main(void/*int argc, char *argv[]*/)
 			break;
 		}
 
+		printf("\ncost time: %lf second.\n", difftime(time_end, time_start)/CLK_TCK);
+
 		// is that sort operate
 		if (index > 9 && index <= 90) {
 			if (is_array_equal(num_buf, num_input, total)) {
 				if (is_ordered(num_buf, total))
-					printf("\nsort successed. :)");
+					puts("sort successed. :)");
 				else
-					printf("\nsort failed! :(");
+					puts("sort failed! :(");
 			} else {
-				printf("\nsort error: value changed. \n"
+				puts("sort error: value changed. \n"
 					"\tdo other sorting, please restore random state first. \n"
 					"\tcheck your algorithm.");
 				//memcpy(num_buf, num_input, sizeof(num_input[0])*total);
 			}
-			printf("\ncost time: %lf second \n", difftime(time_end, time_start)/CLK_TCK);
 		}
 		//system("pause");
 		//system("cls");

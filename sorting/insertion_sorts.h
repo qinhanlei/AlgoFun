@@ -24,7 +24,7 @@ void shell_sort_2(void *base, size_t num, size_t size,
 
 // use binary insert sort. 
 // I recommend against this method.
-// the binary with gap is complex to code, and inefficiency. :(
+// the binary with gap is complex to code, and no more efficient. :(
 void binary_shell_sort(void *base, size_t num, size_t size, 
 					   int (*cmp_func)(const void*, const void*));
 
