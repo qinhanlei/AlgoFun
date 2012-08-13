@@ -58,7 +58,7 @@ void cocktail_sort(void *base, size_t num, size_t size,
 const size_t CUT_OFF = 20;
 
 // the simplest qsort like qsort1 from "programming pearls", and CLRS
-void qsort_1(void *base, size_t left, size_t right, size_t size,
+static void qsort_1(void *base, size_t left, size_t right, size_t size,
 			 int (*cmp_func)(const void*, const void*))
 {
 	if (right > CUT_OFF + left) {
@@ -83,8 +83,9 @@ void qsort_1(void *base, size_t left, size_t right, size_t size,
 	}*/
 }
 
-// little improve
-void qsort_2(void *base, size_t left, size_t right, size_t size,
+// little improve partition
+// but it is terrible when data is ordered, cause pivot is fixed left.
+static void qsort_2(void *base, size_t left, size_t right, size_t size,
 			 int (*cmp_func)(const void*, const void*))
 {
 	if (right > CUT_OFF + left) {
@@ -106,16 +107,56 @@ void qsort_2(void *base, size_t left, size_t right, size_t size,
 		} while (a < b);
 		generic_swap(pivot, b, size);
 		j = (b - ch_base) / size;
-		if (j > 0) 
+		if (j > 0)
 			qsort_2(base, left, j - 1, size, cmp_func);
 		qsort_2(base, j + 1, right, size, cmp_func);
+	}
+}
+
+// median of three
+static void qsort_3(void *base, size_t left, size_t right, size_t size,
+					int (*cmp_func)(const void*, const void*))
+{
+	if (right > CUT_OFF + left) {
+		char *ch_base = base;
+		char *a = ch_base + left * size, *b = ch_base + right * size;
+		char *c = ch_base + (left + right) / 2 * size;
+		char *pivot = a, *pright = b;
+		size_t j = 0;
+
+		if (cmp_func(a, b) < 0) {
+			if (cmp_func(b, c) < 0) generic_swap(a, b, size); // a < b < c
+			else if (cmp_func(a, c) < 0) generic_swap(a, c, size); // a < c=< b
+			else {} // c >= a < b
+		} else if (cmp_func(a, c) < 0) { // c > a >= b
+		} else if (cmp_func(b, c) < 0) { // a >= c > b
+			generic_swap(a, c, size);
+		} else { // a >= b >= c
+			generic_swap(a, b, size);
+		}
+
+		do {
+			do {
+				a += size;
+			} while(a <= pright && cmp_func(a, pivot) < 0);
+			do {
+				b -= size;
+			} while(cmp_func(b, pivot) > 0);
+			if (a > b) break;
+			generic_swap(a, b, size);
+		} while (a < b);
+		generic_swap(pivot, b, size);
+		j = (b - ch_base) / size;
+		//if (j > 0)
+			qsort_3(base, left, j - 1, size, cmp_func);
+		qsort_3(base, j + 1, right, size, cmp_func);
 	}
 }
 
 void quick_sort(void *base, size_t num, size_t size, 
 				int (*cmp_func)(const void*, const void*))
 {
-	qsort_2(base, 0, num - 1, size, cmp_func);
+	qsort_3(base, 0, num - 1, size, cmp_func);
 	if (CUT_OFF > 0) {
 		insert_sort(base, num, size, cmp_func);
 		//binary_insert_sort(base, num, size, cmp_func);
