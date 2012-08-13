@@ -50,7 +50,7 @@ guys like it, and... I'm not going be a uglifier.
 * Exchange Sorts
     * Bubble Sort, easy, simple, stable, the first sorting algorithm that I learned, I miss that good old days.
     * Cocktail Sort, a Bubble Sort variant. doing...  
-    * Quick Sort
+    * Quick Sort, simple implement, slower than Merge Sort which I have done, sigh...
 * Selection Sorts
     * Select Sort, more simple, faster than Bubble Sort. but, unstable.
     * Heap Sort
@@ -59,7 +59,7 @@ guys like it, and... I'm not going be a uglifier.
     * Binary Insert Sort, a binary optimize.  
     * Shell Sort, some try trial like binary optimize but got slower :(
 * Merge Sorts
-    * Merge sort 
+    * Merge sort
     * ...
 * Distribution Sorts
     * Radix Sort 
