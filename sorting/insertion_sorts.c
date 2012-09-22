@@ -22,8 +22,9 @@ void insert_sort_1(void *base, size_t num, size_t size,
 				// move element[j-1] to element[j]
 				memcpy(a, b, size);
 				a = b; // record the old point of element[j-1]
-			} else
+			} else {
 				break;
+			}
 		}
 		if (i != j) memcpy(a, tmp, size);
 	}

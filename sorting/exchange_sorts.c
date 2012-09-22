@@ -147,7 +147,7 @@ static void qsort_3(void *base, size_t left, size_t right, size_t size,
 		} while (a < b);
 		generic_swap(pivot, b, size);
 		j = (b - ch_base) / size;
-		//if (j > 0)
+		if (j > 0)
 			qsort_3(base, left, j - 1, size, cmp_func);
 		qsort_3(base, j + 1, right, size, cmp_func);
 	}
