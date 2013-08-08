@@ -386,8 +386,7 @@ std::istream& operator>>(std::istream& i_stream, big_integer& a)
 		tmp += ch;
 		i_stream.get(ch);
 	}
-	while (ch >= '0' && ch <= '9')
-	{
+	while (ch >= '0' && ch <= '9') {
 		tmp += ch;
 		i_stream.get(ch);
 	}
