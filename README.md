@@ -3,8 +3,8 @@
 I am very interested in algorithm, cause it's very fascinating.  
 I'll just try some simple algorithms for fun.  
 
-Almost all file can run by onself, use gcc/g++ command or other IDE thing.  
-I try to write keep it simple and stupid, but as my limited capacity, I just try my best.
+Almost all file can run by itself, use gcc/g++ command or other IDEs.  
+I try to keep it simple and stupid, but as my limited capacity, I just try my best.
 
 Life is short. :(  
 So... live and learn, just for fun. :)
@@ -17,11 +17,11 @@ So, I just list some thing thought of, below:
 (or hate, or just for homework, whatever) algorithm like me.
 
 2. Again, I want K.I.S.S(Keep It Simple, Stupid), so it may be change 
-style(coding, orgnazation...) frequently earlier stage. If some thing 
-ugly or you have more best way, tell me please. I'll so preciate it. 
+style(coding, orgnazation...) frequently in the earlier stage. If some thing 
+ugly or you have better way, tell me please. I'll so preciate it. 
 
 3. Algorithm is beautiful, graceful, magnificent... I hope more and more 
-guys like it, and... I'm not going be a uglifier.
+guys like it, and I'm not going be a uglifier.
 
 ##Subjects
 ###0. Data Structure (planning) 
@@ -55,7 +55,7 @@ guys like it, and... I'm not going be a uglifier.
     * Select Sort, more simple, faster than Bubble Sort. but, unstable.
     * Heap Sort
 * Insertion Sorts 
-    * Insert Sort, the fast O(n^2) sort algorithm, and some optimize like binary.
+    * Insert Sort, the fast O(n^2) sort algorithm, and some optimize like binary method.
     * Binary Insert Sort, a binary optimize.  
     * Shell Sort, some try trial like binary optimize but got slower :(
 * Merge Sorts
@@ -68,7 +68,7 @@ guys like it, and... I'm not going be a uglifier.
 * ...
 
 ###3. Numeric (planning)
-* Big Integer. old code, will be reforming.
+* Big Integer. old code, to be reforming.
 
 ###4. Combinatorial (planning)
 
