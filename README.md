@@ -26,18 +26,18 @@ guys like it, and I'm not going be a uglifier.
 ##Subjects
 ###0. Data Structure (planning) 
 * Dance link
-* Disjoint Set.
+* Disjoint Set
 * Tree
-    * AVL Tree.
-    * Red Black Tree.
-    * Segment Tree.
+    * AVL Tree
+    * Red Black Tree
+    * Segment Tree
 * Heap
     * Binomial Heap
     * Fibonacci Heap
 * Hash table
 * ...
 
-###1. Searching (almost path search, until now)
+###1. Searching (doing)
 * Blind search
     * Simple BFS(Breadth-first) search modified from A\* algorithm.   
     * Simple DFS(Depth-first search), recursive and non-recursive(use stack) implement.
@@ -81,17 +81,11 @@ guys like it, and I'm not going be a uglifier.
 ###8. ... to be continue ...
 
 #Licence
-undetermined...  
-If you want copy, use, reproduction or distribute it, please tell me, I will be happy. :)
+The MIT License
 
 #Contacts
-just e-mail me now. 
+Just e-mail me. 
 
 #Thanks
-* 42
-* World Peace
 * Stand my poor English
-
-
-
 
