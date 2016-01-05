@@ -1,7 +1,7 @@
 ## Algorithms for fun
 
 ## Introduction
-Algorithm is very fascinating.  
+Algorithm is fascinating.  
 Try implement it just for fun.  
 Keep it simple and stupid, but not simpler.
 
