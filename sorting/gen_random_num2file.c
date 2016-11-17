@@ -5,8 +5,8 @@
 
 #include "common.h"
 
-int main(int argc, char *argv[])
-{
+
+int main(int argc, char *argv[]) {
     int num = 0;
     FILE *fout = NULL;
     srand((unsigned)time(NULL));

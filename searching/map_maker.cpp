@@ -4,14 +4,15 @@
 #include <cstdlib>
 #include <cstring>
 
+
 const int Max = 501;
 
 // element of maze
 const char MAZE_ELE[] = "  o  o  o ";
 char maze_map[Max][Max] = {0};
 
-int main()
-{
+
+int main(int argc, char *argv[]) {
     srand(time(NULL));
     FILE *fout = fopen("random_map.txt", "w");
     if (fout == NULL) {
@@ -53,4 +54,3 @@ int main()
 
     return 0;
 }
-

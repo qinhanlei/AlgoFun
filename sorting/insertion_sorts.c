@@ -5,9 +5,9 @@
 #include <stdlib.h>
 #include <assert.h>
 
+
 void insert_sort_1(void *base, size_t num, size_t size, 
-				 int (*cmp_func)(const void*, const void*))
-{
+				 int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	void *a = NULL, *b = NULL;
 	size_t i, j;
@@ -31,10 +31,10 @@ void insert_sort_1(void *base, size_t num, size_t size,
 	free(tmp);
 }
 
+
 // try little optimize
 void insert_sort_2(void *base, size_t num, size_t size, 
-				 int (*cmp_func)(const void*, const void*))
-{
+				 int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	void *a = NULL, *b = NULL;
 	size_t i, j;
@@ -58,10 +58,10 @@ void insert_sort_2(void *base, size_t num, size_t size,
 	free(tmp);
 }
 
+
 // inspired by C++ STL source code
 void insert_sort(void *base, size_t num, size_t size, 
-				 int (*cmp_func)(const void*, const void*))
-{
+				 int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL;
 	size_t i;
@@ -99,9 +99,9 @@ void insert_sort(void *base, size_t num, size_t size,
 	free(tmp);
 }
 
+
 void binary_insert_sort(void *base, size_t num, size_t size, 
-						int (*cmp_func)(const void*, const void*))
-{
+						int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL;
 	size_t i, left, right, mid;
@@ -132,6 +132,7 @@ void binary_insert_sort(void *base, size_t num, size_t size,
 	free(tmp);
 }
 
+
 void shell_sort_1(void *base, size_t num, size_t size, 
 				  int (*cmp_func)(const void*, const void*))
 {
@@ -153,9 +154,9 @@ void shell_sort_1(void *base, size_t num, size_t size,
 	}
 }
 
+
 void shell_sort_2(void *base, size_t num, size_t size, 
-				int (*cmp_func)(const void*, const void*))
-{
+				int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL;
 	size_t i, gap;
@@ -180,9 +181,9 @@ void shell_sort_2(void *base, size_t num, size_t size,
 	free(tmp);
 }
 
+
 void binary_shell_sort(void *base, size_t num, size_t size, 
-					   int (*cmp_func)(const void*, const void*))
-{
+					   int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL;
 	size_t i, gap, t;

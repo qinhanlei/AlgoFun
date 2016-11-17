@@ -3,9 +3,11 @@
 #include "common.h"
 #include "insertion_sorts.h"
 
+const size_t CUT_OFF = 20;
+
+
 void bubble_sort(void *base, size_t num, size_t size, 
-				 int (*cmp_func)(const void*, const void*))
-{
+				int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL; // point to adjacent element
 	size_t i, j;
@@ -24,9 +26,9 @@ void bubble_sort(void *base, size_t num, size_t size,
 	}
 }
 
+
 void cocktail_sort(void *base, size_t num, size_t size, 
-				   int (*cmp_func)(const void*, const void*))
-{
+				   int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL;
 	size_t i, front = 0, rear = num - 1;
@@ -55,12 +57,10 @@ void cocktail_sort(void *base, size_t num, size_t size,
 	}
 }
 
-const size_t CUT_OFF = 20;
 
 // the simplest qsort like qsort1 from "programming pearls", and CLRS
 static void qsort_1(void *base, size_t left, size_t right, size_t size,
-			 int (*cmp_func)(const void*, const void*))
-{
+			 int (*cmp_func)(const void*, const void*)) {
 	if (right > CUT_OFF + left) {
 		char *ch_base = base;
 		char *a = NULL, *b = ch_base + left * size;
@@ -83,11 +83,11 @@ static void qsort_1(void *base, size_t left, size_t right, size_t size,
 	}*/
 }
 
+
 // little improve partition
 // but it is terrible when data is ordered, cause pivot is fixed left.
 static void qsort_2(void *base, size_t left, size_t right, size_t size,
-			 int (*cmp_func)(const void*, const void*))
-{
+			 int (*cmp_func)(const void*, const void*)) {
 	if (right > CUT_OFF + left) {
 		char *ch_base = base;
 		char *a = ch_base + left * size, *b = ch_base + right * size;
@@ -113,10 +113,10 @@ static void qsort_2(void *base, size_t left, size_t right, size_t size,
 	}
 }
 
+
 // median of three
 static void qsort_3(void *base, size_t left, size_t right, size_t size,
-					int (*cmp_func)(const void*, const void*))
-{
+					int (*cmp_func)(const void*, const void*)) {
 	if (right > CUT_OFF + left) {
 		char *ch_base = base;
 		char *a = ch_base + left * size, *b = ch_base + right * size;
@@ -153,9 +153,9 @@ static void qsort_3(void *base, size_t left, size_t right, size_t size,
 	}
 }
 
+
 void quick_sort(void *base, size_t num, size_t size, 
-				int (*cmp_func)(const void*, const void*))
-{
+				int (*cmp_func)(const void*, const void*)) {
 	qsort_3(base, 0, num - 1, size, cmp_func);
 	if (CUT_OFF > 0) {
 		insert_sort(base, num, size, cmp_func);

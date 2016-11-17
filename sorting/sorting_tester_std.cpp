@@ -8,11 +8,18 @@
 #include <algorithm>
 using namespace std;
 
+
 const int MAX_INPUT = 64;
 const int MAX_NUM = 2000000;
 
-void print_array(int arr[], size_t n)
-{
+int total = 0;
+// the data of original
+int num_input[MAX_NUM] = {0};
+// the data to sort
+int num_buf[MAX_NUM] = {0};
+
+
+void print_array(int arr[], size_t n) {
 	size_t i;
 	for (i = 0; i < n; ++i) {
 		//if (i % 5 == 0) puts("");
@@ -21,13 +28,13 @@ void print_array(int arr[], size_t n)
 	printf("\n");
 }
 
-int cmp_int(const void* a, const void* b)
-{
+
+int cmp_int(const void* a, const void* b) {
 	return *(int*)a - *(int*)b;
 }
 
-int is_ordered(int arr[], size_t n)
-{
+
+int is_ordered(int arr[], size_t n) {
 	size_t i;
 	for (i = 0; i < n - 1; ++i)
 		if (arr[i] > arr[i + 1])
@@ -35,14 +42,8 @@ int is_ordered(int arr[], size_t n)
 	return 1;
 }
 
-int total = 0;
-// the data of original
-int num_input[MAX_NUM] = {0};
-// the data to sort
-int num_buf[MAX_NUM] = {0};
 
-int read_data()
-{
+int read_data() {
 	int tmp;
 	FILE *fin = fopen("random_num.txt", "r");
 	if (!fin) {
@@ -63,8 +64,8 @@ int read_data()
 	return 1;
 }
 
-int main(int argc, char *argv[])
-{
+
+int main(int argc, char *argv[]) {
 	int i, index;
 	int input_len = 0;
 	char input_str[MAX_INPUT] = {0};
@@ -158,5 +159,6 @@ int main(int argc, char *argv[])
         system("pause");
 		system("cls");
 	} while (!is_quit);
+	
 	return 0;
 }

@@ -9,8 +9,8 @@
 #include <algorithm>
 using namespace std;
 
-const int Max = 501;
 
+const int Max = 501;
 const char CH_EXTEND = ',';
 const char CH_CLOSED = '.';
 const char CH_PATH = '*';
@@ -28,6 +28,7 @@ const int DIR_NUM = 8;
 const int DIR_X[] = {-1, 1,  0, 0, -1, -1, 1, 1};
 const int DIR_Y[] = { 0, 0, -1, 1,  1, -1, 1,-1};
 
+
 struct Position {
 	int x, y;
 	int step;
@@ -38,10 +39,11 @@ struct Position {
 		return (x == a.x && y == a.y);
 	}
 };
-Position pos_start, pos_goal;
+Position pos_start;
+Position pos_goal;
 
-void DisplayMaze()
-{
+
+void DisplayMaze() {
 	for (int i = 0; i < maze_row; ++i) {
 		for (int j = 0; j < maze_col; ++j) {
 			if (closed_set[i][j] && maze_map[i][j] == ' ') {
@@ -64,15 +66,15 @@ void DisplayMaze()
 	puts("");
 }
 
-void Delay()
-{
+
+void Delay() {
 	int M = 1, N = 10000;
 	for (int i = 0; i < M; ++i)
 		for (int j = 0; j < N; ++j);
 }
 
-int Bfs()
-{
+
+int Bfs() {
 	queue<Position> open_set;
 	memset(closed_set, false, sizeof(closed_set));
 	memset(extend_set, false, sizeof(extend_set));
@@ -101,9 +103,10 @@ int Bfs()
 	return -1;
 }
 
-int main ()
-{
-	//freopen("map.txt","r",stdin); freopen("ans.txt","w",stdout);
+
+int main(int argc, char *argv[]) {
+	//freopen("map.txt","r",stdin); 
+	//freopen("ans.txt","w",stdout);
 
 	while (scanf("%d,%d", &maze_col, &maze_row) != EOF) {
 		memset(maze_map, 0, sizeof(maze_map));
@@ -145,5 +148,6 @@ int main ()
 			DisplayMaze();
 		}
 	}
+	
 	return 0 ;
 }

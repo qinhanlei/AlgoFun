@@ -1,7 +1,6 @@
 #include "distribution_sorts.h"
 
 
-void radix_sort()
-{
+void radix_sort() {
 
 }

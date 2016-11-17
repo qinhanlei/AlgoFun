@@ -9,8 +9,8 @@
 #include <algorithm>
 using namespace std;
 
-const int Max = 501;
 
+const int Max = 501;
 const char CH_EXTEND = ',';
 const char CH_CLOSED = '.';
 const char CH_PATH = '*';
@@ -30,6 +30,7 @@ const int DIR_Y[] = { 0, 0, -1, 1,  1, -1, 1,-1};
 // negative direction index
 //const int NEG_DIR[] = {1, 0, 3, 2, 7, 6, 5, 4};
 
+
 struct Position {
 	int x, y;
 	int step; // g
@@ -46,10 +47,11 @@ struct Position {
 		h3 = abs(p.x - x) + abs(p.y - y); // Manhattan
 	}
 };
-Position pos_start, pos_goal;
+Position pos_start;
+Position pos_goal;
 
-void DisplayMaze()
-{
+
+void DisplayMaze() {
 	for (int i = 0; i < maze_row; ++i) {
 		for (int j = 0; j < maze_col; ++j) {
 			if (closed_set[i][j] && maze_map[i][j] == ' ') {
@@ -72,15 +74,14 @@ void DisplayMaze()
 	puts("");
 }
 
-void Delay()
-{
+
+void Delay() {
 	int M = 1, N = 10000;
 	for (int i = 0; i < M; ++i)
 		for (int j = 0; j < N; ++j);
 }
 
-int search(Position top, int depth)
-{
+int search(Position top, int depth) {
     if (top == pos_goal) return top.step;
     closed_set[top.x][top.y] = true;
     //system("cls"); DisplayMaze(); Delay(); //system("pause");
@@ -100,8 +101,8 @@ int search(Position top, int depth)
     return -1;
 }
 
-int IDAstar()
-{
+
+int IDAstar() {
     pos_start.Heuristic(pos_goal);
     for (int depth = pos_start.h1; depth < maze_col * maze_row; ++depth) {
         printf("depth:%d \n", depth);
@@ -112,9 +113,10 @@ int IDAstar()
     return -1;
 }
 
-int main ()
-{
-	//freopen("map.txt","r",stdin); freopen("ans.txt","w",stdout);
+
+int main(int argc, char *argv[]) {
+	//freopen("map.txt","r",stdin); 
+	//freopen("ans.txt","w",stdout);
 
 	while (scanf("%d,%d", &maze_col, &maze_row) != EOF) {
 		memset(maze_map, 0, sizeof(maze_map));
@@ -156,5 +158,6 @@ int main ()
 			DisplayMaze();
 		}
 	}
+	
 	return 0;
 }

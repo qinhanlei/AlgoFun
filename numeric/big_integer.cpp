@@ -9,48 +9,49 @@
 #include <iostream>
 #include <algorithm>
 
+
 const int big_integer::MAX_ELEMENT_VALUE = (int)pow(10.0, ELEMENT_DIGIT);
 
-big_integer::big_integer()
-{
+
+big_integer::big_integer() {
 	*this = 0;
 }
 
-big_integer::big_integer(int a)
-{
+
+big_integer::big_integer(int a) {
 	*this = a;
 }
 
-big_integer::big_integer(long long a)
-{
+
+big_integer::big_integer(long long a) {
 	*this = a;
 }
 
-big_integer::big_integer(const char* s)
-{
+
+big_integer::big_integer(const char* s) {
 	*this = s;
 }
 
-big_integer::big_integer(const std::string& s)
-{
+
+big_integer::big_integer(const std::string& s) {
 	*this = s;
 }
 
-big_integer::big_integer(const big_integer& a)
-{
+
+big_integer::big_integer(const big_integer& a) {
 	if (this != &a) {
 		*this = a;
 	}
 }
 
-big_integer& big_integer::operator=(int a)
-{
+
+big_integer& big_integer::operator=(int a) {
 	*this = (long long)a;
 	return *this;
 }
 
-big_integer& big_integer::operator=(long long a)
-{
+
+big_integer& big_integer::operator=(long long a) {
 	memset(data_, 0, sizeof(data_));
 	if (a < 0) {
 		is_negative_ = true;
@@ -66,8 +67,8 @@ big_integer& big_integer::operator=(long long a)
 	return *this;
 }
 
-big_integer& big_integer::operator=(const char* s)
-{
+
+big_integer& big_integer::operator=(const char* s) {
 	if (s == NULL) return *this;
 	int len = strlen(s), ten = 1, i = 0, k = 0;
 	if (s[0] == '+' || s[0] == '-') ++i;
@@ -96,28 +97,28 @@ big_integer& big_integer::operator=(const char* s)
 	return *this;
 }
 
-big_integer& big_integer::operator=(const std::string& a)
-{
+
+big_integer& big_integer::operator=(const std::string& a) {
 	*this = a.c_str();
 	return *this;
 }
 
-big_integer& big_integer::operator=(const big_integer& a)
-{
+
+big_integer& big_integer::operator=(const big_integer& a) {
 	is_negative_ = a.is_negative_;
 	first_index_ = a.first_index_;
 	memcpy(data_, a.data_, sizeof(data_));
 	return *this;
 }
 
-bool big_integer::operator>(const big_integer& a) const
-{
+
+bool big_integer::operator>(const big_integer& a) const {
 	if (*this < a || *this == a) return false;
 	return true;
 }
 
-bool big_integer::operator<(const big_integer& a) const
-{
+
+bool big_integer::operator<(const big_integer& a) const {
 	if (is_negative_ && !a.is_negative_) return true;
 	if (!is_negative_ && a.is_negative_) return false;
 	if (first_index_ > a.first_index_) return true;
@@ -131,8 +132,8 @@ bool big_integer::operator<(const big_integer& a) const
 	return false;
 }
 
-bool big_integer::operator==(const big_integer& a) const
-{
+
+bool big_integer::operator==(const big_integer& a) const {
 	if (is_negative_ != a.is_negative_) return false;
 	if (first_index_ != a.first_index_) return false;
 	for (int i = first_index_; i < MAX_ELEMENT_NUM; ++i)
@@ -140,24 +141,23 @@ bool big_integer::operator==(const big_integer& a) const
 	return true;
 }
 
-bool big_integer::operator!=(const big_integer& a) const
-{
+
+bool big_integer::operator!=(const big_integer& a) const {
 	return !(*this == a);
 }
 
 
-bool big_integer::operator<=(const big_integer& a) const
-{
+bool big_integer::operator<=(const big_integer& a) const {
 	return !(*this > a);
 }
 
-bool big_integer::operator>=(const big_integer& a) const
-{
+
+bool big_integer::operator>=(const big_integer& a) const {
 	return !(*this < a);
 }
 
-big_integer big_integer::operator+(const big_integer& a) const
-{
+
+big_integer big_integer::operator+(const big_integer& a) const {
 	big_integer ret;
 	if (is_negative_ && !a.is_negative_) {
 		ret = a.Minus(*this);
@@ -172,8 +172,8 @@ big_integer big_integer::operator+(const big_integer& a) const
 	return ret;
 }
 
-big_integer big_integer::operator-(const big_integer& a) const
-{
+
+big_integer big_integer::operator-(const big_integer& a) const {
 	big_integer ret;
 	if (is_negative_ != a.is_negative_) {
 		ret = Add(a);
@@ -185,8 +185,8 @@ big_integer big_integer::operator-(const big_integer& a) const
 	return ret;
 }
 
-big_integer big_integer::operator*(const big_integer& a) const
-{
+
+big_integer big_integer::operator*(const big_integer& a) const {
 	if (a == 0 || *this == 0) return 0;
 	int i = 0, j = 0, k = MAX_ELEMENT_NUM - 1;
 	big_integer ret;
@@ -206,8 +206,8 @@ big_integer big_integer::operator*(const big_integer& a) const
 	return ret;
 }
 
-big_integer big_integer::operator/(const big_integer& a) const
-{
+
+big_integer big_integer::operator/(const big_integer& a) const {
 	if (a == 0) {
 		assert(false && "divide by zero!");
 		abort();
@@ -224,13 +224,13 @@ big_integer big_integer::operator/(const big_integer& a) const
 	return ret;
 }
 
-big_integer big_integer::operator%(const big_integer& a) const
-{
+
+big_integer big_integer::operator%(const big_integer& a) const {
 	return *this - (*this / a) * a;
 }
 
-big_integer big_integer::operator^(big_integer a) const
-{
+
+big_integer big_integer::operator^(big_integer a) const {
 	big_integer tmp = *this;
 	big_integer ret = 1;
 	// binary method
@@ -246,57 +246,57 @@ big_integer big_integer::operator^(big_integer a) const
 	return ret;
 }
 
-big_integer& big_integer::operator+=(const big_integer& a)
-{
+
+big_integer& big_integer::operator+=(const big_integer& a) {
 	return *this = *this + a;
 }
 
-big_integer& big_integer::operator-=(const big_integer& a)
-{
+
+big_integer& big_integer::operator-=(const big_integer& a) {
 	return *this = *this - a;
 }
 
-big_integer& big_integer::operator*=(const big_integer& a)
-{
+
+big_integer& big_integer::operator*=(const big_integer& a) {
 	return *this = *this * a;
 }
 
-big_integer& big_integer::operator/=(const big_integer& a)
-{
+
+big_integer& big_integer::operator/=(const big_integer& a) {
 	return *this = *this / a;
 }
 
-big_integer& big_integer::operator%=(const big_integer& a)
-{
+
+big_integer& big_integer::operator%=(const big_integer& a) {
 	return *this = *this % a;
 }
 
-big_integer& big_integer::operator++()
-{
+
+big_integer& big_integer::operator++() {
 	return *this = *this + 1;
 }
 
-big_integer big_integer::operator++(int)
-{
+
+big_integer big_integer::operator++(int) {
 	big_integer tmp(*this);
 	*this = *this + 1;
 	return tmp;
 }
 
-big_integer& big_integer::operator--()
-{
+
+big_integer& big_integer::operator--() {
 	return *this = *this - 1;
 }
 
-big_integer big_integer::operator--(int)
-{
+
+big_integer big_integer::operator--(int) {
 	big_integer tmp(*this);
 	*this = *this - 1;
 	return tmp;
 }
 
-void big_integer::print()
-{
+
+void big_integer::print() {
 	// set output format
 	char str[6] = "%0xd";
 	// set x which in above str.
@@ -309,8 +309,8 @@ void big_integer::print()
 	//puts("");
 }
 
-big_integer big_integer::Add(const big_integer& a) const
-{
+
+big_integer big_integer::Add(const big_integer& a) const {
 	int i = 0, low = std::min(first_index_, a.first_index_);
 	big_integer sum;
 	for (i = MAX_ELEMENT_NUM - 1; i >= low; --i) {
@@ -327,8 +327,8 @@ big_integer big_integer::Add(const big_integer& a) const
 	return sum;
 }
 
-big_integer big_integer::Minus(const big_integer& a) const
-{
+
+big_integer big_integer::Minus(const big_integer& a) const {
 	int i;
 	big_integer ret;
 	// bigger of absolute value 
@@ -350,15 +350,15 @@ big_integer big_integer::Minus(const big_integer& a) const
 	return ret;
 }
 
-big_integer big_integer::operator-() const
-{
+
+big_integer big_integer::operator-() const {
 	big_integer ret = *this;
 	ret.is_negative_ = !is_negative_;
 	return ret;
 }
 
-std::ostream& operator<<(std::ostream& o_stream, const big_integer& a)
-{
+
+std::ostream& operator<<(std::ostream& o_stream, const big_integer& a) {
 	if (a.is_negative_ == 1) {
 		o_stream << '-';
 	}
@@ -372,8 +372,8 @@ std::ostream& operator<<(std::ostream& o_stream, const big_integer& a)
 	return o_stream;
 }
 
-std::istream& operator>>(std::istream& i_stream, big_integer& a)
-{
+
+std::istream& operator>>(std::istream& i_stream, big_integer& a) {
 	char ch;
 	std::string tmp;
 	// skip: single space, tab, vertical tab, 

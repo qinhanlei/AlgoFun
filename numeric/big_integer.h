@@ -3,8 +3,8 @@
 
 #include <string>
 
-class big_integer
-{
+
+class big_integer {
 public:
 	// constructors, use assignment operator indrect
 	big_integer();
@@ -87,5 +87,6 @@ private:
 
 std::ostream& operator<<(std::ostream &, const big_integer &);
 std::istream& operator>>(std::istream &, big_integer &);
+
 
 #endif //_ALGOFUN_BIG_INTEGER_H

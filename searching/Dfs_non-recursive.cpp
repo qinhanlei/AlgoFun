@@ -9,8 +9,8 @@
 #include <algorithm>
 using namespace std;
 
-const int Max = 501;
 
+const int Max = 501;
 const char CH_EXTEND = ',';
 const char CH_CLOSED = '.';
 const char CH_PATH = '*';

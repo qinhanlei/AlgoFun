@@ -3,8 +3,10 @@
 
 #include <stddef.h>
 
+
 void insert_sort(void *base, size_t num, size_t size, 
 				 int (*cmp_func)(const void*, const void*));
+
 
 // binary optimized
 void binary_insert_sort(void *base, size_t num, size_t size, 
@@ -18,15 +20,18 @@ void binary_insert_sort(void *base, size_t num, size_t size,
 void shell_sort_1(void *base, size_t num, size_t size, 
 				  int (*cmp_func)(const void*, const void*));
 
+
 // use simple inser sort
 void shell_sort_2(void *base, size_t num, size_t size, 
 				int (*cmp_func)(const void*, const void*));
+
 
 // use binary insert sort. 
 // I recommend against this method.
 // the binary with gap is complex to code, and no more efficient. :(
 void binary_shell_sort(void *base, size_t num, size_t size, 
 					   int (*cmp_func)(const void*, const void*));
+
 
 //TODO: choice better increment sequence for shell sort
 

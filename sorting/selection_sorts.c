@@ -2,9 +2,9 @@
 
 #include "common.h"
 
+
 void select_sort(void *base, size_t num, size_t size,
-				 int (*com_func)(const void*, const void*))
-{
+				 int (*com_func)(const void*, const void*)) {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL;
 	size_t i, j;
@@ -20,9 +20,9 @@ void select_sort(void *base, size_t num, size_t size,
 	}
 }
 
+
 void heap_sort(void *base, size_t num, size_t size, 
-			   int (*cmp_func)(const void*, const void*))
-{
+			   int (*cmp_func)(const void*, const void*)) {
 	//TODO:heap_sort
 	base;num;size;cmp_func;
 }
