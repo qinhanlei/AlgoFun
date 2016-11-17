@@ -37,7 +37,7 @@ Almost all file can run by itself, use gcc/g++ command or other IDEs.
     * Select Sort, more simple, faster than Bubble Sort. but, unstable.
     * Heap Sort
 * Insertion Sorts
-    * Insert Sort, the fast O(n^2) sort algorithm, and some optimize like binary method.
+    * Insert Sort, the fast `O(n^2)` sort algorithm, and some optimize like binary method.
     * Binary Insert Sort, a binary optimize.  
     * Shell Sort, tried to optimize (like Binary search) got slower.
 * Merge Sorts
@@ -48,7 +48,7 @@ Almost all file can run by itself, use gcc/g++ command or other IDEs.
     * Intro Sort
 
 ### 3. Numeric
-* Big Integer. old code.
+* Big Integer, old code.
 
 ### 4. Combinatorial
 
