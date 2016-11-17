@@ -158,7 +158,7 @@ int main(int argc, char *argv[]) {
                 puts("\nsort success.");
             else
                 puts("\nsort failed!");
-			printf("\ncost time: %lf second \n", difftime(time_end, time_start)/CLOCKS_PER_SEC);
+			printf("cost time: %lf second \n\n", difftime(time_end, time_start)/CLOCKS_PER_SEC);
 		}
         // system("pause");
 		// system("cls");
