@@ -15,8 +15,7 @@ For example:
     insert_sort(a, MAX_NUM, sizeof(a[0]), cmp_int);
 ```
 
-Here, `cmp_int` is a function which prototype like below:  
-`int cmp_int(const void*, const void*);` create it according to your own will.
+Here, `cmp_int` is a function which prototype like `int cmp_int(const void*, const void*);`, create it according to your own will.
 
 ## Note
 * I delete the file `random_num.txt` (cause it may changed frequently) you can generate it use `gen_random_num2file.c` or manunally.  
