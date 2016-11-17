@@ -37,7 +37,11 @@ void print_array(int arr[], size_t n) {
 
 
 int cmp_int(const void* a, const void* b) {
-	return *(int*)a - *(int*)b;
+	int p = *(int*)a;
+	int q = *(int*)b;
+	if (p < q) return -1;
+	if (p > q) return 1;
+	return 0;
 }
 
 
@@ -129,12 +133,12 @@ int main(int argc, char *argv[]) {
 		puts("-----------------Hybrid sorts-----------------");
 		puts("               60. intro_sort");
 		puts("-------------------COMMAND--------------------");
-		puts("               00. restore random state.");
-		puts("               01. view all numbers");
-		puts("               08. re-read data from file");
-		puts("               09. exit");
+		puts("                0. restore random state.");
+		puts("                1. view all numbers");
+		puts("                8. re-read data from file");
+		puts("                9. exit");
 		puts("==============================================");
-		printf("          input index number: ", total);
+		printf("          input index number: ");
 
 		fgets(input_str, sizeof(input_str), stdin);
 		input_len = strlen(input_str) - 1;
@@ -225,7 +229,7 @@ int main(int argc, char *argv[]) {
 
 		// is that sort operate
 		if (index > 9 && index <= 90) {
-			printf("\ncost time: %lf second.\n", difftime(time_end, time_start)/CLK_TCK);
+			printf("\ncost time: %lf second.\n", difftime(time_end, time_start)/CLOCKS_PER_SEC);
 			if (is_array_equal(num_buf, num_input, total)) {
 				if (is_ordered(num_buf, total))
 					puts("sort successed. :)");

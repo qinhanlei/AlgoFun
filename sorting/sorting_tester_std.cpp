@@ -9,7 +9,7 @@
 using namespace std;
 
 
-const int MAX_INPUT = 64;
+const int MAX_CMD_INPUT = 64;
 const int MAX_NUM = 2000000;
 
 int total = 0;
@@ -30,7 +30,11 @@ void print_array(int arr[], size_t n) {
 
 
 int cmp_int(const void* a, const void* b) {
-	return *(int*)a - *(int*)b;
+	int p = *(int*)a;
+	int q = *(int*)b;
+	if (p < q) return -1;
+	if (p > q) return 1;
+	return 0;
 }
 
 
@@ -68,7 +72,7 @@ int read_data() {
 int main(int argc, char *argv[]) {
 	int i, index;
 	int input_len = 0;
-	char input_str[MAX_INPUT] = {0};
+	char input_str[MAX_CMD_INPUT] = {0};
 	char is_quit = 0;
 
 	clock_t time_start, time_end;
@@ -87,10 +91,10 @@ int main(int argc, char *argv[]) {
 		puts("              12. stable_sort C++ STL");
 		puts("              13. heap_sort C++ STL");
 		puts("----------------------------------------------");
-		puts("              00. restore random state.");
-		puts("              01. view all numbers");
-		puts("              08. re-read data from file");
-		puts("              09. exit");
+		puts("               0. restore random state.");
+		puts("               1. view all numbers");
+		puts("               8. re-read data from file");
+		puts("               9. exit");
 		puts("==============================================");
 		printf("\tinput index number: ");
 
@@ -154,10 +158,11 @@ int main(int argc, char *argv[]) {
                 puts("\nsort success.");
             else
                 puts("\nsort failed!");
-			printf("\ncost time: %lf second \n", difftime(time_end, time_start)/CLK_TCK);
+			printf("\ncost time: %lf second \n", difftime(time_end, time_start)/CLOCKS_PER_SEC);
 		}
-        system("pause");
-		system("cls");
+        // system("pause");
+		// system("cls");
+		
 	} while (!is_quit);
 	
 	return 0;

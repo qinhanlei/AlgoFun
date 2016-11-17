@@ -4,7 +4,6 @@
 #include <string.h>
 
 
-// use for reference from Linux kernel source
 void generic_swap(void *a, void *b, int size) {
 	char *tmp = malloc(size);
 	if (tmp == NULL) return;
@@ -15,7 +14,6 @@ void generic_swap(void *a, void *b, int size) {
 }
 
 
-// from programming pearls
 int bigrand() {
     return RAND_MAX * rand() + rand();
 }

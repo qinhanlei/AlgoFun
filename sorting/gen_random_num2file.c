@@ -19,8 +19,9 @@ int main(int argc, char *argv[]) {
             puts("create file \"random_num.txt\" failed.");
             return 0;
         }
-        while (num--)
-            fprintf(fout, "%d ", bigrand());
+        while (num--) {
+            fprintf(fout, "%d\n", bigrand());            
+        }
         fflush(fout);
         fclose(fout);
         puts("done");
