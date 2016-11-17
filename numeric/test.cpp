@@ -6,12 +6,11 @@
 using namespace std;
 
 
-int main(int argc, char *argv[]) {
-    int N;
-	big_integer x = 42;
-	/*
+void test_bigint() {
+    big_integer x = 42;
 	big_integer y = 73;
 	string ch;
+    
 	cout << "input expression like '1 + 2' then Enter.\n"
 		<< "if x==42 and  y==73 to exit.\n"
 		<< "notice: need spaces in expression.\n";
@@ -32,7 +31,13 @@ int main(int argc, char *argv[]) {
 		} else {
 			cout << "wrong input, please try again." << endl;
 		}
-	}//*/
+	}
+}
+
+
+void test_factorial() {
+    int N;
+	big_integer x = 42;
 	
 	cout << "input number N than calculate N!\n"
 		<< "notice: the digit of result must lessthan " 
@@ -48,7 +53,14 @@ int main(int argc, char *argv[]) {
 		cout << "cost time " 
 			<< (double)(et - st) / CLOCKS_PER_SEC
 			<< "s." << endl;
-    }//*/
+    }
+}
 
+
+int main(int argc, char *argv[]) {
+    cout << "Hello World!" << endl;
+    
+    test_factorial();
+    
     return 0;
 }

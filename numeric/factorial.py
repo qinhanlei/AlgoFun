@@ -1,6 +1,6 @@
 import time
 
-while (True):
+while True:
 	n = int(input())
 	beginTime = time.clock()
 	ret = 1
