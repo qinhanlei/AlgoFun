@@ -1,14 +1,13 @@
-## Algorithms for fun
+# Algorithms for fun
 
 ## Introduction
-Algorithm is fascinating.  
-Try implement it just for fun.  
+Algorithms is fascinating, try implement it just for fun.  
 Keep it simple and stupid, but not simpler.
 
-Almost all file can run by itself, use gcc/g++ command or other IDEs.  
+Almost all file can run by itself.  
 
 ## Subjects
-### 0. Data Structure
+### Data Structure
 * Dance link
 * Disjoint Set
 * Tree
@@ -20,7 +19,7 @@ Almost all file can run by itself, use gcc/g++ command or other IDEs.
     * Fibonacci Heap
 * Hash table
 
-### 1. Searching
+### Searching
 * Blind search
     * Simple BFS(Breadth-first search), modified from A\* algorithm.   
     * Simple DFS(Depth-first search), recursive and non-recursive(use stack) implement.
@@ -28,7 +27,7 @@ Almost all file can run by itself, use gcc/g++ command or other IDEs.
     * Simple A\*(A star) algorithm demo.  
     * IDA\*(Iterative Deepening A Star), recursive and non-recursive.
 
-### 2. Sorting
+### Sorting
 * Exchange Sorts
     * Bubble Sort, easy, simple, stable.
     * Cocktail Sort, a Bubble Sort variant. doing...  
@@ -47,16 +46,16 @@ Almost all file can run by itself, use gcc/g++ command or other IDEs.
 * Hybrid Sorts
     * Intro Sort
 
-### 3. Numeric
+### Numeric
 * Big Integer, old code.
 
-### 4. Combinatorial
+### Combinatorial
 
-### 5. Dynamic Programming
+### Dynamic Programming
 
-### 6. Graph and Network
+### Graph and Network
 
-### 7. Computational Geometry
+### Computational Geometry
 
 
 # License
