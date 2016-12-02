@@ -81,6 +81,7 @@ void Delay() {
 		for (int j = 0; j < N; ++j);
 }
 
+
 int search(Position top, int depth) {
     if (top == pos_goal) return top.step;
     closed_set[top.x][top.y] = true;
