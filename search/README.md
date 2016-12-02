@@ -1,9 +1,5 @@
 # Searching
-Almost path search, until now.
+Just some old code of path search algorithms now.
 
-Every algorithms can run by individual file.
-
-I'll reform here.
-
-## Note
-To open the file "map.txt", recommend vim or others more powerful Editor.
+## TODO
+- graph search algorithms

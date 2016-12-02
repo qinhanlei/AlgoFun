@@ -6,10 +6,11 @@ Keep it simple and stupid, but not simpler.
 
 Almost all file can run by itself.  
 
+
 ## Subjects
 ### Data Structure
-* Dance link
 * Disjoint Set
+* Dance Link
 * Tree
     * AVL Tree
     * Red Black Tree
@@ -17,15 +18,18 @@ Almost all file can run by itself.
 * Heap
     * Binomial Heap
     * Fibonacci Heap
-* Hash table
+* Graph
+* Hash Table
 
-### Searching
+
+### Search
 * Blind search
-    * Simple BFS(Breadth-first search), modified from A\* algorithm.   
+    * Simple BFS(Breadth-first search), modified from `A*` algorithm.   
     * Simple DFS(Depth-first search), recursive and non-recursive(use stack) implement.
 * Heuristic search
-    * Simple A\*(A star) algorithm demo.  
-    * IDA\*(Iterative Deepening A Star), recursive and non-recursive.
+    * Simple `A*`(A star) algorithm demo.  
+    * `IDA*`(Iterative Deepening A Star), recursive and non-recursive.
+
 
 ### Sorting
 * Exchange Sorts
@@ -46,14 +50,14 @@ Almost all file can run by itself.
 * Hybrid Sorts
     * Intro Sort
 
+
 ### Numeric
-* Big Integer, old code.
+* Big Integer (C++ implement)
+
 
 ### Combinatorial
 
 ### Dynamic Programming
-
-### Graph and Network
 
 ### Computational Geometry
 
