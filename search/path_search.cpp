@@ -8,26 +8,33 @@
 #include <stack>
 #include <queue>
 #include <algorithm>
+
 using namespace std;
 
 
 const int Max = 501;
+
 const char CH_EXTEND = '?';
 const char CH_CLOSED = '.';
 const char CH_PATH = '*';
 
-int maze_col;
-int maze_row;
-char maze_map[Max][Max];
-
-bool closed_set[Max][Max];
-bool extend_set[Max][Max];
-// preceding direction
-int dir_pre[Max][Max];
+const char CH_START = 's';
+const char CH_END = 'e';
+const char CH_WALL = 'o';
 
 const int DIR_NUM = 8;
 const int DIR_X[] = {-1, 1,  0, 0, -1, -1, 1, 1};
 const int DIR_Y[] = { 0, 0, -1, 1,  1, -1, 1,-1};
+
+
+int _maze_col;
+int _maze_row;
+char _maze_map[Max][Max];
+
+bool _closed[Max][Max];
+bool _extend[Max][Max];
+// preceding direction
+int _dir_pre[Max][Max];
 
 
 struct Position {
@@ -60,19 +67,19 @@ struct Position {
 		return h3 > a.h3;
 	}
 };
-Position pos_start;
-Position pos_goal;
+Position _pstart;
+Position _pgoal;
 
 
 void print_maze() {
-	for (int i = 0; i < maze_row; ++i) {
-		for (int j = 0; j < maze_col; ++j) {
-			if (closed_set[i][j] && maze_map[i][j] == ' ') {
+	for (int i = 0; i < _maze_row; ++i) {
+		for (int j = 0; j < _maze_col; ++j) {
+			if (_closed[i][j] && _maze_map[i][j] == ' ') {
 				printf("%c", CH_CLOSED);
-			} else if (extend_set[i][j] && maze_map[i][j] == ' ') {
+			} else if (_extend[i][j] && _maze_map[i][j] == ' ') {
 				printf("%c", CH_EXTEND);
 			} else {
-				printf("%c", maze_map[i][j]);
+				printf("%c", _maze_map[i][j]);
 			}
 		}
 		puts("");
@@ -92,144 +99,205 @@ void delay() {
 
 
 void prepare() {
-    memset(closed_set, false, sizeof(closed_set));
-	memset(extend_set, false, sizeof(extend_set));
-    for (int i = 0; i < maze_row; ++i) {
-		for (int j = 0; j < maze_col; ++j) {
-            if (maze_map[i][j] == CH_PATH) {
-                maze_map[i][j] = ' ';
+    memset(_closed, false, sizeof(_closed));
+	memset(_extend, false, sizeof(_extend));
+    for (int i = 0; i < _maze_row; ++i) {
+		for (int j = 0; j < _maze_col; ++j) {
+            if (_maze_map[i][j] == CH_PATH) {
+                _maze_map[i][j] = ' ';
             }
         }
     }
 }
 
 
+inline bool valid_position(int row, int col) {
+	if (_maze_map[tx][ty] == 'o') {
+		return false;
+	}
+	if (_extend[tx][ty]) {
+		return false;
+	}
+	if (_closed[tx][ty]) {
+		return false;
+	}
+	return true;
+}
+
+
 int DFS(Position top) {
-    if (top == pos_goal) return top.step;
-    closed_set[top.x][top.y] = true;
+    if (top == _pgoal) {
+		return top.step;
+	}
+	
+    _closed[top.x][top.y] = true;
     print_maze();
     for (int i = 0; i < DIR_NUM; ++i) {
         int tx = top.x + DIR_X[i];
         int ty = top.y + DIR_Y[i];
-        if (maze_map[tx][ty] == 'o') continue;
-        if (closed_set[tx][ty]) continue;
-        dir_pre[tx][ty] = i;
+        if (_maze_map[tx][ty] == 'o') {
+			continue;
+		}
+        if (_closed[tx][ty]) {
+			continue;
+		}
+        _dir_pre[tx][ty] = i;
         int ret = DFS(Position(tx, ty, top.step + 1));
-        if (ret >= 0) return ret;
+        if (ret >= 0) {
+			return ret;
+		}
         // backtracking
-        //closed_set[tx][ty] = false;
+        //_closed[tx][ty] = false;
     }
+	
     return -1;
 }
 
 
 int DFS_stack() {
 	stack<Position> open_set;
-	extend_set[pos_start.x][pos_start.y] = true;
-	pos_start.step = 0;
-	open_set.push(pos_start);
+	_extend[_pstart.x][_pstart.y] = true;
+	_pstart.step = 0;
+	
+	open_set.push(_pstart);
 	while (!open_set.empty()) {
 		Position top = open_set.top();
-		if (top == pos_goal) return top.step;
+		if (top == _pgoal) {
+			return top.step;
+		}
 		open_set.pop();
-		closed_set[top.x][top.y] = true;
+		_closed[top.x][top.y] = true;
 		print_maze();
 		for (int i = 0; i < DIR_NUM; ++i) {
 			int tx = top.x + DIR_X[i];
 			int ty = top.y + DIR_Y[i];
-			if (extend_set[tx][ty]) continue;
-			if (maze_map[tx][ty] == 'o') continue;
-			extend_set[tx][ty] = true;
-			dir_pre[tx][ty] = i;
+			if (_extend[tx][ty]) {
+				continue;
+			}
+			if (_maze_map[tx][ty] == 'o') {
+				continue;
+			}
+			_extend[tx][ty] = true;
+			_dir_pre[tx][ty] = i;
 			Position tmp(tx, ty, top.step + 1);
 			open_set.push(tmp);
 		}
 	}
+	
 	return -1;
 }
 
 
 int BFS() {
 	queue<Position> open_set;
-	extend_set[pos_start.x][pos_start.y] = true;
-	pos_start.step = 0;
-	open_set.push(pos_start);
+	_extend[_pstart.x][_pstart.y] = true;
+	_pstart.step = 0;
+	
+	open_set.push(_pstart);
 	while (!open_set.empty()) {
 		Position top = open_set.front();
-		if (top == pos_goal) return top.step;
+		if (top == _pgoal) {
+			return top.step;
+		}
 		open_set.pop();
-		closed_set[top.x][top.y] = true;
+		_closed[top.x][top.y] = true;
 		print_maze();
 		for (int i = 0; i < DIR_NUM; ++i) {
 			int tx = top.x + DIR_X[i];
 			int ty = top.y + DIR_Y[i];
-			if (extend_set[tx][ty]) continue;
-			if (maze_map[tx][ty] == 'o') continue;
-			extend_set[tx][ty] = true;
-			dir_pre[tx][ty] = i;
+			if (_extend[tx][ty]) {
+				continue;
+			}
+			if (_maze_map[tx][ty] == 'o') {
+				continue;
+			}
+			_extend[tx][ty] = true;
+			_dir_pre[tx][ty] = i;
 			Position tmp(tx, ty, top.step + 1);
 			open_set.push(tmp);
 		}
 	}
+	
 	return -1;
 }
 
 
 int Astar() {
 	priority_queue<Position> open_set;
-	extend_set[pos_start.x][pos_start.y] = true;
-	pos_start.step = 0;
-	pos_start.heuristic(pos_goal);
-	open_set.push(pos_start);
+	
+	_extend[_pstart.x][_pstart.y] = true;
+	_pstart.step = 0;
+	_pstart.heuristic(_pgoal);
+	
+	open_set.push(_pstart);
 	while (!open_set.empty()) {
 		Position top = open_set.top();
-		if (top == pos_goal) return top.step;
+		if (top == _pgoal) {
+			return top.step;
+		}
 		open_set.pop();
-		closed_set[top.x][top.y] = true;
+		_closed[top.x][top.y] = true;
 		print_maze();
 		for (int i = 0; i < DIR_NUM; ++i) {
 			int tx = top.x + DIR_X[i];
 			int ty = top.y + DIR_Y[i];
-			if (extend_set[tx][ty]) continue;
-			if (maze_map[tx][ty] == 'o') continue;
-			extend_set[tx][ty] = true;
-			dir_pre[tx][ty] = i;
+			if (_extend[tx][ty]) {
+				continue;
+			}
+			if (_maze_map[tx][ty] == 'o') {
+				continue;
+			}
+			_extend[tx][ty] = true;
+			_dir_pre[tx][ty] = i;
 			Position tmp(tx, ty, top.step + 1);
-			tmp.heuristic(pos_goal);
+			tmp.heuristic(_pgoal);
 			open_set.push(tmp);
 		}
 	}
+	
 	return -1;
 }
 
 
 int IDSearch(Position top, int depth) {
-    if (top == pos_goal) return top.step;
-    closed_set[top.x][top.y] = true;
+    if (top == _pgoal) {
+		return top.step;
+	}
+	
+    _closed[top.x][top.y] = true;
 	print_maze();
     for (int i = 0; i < DIR_NUM; ++i) {
         int tx = top.x + DIR_X[i];
         int ty = top.y + DIR_Y[i];
-        if (maze_map[tx][ty] == 'o') continue;
-        if (closed_set[tx][ty]) continue;
+        if (_maze_map[tx][ty] == 'o') {
+			continue;
+		}
+        if (_closed[tx][ty]) {
+			continue;
+		}
         Position tmp(tx, ty, top.step + 1);
-        tmp.heuristic(pos_goal);
-        if (tmp.h1 + tmp.step > depth) continue;
-        dir_pre[tx][ty] = i;
+        tmp.heuristic(_pgoal);
+        if (tmp.h1 + tmp.step > depth) {
+			continue;
+		}
+        _dir_pre[tx][ty] = i;
         int ret = IDSearch(tmp, depth);
-        if (ret >= 0) return ret;
-        // closed_set[tx][ty] = false;
+        if (ret >= 0) {
+			return ret;
+		}
+        // _closed[tx][ty] = false;
     }
+	
     return -1;
 }
 
 
 int IDAstar() {
-    pos_start.heuristic(pos_goal);
-    for (int depth = pos_start.h1; depth < maze_col * maze_row; ++depth) {
+    _pstart.heuristic(_pgoal);
+    for (int depth = _pstart.h1; depth < _maze_col * _maze_row; ++depth) {
         printf("depth:%d \n", depth);
-        memset(closed_set, false, sizeof(closed_set));
-        int ret = IDSearch(pos_start, depth);
+        memset(_closed, false, sizeof(_closed));
+        int ret = IDSearch(_pstart, depth);
         if (ret >= 0) return ret;
     }
     return -1;
@@ -239,18 +307,18 @@ int IDAstar() {
 void init_maze_map() {
 	puts("Input your map or copy and paste from ./map.txt");
 	
-	scanf("%d,%d", &maze_col, &maze_row);
-	memset(maze_map, 0, sizeof(maze_map));
-	for (int i = 0; i < maze_row; ++i) {
+	scanf("%d,%d", &_maze_col, &_maze_row);
+	memset(_maze_map, 0, sizeof(_maze_map));
+	for (int i = 0; i < _maze_row; ++i) {
 		getchar();
-		for (int j = 0; j < maze_col; ++j) {
-			scanf("%c", &maze_map[i][j]);
-			if (maze_map[i][j] == 's') {
-				pos_start.x = i;
-				pos_start.y = j;
-			} else if (maze_map[i][j] == 'e') {
-				pos_goal.x = i;
-				pos_goal.y = j;
+		for (int j = 0; j < _maze_col; ++j) {
+			scanf("%c", &_maze_map[i][j]);
+			if (_maze_map[i][j] == 's') {
+				_pstart.x = i;
+				_pstart.y = j;
+			} else if (_maze_map[i][j] == 'e') {
+				_pgoal.x = i;
+				_pgoal.y = j;
 			}
 		}
 	}
@@ -297,7 +365,7 @@ input:
         int result = 0;
         switch (index) {
         case 1:
-            result = DFS(pos_start);
+            result = DFS(_pstart);
             break;
         case 2:
             result = DFS_stack();
@@ -331,13 +399,13 @@ input:
 		}
 		
 		printf("The path need %d steps \n", result);
-		Position tmp = pos_goal;
+		Position tmp = _pgoal;
 		while (true) {
-			int i = dir_pre[tmp.x][tmp.y];
+			int i = _dir_pre[tmp.x][tmp.y];
 			tmp.x -= DIR_X[i];
 			tmp.y -= DIR_Y[i];
-			if (tmp == pos_start) break;
-			maze_map[tmp.x][tmp.y] = CH_PATH;
+			if (tmp == _pstart) break;
+			_maze_map[tmp.x][tmp.y] = CH_PATH;
 		}
 		print_maze();
 	} while (true);
