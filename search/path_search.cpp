@@ -112,13 +112,13 @@ void prepare() {
 
 
 inline bool valid_position(int row, int col) {
-	if (_maze_map[row][col] == 'o') {
-		return false;
-	}
-	if (_extend[row][col]) {
+	if (_maze_map[row][col] == CH_WALL) {
 		return false;
 	}
 	if (_closed[row][col]) {
+		return false;
+	}
+	if (_extend[row][col]) {
 		return false;
 	}
 	return true;
@@ -135,10 +135,7 @@ int DFS(Position top) {
     for (int i = 0; i < DIR_NUM; ++i) {
         int tx = top.x + DIR_X[i];
         int ty = top.y + DIR_Y[i];
-        if (_maze_map[tx][ty] == 'o') {
-			continue;
-		}
-        if (_closed[tx][ty]) {
+        if (!valid_position(tx, ty)) {
 			continue;
 		}
         _dir_pre[tx][ty] = i;
@@ -147,7 +144,7 @@ int DFS(Position top) {
 			return ret;
 		}
         // backtracking
-        //_closed[tx][ty] = false;
+        _closed[tx][ty] = false;
     }
 	
     return -1;
@@ -171,10 +168,7 @@ int DFS_stack() {
 		for (int i = 0; i < DIR_NUM; ++i) {
 			int tx = top.x + DIR_X[i];
 			int ty = top.y + DIR_Y[i];
-			if (_extend[tx][ty]) {
-				continue;
-			}
-			if (_maze_map[tx][ty] == 'o') {
+			if (!valid_position(tx, ty)) {
 				continue;
 			}
 			_extend[tx][ty] = true;
@@ -205,10 +199,7 @@ int BFS() {
 		for (int i = 0; i < DIR_NUM; ++i) {
 			int tx = top.x + DIR_X[i];
 			int ty = top.y + DIR_Y[i];
-			if (_extend[tx][ty]) {
-				continue;
-			}
-			if (_maze_map[tx][ty] == 'o') {
+			if (!valid_position(tx, ty)) {
 				continue;
 			}
 			_extend[tx][ty] = true;
@@ -241,10 +232,7 @@ int Astar() {
 		for (int i = 0; i < DIR_NUM; ++i) {
 			int tx = top.x + DIR_X[i];
 			int ty = top.y + DIR_Y[i];
-			if (_extend[tx][ty]) {
-				continue;
-			}
-			if (_maze_map[tx][ty] == 'o') {
+			if (!valid_position(tx, ty)) {
 				continue;
 			}
 			_extend[tx][ty] = true;
@@ -269,10 +257,7 @@ int IDSearch(Position top, int depth) {
     for (int i = 0; i < DIR_NUM; ++i) {
         int tx = top.x + DIR_X[i];
         int ty = top.y + DIR_Y[i];
-        if (_maze_map[tx][ty] == 'o') {
-			continue;
-		}
-        if (_closed[tx][ty]) {
+		if (!valid_position(tx, ty)) {
 			continue;
 		}
         Position tmp(tx, ty, top.step + 1);
@@ -313,10 +298,10 @@ void init_maze_map() {
 		getchar();
 		for (int j = 0; j < _maze_col; ++j) {
 			scanf("%c", &_maze_map[i][j]);
-			if (_maze_map[i][j] == 's') {
+			if (_maze_map[i][j] == CH_START) {
 				_pstart.x = i;
 				_pstart.y = j;
-			} else if (_maze_map[i][j] == 'e') {
+			} else if (_maze_map[i][j] == CH_END) {
 				_pgoal.x = i;
 				_pgoal.y = j;
 			}
