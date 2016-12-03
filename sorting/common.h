@@ -2,7 +2,7 @@
 #define _ALGOFUN_COMMON_H
 
 
-// use for reference from Linux kernel source
+// from Linux kernel source
 void generic_swap(void *a, void *b, int size);
 
 

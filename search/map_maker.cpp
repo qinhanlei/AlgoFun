@@ -31,7 +31,6 @@ int main(int argc, char *argv[]) {
         for (int i = 0; i < M; ++i) {
             for (int j = 0; j < N; ++j) {
                 if (i == 0 || j == 0 || i == M - 1 || j == N - 1) {
-					// set boundary
                     maze_map[i][j] = 'o';
                 } else {
                     int k = rand() % 10;

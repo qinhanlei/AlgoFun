@@ -125,27 +125,26 @@ int main(int argc, char *argv[]) {
 		}
 
 		clock_t st = clock();
-		// search
 		int result = Dfs();
 		clock_t et = clock();
 		printf("search cost time: %lfs\n", (double)(et - st)/CLOCKS_PER_SEC);
 
 		if (result == -1) {
-			puts("This maze is no solution");
+			puts("This maze have no solution");
 			continue;
-		} else {
-			printf("The path need %d steps \n", result);
-			Position tmp = pos_goal;
-			// get path
-			while (true) {
-				int i = dir_pre[tmp.x][tmp.y];
-				tmp.x -= DIR_X[i];
-				tmp.y -= DIR_Y[i];
-				if (tmp == pos_start) break;
-				maze_map[tmp.x][tmp.y] = CH_PATH;
-			}
-			DisplayMaze();
 		}
+		
+		printf("The path need %d steps \n", result);
+		Position tmp = pos_goal;
+		// get path
+		while (true) {
+			int i = dir_pre[tmp.x][tmp.y];
+			tmp.x -= DIR_X[i];
+			tmp.y -= DIR_Y[i];
+			if (tmp == pos_start) break;
+			maze_map[tmp.x][tmp.y] = CH_PATH;
+		}
+		DisplayMaze();
 	}
 	
 	return 0;
