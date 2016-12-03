@@ -112,13 +112,13 @@ void prepare() {
 
 
 inline bool valid_position(int row, int col) {
-	if (_maze_map[tx][ty] == 'o') {
+	if (_maze_map[row][col] == 'o') {
 		return false;
 	}
-	if (_extend[tx][ty]) {
+	if (_extend[row][col]) {
 		return false;
 	}
-	if (_closed[tx][ty]) {
+	if (_closed[row][col]) {
 		return false;
 	}
 	return true;
