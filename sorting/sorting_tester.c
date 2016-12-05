@@ -16,14 +16,12 @@
 #define MAX_INPUT 64
 #define MAX_NUM 900000
 
-int total = 0;
-// the data of original
-int num_input[MAX_NUM] = {0};
-// the data to sort
-int num_buf[MAX_NUM] = {0};
+int _total = 0;
+int _num_init[MAX_NUM] = {0};
+int _numbers[MAX_NUM] = {0};
 
-int tmpA[MAX_NUM];
-int tmpB[MAX_NUM];
+int _tmpA[MAX_NUM];
+int _tmpB[MAX_NUM];
 
 
 void print_array(int arr[], size_t n) {
@@ -45,16 +43,12 @@ int cmp_int(const void* a, const void* b) {
 }
 
 
-// is array content equal
-int is_array_equal(const int arrA[], const int arrB[], size_t n) {
-	memcpy(tmpA, arrA, sizeof(arrA[0]) * n);
-	memcpy(tmpB, arrB, sizeof(arrB[0]) * n);
-	qsort(tmpA, n, sizeof(tmpA[0]), cmp_int);
-	qsort(tmpB, n, sizeof(tmpB[0]), cmp_int);
-	if (memcmp(tmpA, tmpB, sizeof(tmpA[0]) * n) == 0)
-		return 1;
-	else 
-		return 0;
+int cmp_array(const int arrA[], const int arrB[], size_t n) {
+	memcpy(_tmpA, arrA, sizeof(arrA[0]) * n);
+	memcpy(_tmpB, arrB, sizeof(arrB[0]) * n);
+	qsort(_tmpA, n, sizeof(_tmpA[0]), cmp_int);
+	qsort(_tmpB, n, sizeof(_tmpB[0]), cmp_int);
+	return memcmp(_tmpA, _tmpB, sizeof(_tmpA[0]) * n);
 }
 
 
@@ -69,22 +63,22 @@ int is_ordered(int arr[], size_t n) {
 
 int read_data() {
 	int tmp;
-	FILE *fin = fopen("random_num.txt", "r");
-	if (!fin) {
+	FILE *fp = fopen("random_num.txt", "r");
+	if (!fp) {
 		puts("open file \"random_num.txt\" error!");
 		return 0;
 	}
 
-	total = 0;
-	while (fscanf(fin, "%d", &tmp) != EOF) {
-		num_input[total++] = tmp;
-		if (total >= MAX_NUM) {
+	_total = 0;
+	while (fscanf(fp, "%d", &tmp) != EOF) {
+		_num_init[_total++] = tmp;
+		if (_total >= MAX_NUM) {
 			puts("file content error, too more data!");
-			fclose(fin);
+			fclose(fp);
 			return 0;
 		}
 	}
-	fclose(fin);
+	fclose(fp);
 	return 1;
 }
 
@@ -100,27 +94,27 @@ int main(int argc, char *argv[]) {
 	if (!read_data()) {
 		return 0;
 	}
-	memcpy(num_buf, num_input, sizeof(num_input[0])*total);
+	memcpy(_numbers, _num_init, sizeof(_num_init[0])*_total);
 
 	do {
 		puts("\n==============================================");
-		printf("               Sorting (%d integers)\n", total);
+		printf("               Sorting (%d integers)\n", _total);
 		puts("-----------------Exchange sorts---------------");
-		if (total <= 5000) {
+		if (_total <= 5000) {
 			puts("               10. bubble_sort"); // 9w
 			puts("               11. cocktail_sort");
 		}
 		puts("               12. quick_sort");
 		puts("-----------------Selection sorts--------------");
-		if (total <= 20000) {
+		if (_total <= 20000) {
 			puts("               20. select_sort");
 		}
 		puts("               21. heap_sort");
 		puts("-----------------Insertion sorts--------------");
-		if (total <= 20000) {
+		if (_total <= 20000) {
 			puts("               30. insert_sort");			
 		}
-		if (total <= 200000) {
+		if (_total <= 200000) {
 			puts("               31. binary_insert_sort");			
 		}
 		puts("               32. binary_shell_sort");
@@ -142,7 +136,6 @@ int main(int argc, char *argv[]) {
 
 		fgets(input_str, sizeof(input_str), stdin);
 		input_len = strlen(input_str) - 1;
-		// check the input
 		for (i = 0; i < input_len; ++i) {
 			if (input_str[i] < '0' || input_str[i] > '9') {
 				puts("input error, please try again.");
@@ -158,37 +151,37 @@ int main(int argc, char *argv[]) {
 		switch (index) {
 			// --- Exchange sorts
 		case 10:
-			bubble_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			bubble_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 11:
-			cocktail_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			cocktail_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 12:
-			quick_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			quick_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 			// --- Selection sorts
 		case 20:
-			select_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			select_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 21:
 			puts("\ndoing...\n");
 			break;
 			// --- Insertion sorts
 		case 30:
-			insert_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			insert_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 31:
-			binary_insert_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			binary_insert_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 32:
-			binary_shell_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			binary_shell_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 33:
-			shell_sort_2(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			shell_sort_2(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 			// --- Merge sorts
 		case 40:
-			merge_sort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			merge_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 			// --- Distribution sorts
 		case 50:
@@ -202,16 +195,16 @@ int main(int argc, char *argv[]) {
 			puts("\ndoing...\n");
 			break;
 		case 0:
-			memcpy(num_buf, num_input, sizeof(num_input[0])*total);
-			printf("\nthere are %d random numbers.\n", total);
+			memcpy(_numbers, _num_init, sizeof(_num_init[0])*_total);
+			printf("\nthere are %d random numbers.\n", _total);
 			break;
 		case 1:
-			print_array(num_buf, total);
+			print_array(_numbers, _total);
 			break;
 		case 8:
 			read_data();
-			memcpy(num_buf, num_input, sizeof(num_input[0])*total);
-			printf("\nthere are %d random numbers.\n", total);
+			memcpy(_numbers, _num_init, sizeof(_num_init[0])*_total);
+			printf("\nthere are %d random numbers.\n", _total);
 			break;
 		case 9:
 			is_quit = 1;
@@ -227,24 +220,22 @@ int main(int argc, char *argv[]) {
 			break;
 		}
 
-		// is that sort operate
 		if (index > 9 && index <= 90) {
 			printf("\ncost time: %lf second.\n", difftime(time_end, time_start)/CLOCKS_PER_SEC);
-			if (is_array_equal(num_buf, num_input, total)) {
-				if (is_ordered(num_buf, total))
+			if (cmp_array(_numbers, _num_init, _total) == 0) {
+				if (is_ordered(_numbers, _total)) {
 					puts("sort successed. :)");
-				else
+				} else {
 					puts("sort failed! :(");
+				}
 			} else {
 				puts("sort error: value changed. \n"
 					"\tdo other sorting, please restore random state first. \n"
 					"\tcheck your algorithm.");
-				//memcpy(num_buf, num_input, sizeof(num_input[0])*total);
+				//memcpy(_numbers, _num_init, sizeof(_num_init[0])*_total);
 			}
 		}
 		
-		//system("pause");
-		//system("cls");
 	} while (!is_quit);
 	
 	return 0;

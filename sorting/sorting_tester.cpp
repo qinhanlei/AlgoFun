@@ -4,7 +4,6 @@
 #include <cstdlib>
 #include <cstring>
 
-#include <iostream>
 #include <algorithm>
 using namespace std;
 
@@ -12,11 +11,9 @@ using namespace std;
 const int MAX_CMD_INPUT = 64;
 const int MAX_NUM = 2000000;
 
-int total = 0;
-// the data of original
-int num_input[MAX_NUM] = {0};
-// the data to sort
-int num_buf[MAX_NUM] = {0};
+int _total = 0;
+int _num_init[MAX_NUM] = {0};
+int _numbers[MAX_NUM] = {0};
 
 
 void print_array(int arr[], size_t n) {
@@ -40,31 +37,33 @@ int cmp_int(const void* a, const void* b) {
 
 int is_ordered(int arr[], size_t n) {
 	size_t i;
-	for (i = 0; i < n - 1; ++i)
-		if (arr[i] > arr[i + 1])
+	for (i = 0; i < n - 1; ++i) {
+		if (arr[i] > arr[i + 1]) {
 			return 0;
+		}
+	}
 	return 1;
 }
 
 
 int read_data() {
 	int tmp;
-	FILE *fin = fopen("random_num.txt", "r");
-	if (!fin) {
+	FILE *fp = fopen("random_num.txt", "r");
+	if (!fp) {
 		puts("open file \"random_num.txt\" error!");
 		return 0;
 	}
 
-	total = 0;
-	while (fscanf(fin, "%d", &tmp) != EOF) {
-		num_input[total++] = tmp;
-		if (total >= MAX_NUM) {
+	_total = 0;
+	while (fscanf(fp, "%d", &tmp) != EOF) {
+		_num_init[_total++] = tmp;
+		if (_total >= MAX_NUM) {
 			puts("file content error, too more data!");
-			fclose(fin);
+			fclose(fp);
 			return 0;
 		}
 	}
-	fclose(fin);
+	fclose(fp);
 	return 1;
 }
 
@@ -74,17 +73,16 @@ int main(int argc, char *argv[]) {
 	int input_len = 0;
 	char input_str[MAX_CMD_INPUT] = {0};
 	char is_quit = 0;
-
 	clock_t time_start, time_end;
 
 	if (!read_data()) {
 		return 0;
 	}
-	memcpy(num_buf, num_input, sizeof(num_input[0])*total);
+	memcpy(_numbers, _num_init, sizeof(_num_init[0])*_total);
 
 	do {
 		puts("==============================================");
-		printf("             Std Sorting (%d integers)\n", total);
+		printf("             Std Sorting (%d integers)\n", _total);
 		puts("----------------------------------------------");
 		puts("              10. qsort C std");
 		puts("              11. sort C++ STL");
@@ -100,7 +98,6 @@ int main(int argc, char *argv[]) {
 
 		fgets(input_str, sizeof(input_str), stdin);
 		input_len = strlen(input_str) - 1;
-		// check the input
 		for (i = 0; i < input_len; ++i) {
 			if (input_str[i] < '0' || input_str[i] > '9') {
 				puts("input error, please try again.");
@@ -115,28 +112,28 @@ int main(int argc, char *argv[]) {
 		time_start = clock();
 		switch (index) {
 		case 10:
-			qsort(num_buf, total, sizeof(num_buf[0]), cmp_int);
+			qsort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 11:
-			sort(num_buf, num_buf + total);
+			sort(_numbers, _numbers + _total);
 			break;
 		case 12:
-			stable_sort(num_buf, num_buf + total);
+			stable_sort(_numbers, _numbers + _total);
 			break;
 		case 13:
-			make_heap(num_buf, num_buf + total);
-			sort_heap(num_buf, num_buf + total);
+			make_heap(_numbers, _numbers + _total);
+			sort_heap(_numbers, _numbers + _total);
 			break;
 		case 0:
-			memcpy(num_buf, num_input, sizeof(num_input[0])*total);
-			printf("\nthere are %d random numbers.\n", total);
+			memcpy(_numbers, _num_init, sizeof(_num_init[0])*_total);
+			printf("\nthere are %d random numbers.\n", _total);
 			break;
 		case 1:
-			print_array(num_buf, total);
+			print_array(_numbers, _total);
 			break;
 		case 8:
 			read_data();
-			printf("\nthere are %d random numbers.\n", total);
+			printf("\nthere are %d random numbers.\n", _total);
 			break;
 		case 9:
 			is_quit = 1;
@@ -152,17 +149,14 @@ int main(int argc, char *argv[]) {
 			break;
 		}
 
-		// is that sort operate
 		if (index > 9 && index <= 90) {
-		    if(is_ordered(num_buf, total))
-                puts("\nsort success.");
-            else
-                puts("\nsort failed!");
+		    if(is_ordered(_numbers, _total)) {
+				puts("\nsort success.");
+			} else {
+				puts("\nsort failed!");
+			}
 			printf("cost time: %lf second \n\n", difftime(time_end, time_start)/CLOCKS_PER_SEC);
 		}
-        // system("pause");
-		// system("cls");
-		
 	} while (!is_quit);
 	
 	return 0;
