@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
 	int i, index;
 	int input_len = 0;
 	char input_str[MAX_CMD_INPUT] = {0};
-	char is_quit = 0;
+	int auto_restore = 1;
 	clock_t time_start, time_end;
 
 	if (!read_data()) {
@@ -90,23 +90,23 @@ int main(int argc, char *argv[]) {
 		puts("              12. stable_sort C++ STL");
 		puts("              13. heap_sort C++ STL");
 		puts("----------------------------------------------");
-		puts("               0. restore random state.");
-		puts("               1. view all numbers");
-		puts("               8. re-read data from file");
-		puts("               9. exit");
+		puts("              0. restore random state.");
+		puts("              1. view all numbers");
+		puts("              7. switch auto-restore");
+		puts("              8. re-read data from file");
+		puts("              9. exit");
 		puts("==============================================");
+		printf("\tauto-restore is %s\n", auto_restore ? "on" : "off");
 		printf("\tinput index number: ");
 
+input:
 		fgets(input_str, sizeof(input_str), stdin);
 		input_len = strlen(input_str) - 1;
 		for (i = 0; i < input_len; ++i) {
 			if (input_str[i] < '0' || input_str[i] > '9') {
 				puts("input error, please try again.");
-				break;
+				goto input;
 			}
-		}
-		if (i != input_len) {
-			continue;
 		}
 		sscanf(input_str, "%d", &index);
 
@@ -132,23 +132,22 @@ int main(int argc, char *argv[]) {
 		case 1:
 			print_array(_numbers, _total);
 			break;
+		case 7:
+			auto_restore = !auto_restore;
+			printf("\nauto-restore: %s\n", auto_restore ? "on" : "off");
+			break;
 		case 8:
 			read_data();
 			printf("\nthere are %d random numbers.\n", _total);
 			break;
 		case 9:
-			is_quit = 1;
-			break;
+			puts("\nsee you :)\n");
+			goto over;
 		default:
-			puts("\nwrong input!");
-			continue;
+			puts("input error, please try again.");
+			goto input;
 		}
 		time_end = clock();
-
-		if (is_quit) {
-			puts("\nsee you :)\n");
-			break;
-		}
 
 		if (index > 9 && index <= 90) {
 		    if(is_ordered(_numbers, _total)) {
@@ -157,8 +156,13 @@ int main(int argc, char *argv[]) {
 				puts("\nsort failed!");
 			}
 			printf("cost time: %lf second \n\n", difftime(time_end, time_start)/CLOCKS_PER_SEC);
+			if (auto_restore) {
+				memcpy(_numbers, _num_init, sizeof(_num_init[0])*_total);
+				puts("numbers has restored to initial random state.");
+			}
 		}
-	} while (!is_quit);
+	} while (1);
 	
+over:
 	return 0;
 }

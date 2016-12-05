@@ -88,7 +88,7 @@ int main(int argc, char *argv[]) {
 	int i, index;
 	int input_len = 0;
 	char input_str[MAX_INPUT] = {0};
-	char is_quit = 0;
+	int auto_restore = 1;
 
 	clock_t time_start, time_end;
 
@@ -101,50 +101,42 @@ int main(int argc, char *argv[]) {
 		puts("\n==============================================");
 		printf("               Sorting (%d integers)\n", _total);
 		puts("-----------------Exchange sorts---------------");
-		if (_total <= 5000) {
-			puts("               10. bubble_sort"); // 9w
-			puts("               11. cocktail_sort");
-		}
-		puts("               12. quicksort");
+		puts("              10. bubble_sort");
+		puts("              11. cocktail_sort");
+		puts("              12. quicksort");
 		puts("-----------------Selection sorts--------------");
-		if (_total <= 20000) {
-			puts("               20. selection_sort");
-		}
-		puts("               21. heapsort");
+		puts("              20. selection_sort");
+		puts("              21. heapsort");
 		puts("-----------------Insertion sorts--------------");
-		if (_total <= 20000) {
-			puts("               30. insertion_sort");			
-		}
-		if (_total <= 200000) {
-			puts("               31. binary_insertion_sort");			
-		}
-		puts("               32. binary_shellsort");
-		puts("               33. shellsort");
+		puts("              30. insertion_sort");
+		puts("              31. binary_insertion_sort");
+		puts("              32. binary_shellsort");
+		puts("              33. shellsort");
 		puts("-----------------Merge sorts------------------");
-		puts("               40. merge_sort");
+		puts("              40. merge_sort");
 		puts("-----------------Distribution sorts-----------");
-		puts("               50. counting_sort");
-		puts("               51. radix_sort");
+		puts("              50. counting_sort");
+		puts("              51. radix_sort");
 		puts("-----------------Hybrid sorts-----------------");
-		puts("               60. introsort");
+		puts("              60. introsort");
 		puts("-------------------COMMAND--------------------");
-		puts("                0. restore random state.");
-		puts("                1. view all numbers");
-		puts("                8. re-read data from file");
-		puts("                9. exit");
+		puts("              0. restore random state.");
+		puts("              1. view all numbers");
+		puts("              7. switch auto-restore");
+		puts("              8. re-read data from file");
+		puts("              9. exit");
 		puts("==============================================");
+		printf("          auto-restore is %s\n", auto_restore ? "on" : "off");
 		printf("          input index number: ");
 
+input:
 		fgets(input_str, sizeof(input_str), stdin);
 		input_len = strlen(input_str) - 1;
 		for (i = 0; i < input_len; ++i) {
 			if (input_str[i] < '0' || input_str[i] > '9') {
 				puts("input error, please try again.");
-				break;
+				goto input;
 			}
-		}
-		if (i != input_len) {
-			continue;
 		}
 		sscanf(input_str, "%d", &index);
 
@@ -196,24 +188,23 @@ int main(int argc, char *argv[]) {
 		case 1:
 			print_array(_numbers, _total);
 			break;
+		case 7:
+			auto_restore = !auto_restore;
+			printf("\nauto-restore: %s\n", auto_restore ? "on" : "off");
+			break;
 		case 8:
 			read_data();
 			memcpy(_numbers, _num_init, sizeof(_num_init[0])*_total);
 			printf("\nthere are %d random numbers.\n", _total);
 			break;
 		case 9:
-			is_quit = 1;
-			break;
+			puts("\nsee you :)\n");
+			goto over;
 		default:
-			puts("\nwrong input!");
-			continue;
+			puts("input error, please try again.");
+			goto input;
 		}
 		time_end = clock();
-
-		if (is_quit) {
-			puts("\nsee you :)\n");
-			break;
-		}
 
 		if (index > 9 && index <= 90) {
 			printf("\ncost time: %lf second.\n", difftime(time_end, time_start)/CLOCKS_PER_SEC);
@@ -224,14 +215,16 @@ int main(int argc, char *argv[]) {
 					puts("sort failed! :(");
 				}
 			} else {
-				puts("sort error: value changed. \n"
-					"\tdo other sorting, please restore random state first. \n"
-					"\tcheck your algorithm.");
-				//memcpy(_numbers, _num_init, sizeof(_num_init[0])*_total);
+				puts("sort error: value changed, check the algorithm!");
+			}
+			if (auto_restore) {
+				memcpy(_numbers, _num_init, sizeof(_num_init[0])*_total);
+				puts("numbers has restored to initial random state.");
 			}
 		}
 		
-	} while (!is_quit);
+	} while (1);
 	
+over:
 	return 0;
 }

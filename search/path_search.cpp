@@ -396,7 +396,7 @@ input:
 			goto menu;
 		case 9:
             puts("\nsee you :)\n");
-			goto done;
+			goto over;
 		default:
             puts("input error, please try again.");
             goto input;
@@ -422,6 +422,6 @@ input:
 		print_maze();
 	} while (true);
 	
-done:
+over:
 	return 0;
 }
