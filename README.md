@@ -10,7 +10,6 @@ Keep it simple and stupid, but not simpler.
 
 ## Subjects
 ### Data Structure
-- Disjoint-set
 - Linked list
     - Merge sort
 - Tree
@@ -26,6 +25,7 @@ Keep it simple and stupid, but not simpler.
     - Fenwick tree
 - Graph
 - Hash table
+- Disjoint-set
 - Suffix array
 
 
