@@ -14,7 +14,7 @@
 
 
 #define MAX_INPUT 64
-#define MAX_NUM 900000
+#define MAX_NUM 1000000
 
 int _total = 0;
 int _num_init[MAX_NUM] = {0};
@@ -73,7 +73,7 @@ int read_data() {
 	_total = 0;
 	while (fscanf(fp, "%d", &tmp) != EOF) {
 		_num_init[_total++] = tmp;
-		if (_total >= MAX_NUM) {
+		if (_total > MAX_NUM) {
 			puts("file content error, too more data!");
 			fclose(fp);
 			return 0;
