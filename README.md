@@ -11,6 +11,8 @@ Keep it simple and stupid, but not simpler.
 ## Subjects
 ### Data Structure
 - Disjoint-set
+- Linked list
+    - Merge sort
 - Tree
     - Self-balancing binary search tree
         - AVL Tree
@@ -42,11 +44,10 @@ Keep it simple and stupid, but not simpler.
     - Cocktail sort, a Bubble Sort variant.
     - Quicksort, simple implement, even slower than Merge Sort.
 - Selection sorts
-    - Select sort, more simple, faster than Bubble Sort. but unstable.
+    - Select sort, more simple, faster than Bubble sort. unstable.
     - Heap sort
 - Insertion sorts
-    - Insertion sort, the fast `O(n^2)` sort algorithm, and some optimize like binary method.
-    - Binary Insertion sort, a binary optimize.  
+    - Insertion sort, fast `O(n^2)` sort algorithm, can optimized by binary.
     - Shellsort
 - Merge sorts
     - Merge sort
@@ -54,22 +55,23 @@ Keep it simple and stupid, but not simpler.
     - Radix sort
 - Hybrid sorts
     - Introsort
+    - Timsort
 
 
 ### Numeric
-- Big Integer, C++ implement.
-- Prime Number
+- Big integer, C++ implement.
+- Prime number
 
 
 ### Combinatorial
 - Permutation
 - Combination
 - Optimization
-    - Dynamic Programming
+    - Dynamic programming
 
 
-### Computational Geometry
-- Convex Hull
+### Computational geometry
+- Convex hull
 
 
 # License
