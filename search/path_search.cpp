@@ -290,8 +290,35 @@ int IDAstar() {
 
 
 void init_maze_map() {
-	puts("Input your map or copy and paste from ./map.txt");
+	static char filename[] = "./map.txt";
+	FILE* fp = fopen(filename, "r");
+	if (!fp) {
+		printf("open file '%s' error!\n", filename);
+		exit(-1);
+	}
 	
+	fscanf(fp, "%d,%d", &_maze_col, &_maze_row);
+	memset(_maze_map, 0, sizeof(_maze_map));
+	for (int i = 0; i < _maze_row; ++i) {
+		fgetc(fp);
+		for (int j = 0; j < _maze_col; ++j) {
+			fscanf(fp, "%c", &_maze_map[i][j]);
+			if (_maze_map[i][j] == CH_START) {
+				_pstart.x = i;
+				_pstart.y = j;
+			} else if (_maze_map[i][j] == CH_END) {
+				_pgoal.x = i;
+				_pgoal.y = j;
+			}
+		}
+	}
+	printf("\nThis is initial maze map from: '%s'\n", filename);
+	print_maze();
+}
+
+
+void reset_maze_map() {
+	puts("Input your map or copy and paste from ./map.txt");
 	scanf("%d,%d", &_maze_col, &_maze_row);
 	memset(_maze_map, 0, sizeof(_maze_map));
 	for (int i = 0; i < _maze_row; ++i) {
@@ -365,7 +392,7 @@ input:
             result = IDAstar();
 			break;
 		case 8:
-			init_maze_map();
+			reset_maze_map();
 			goto menu;
 		case 9:
             puts("\nsee you :)\n");
