@@ -1,3 +1,3 @@
 #!/bin/sh
 
-g++ sorting_tester_std.cpp -o cpptester.out
+g++ sorting_tester.cpp -o cpptester.out
