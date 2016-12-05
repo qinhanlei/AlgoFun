@@ -1,4 +1,4 @@
 #!/bin/sh
 
-g++ sorting_tester.cpp -o cpptester.out
-./cpptester
+g++ sorting_tester.cpp -o _cpptester.out
+./_cpptester

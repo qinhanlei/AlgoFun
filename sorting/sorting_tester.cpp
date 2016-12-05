@@ -48,9 +48,10 @@ int is_ordered(int arr[], size_t n) {
 
 int read_data() {
 	int tmp;
-	FILE *fp = fopen("random_num.txt", "r");
+	static char filename[] = "./random_num.txt";
+	FILE* fp = fopen(filename, "r");
 	if (!fp) {
-		puts("open file \"random_num.txt\" error!");
+		printf("open file '%s' error!\n", filename);
 		return 0;
 	}
 
