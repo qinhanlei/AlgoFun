@@ -18,6 +18,6 @@ For example:
 Here, `cmp_int` is a function which prototype like `int cmp_int(const void*, const void*);`, create it according to your own will.
 
 ## Note
-* I delete the file `random_num.txt` (cause it may changed frequently) you can generate it use `gen_random_num2file.c` or manunally.  
+* I delete the file `random_num.txt` (cause it may changed frequently) you can generate it use `gen_random_num.c` or manunally.  
 * I usually write comment by C++ style `//`, so do I in C code. it may got error in some old C compiler, sorry for the inconvenience.  
 * In practice, the std qsort() is recommended in C, and the sort() or stable_sort() in C++.
