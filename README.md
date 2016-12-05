@@ -54,6 +54,7 @@ Keep it simple and stupid, but not simpler.
 
 ### Numeric
 - Big Integer (C++ implement)
+- Prime Number
 
 
 ### Combinatorial
