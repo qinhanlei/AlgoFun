@@ -6,7 +6,7 @@
 #include <assert.h>
 
 
-void insert_sort_1(void *base, size_t num, size_t size, 
+void insertion_sort_1(void *base, size_t num, size_t size, 
 				 int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	void *a = NULL, *b = NULL;
@@ -33,7 +33,7 @@ void insert_sort_1(void *base, size_t num, size_t size,
 
 
 // try little optimize
-void insert_sort_2(void *base, size_t num, size_t size, 
+void insertion_sort_2(void *base, size_t num, size_t size, 
 				 int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	void *a = NULL, *b = NULL;
@@ -60,7 +60,7 @@ void insert_sort_2(void *base, size_t num, size_t size,
 
 
 // inspired by C++ STL source code
-void insert_sort(void *base, size_t num, size_t size, 
+void insertion_sort(void *base, size_t num, size_t size, 
 				 int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL;
@@ -100,7 +100,7 @@ void insert_sort(void *base, size_t num, size_t size,
 }
 
 
-void binary_insert_sort(void *base, size_t num, size_t size, 
+void binary_insertion_sort(void *base, size_t num, size_t size, 
 						int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL;
@@ -133,7 +133,7 @@ void binary_insert_sort(void *base, size_t num, size_t size,
 }
 
 
-void shell_sort_1(void *base, size_t num, size_t size, 
+void shellsort_1(void *base, size_t num, size_t size, 
 				  int (*cmp_func)(const void*, const void*))
 {
 	char *ch_base = base;
@@ -155,7 +155,7 @@ void shell_sort_1(void *base, size_t num, size_t size,
 }
 
 
-void shell_sort_2(void *base, size_t num, size_t size, 
+void shellsort_2(void *base, size_t num, size_t size, 
 				int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL;
@@ -182,7 +182,7 @@ void shell_sort_2(void *base, size_t num, size_t size,
 }
 
 
-void binary_shell_sort(void *base, size_t num, size_t size, 
+void binary_shellsort(void *base, size_t num, size_t size, 
 					   int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL;

@@ -3,7 +3,7 @@
 #include "common.h"
 
 
-void select_sort(void *base, size_t num, size_t size,
+void selection_sort(void *base, size_t num, size_t size,
 				 int (*com_func)(const void*, const void*)) {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL;
@@ -21,7 +21,7 @@ void select_sort(void *base, size_t num, size_t size,
 }
 
 
-void heap_sort(void *base, size_t num, size_t size, 
+void _heapsort(void *base, size_t num, size_t size, 
 			   int (*cmp_func)(const void*, const void*)) {
 	//TODO: ...
 }

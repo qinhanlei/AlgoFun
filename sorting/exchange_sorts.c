@@ -79,7 +79,7 @@ static void qsort_1(void *base, size_t left, size_t right, size_t size,
 			qsort_1(base, left, m - 1, size, cmp_func);
 		qsort_1(base, m + 1, right, size, cmp_func);
 	} /*else {
-		insert_sort((char*)base + left * size, right - left + 1, size, cmp_func);
+		insertion_sort((char*)base + left * size, right - left + 1, size, cmp_func);
 	}*/
 }
 
@@ -154,11 +154,11 @@ static void qsort_3(void *base, size_t left, size_t right, size_t size,
 }
 
 
-void quick_sort(void *base, size_t num, size_t size, 
+void quicksort(void *base, size_t num, size_t size, 
 				int (*cmp_func)(const void*, const void*)) {
 	qsort_3(base, 0, num - 1, size, cmp_func);
 	if (CUT_OFF > 0) {
-		insert_sort(base, num, size, cmp_func);
-		//binary_insert_sort(base, num, size, cmp_func);
+		insertion_sort(base, num, size, cmp_func);
+		//binary_insertion_sort(base, num, size, cmp_func);
 	}
 }

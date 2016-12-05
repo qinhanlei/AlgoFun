@@ -10,50 +10,54 @@ Keep it simple and stupid, but not simpler.
 
 ## Subjects
 ### Data Structure
-- Disjoint Set
-- Dance Link
+- Disjoint-set
 - Tree
-    - AVL Tree
-    - Red Black Tree
-    - Segment Tree
-- Heap
-    - Binomial Heap
-    - Fibonacci Heap
+    - Self-balancing binary search tree
+        - AVL Tree
+        - Red–black tree
+    - Heap
+        - Binary heap
+        - Binomial heap
+        - Fibonacci heap
+    - Trie
+        - Suffix tree
+    - Fenwick tree
 - Graph
-- Hash Table
+- Hash table
+- Suffix array
 
 
 ### Search
 - Blind search
-    - Simple BFS(Breadth-first search), modified from `A*` algorithm.   
-    - Simple DFS(Depth-first search), recursive and non-recursive(use stack) implement.
+    - Breadth-first search
+    - Depth-first search, recursive and non-recursive(use stack) implement.
 - Heuristic search
-    - Simple `A*`(A star) algorithm demo.  
-    - `IDA*`(Iterative Deepening A Star), variant of `A*`.
+    - `A*`(A-star) search algorithm
+        - `IDA*`(Iterative deepening A-star)
 
 
 ### Sorting
-- Exchange Sorts
-    - Bubble Sort, easy, simple, stable.
-    - Cocktail Sort, a Bubble Sort variant.
-    - Quick Sort, simple implement, even slower than Merge Sort.
-- Selection Sorts
-    - Select Sort, more simple, faster than Bubble Sort. but unstable.
-    - Heap Sort
-- Insertion Sorts
-    - Insert Sort, the fast `O(n^2)` sort algorithm, and some optimize like binary method.
-    - Binary Insert Sort, a binary optimize.  
-    - Shell Sort
-- Merge Sorts
+- Exchange sorts
+    - Bubble sort, easy, simple, stable.
+    - Cocktail sort, a Bubble Sort variant.
+    - Quicksort, simple implement, even slower than Merge Sort.
+- Selection sorts
+    - Select sort, more simple, faster than Bubble Sort. but unstable.
+    - Heap sort
+- Insertion sorts
+    - Insertion sort, the fast `O(n^2)` sort algorithm, and some optimize like binary method.
+    - Binary Insertion sort, a binary optimize.  
+    - Shellsort
+- Merge sorts
     - Merge sort
-- Distribution Sorts
-    - Radix Sort
-- Hybrid Sorts
-    - Intro Sort
+- Distribution sorts
+    - Radix sort
+- Hybrid sorts
+    - Introsort
 
 
 ### Numeric
-- Big Integer (C++ implement)
+- Big Integer, C++ implement.
 - Prime Number
 
 

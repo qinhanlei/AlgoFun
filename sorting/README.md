@@ -12,7 +12,7 @@ For example:
     int a[MAX_NUM] = {0};
     // ... do some thing initialize entire array 'a[]'.
     // sort entire array
-    insert_sort(a, MAX_NUM, sizeof(a[0]), cmp_int);
+    insertion_sort(a, MAX_NUM, sizeof(a[0]), cmp_int);
 ```
 
 Here, `cmp_int` is a function which prototype like `int cmp_int(const void*, const void*);`, create it according to your own will.

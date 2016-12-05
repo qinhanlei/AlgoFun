@@ -105,28 +105,28 @@ int main(int argc, char *argv[]) {
 			puts("               10. bubble_sort"); // 9w
 			puts("               11. cocktail_sort");
 		}
-		puts("               12. quick_sort");
+		puts("               12. quicksort");
 		puts("-----------------Selection sorts--------------");
 		if (_total <= 20000) {
-			puts("               20. select_sort");
+			puts("               20. selection_sort");
 		}
-		puts("               21. heap_sort");
+		puts("               21. heapsort");
 		puts("-----------------Insertion sorts--------------");
 		if (_total <= 20000) {
-			puts("               30. insert_sort");			
+			puts("               30. insertion_sort");			
 		}
 		if (_total <= 200000) {
-			puts("               31. binary_insert_sort");			
+			puts("               31. binary_insertion_sort");			
 		}
-		puts("               32. binary_shell_sort");
-		puts("               33. shell_sort");
+		puts("               32. binary_shellsort");
+		puts("               33. shellsort");
 		puts("-----------------Merge sorts------------------");
 		puts("               40. merge_sort");
 		puts("-----------------Distribution sorts-----------");
 		puts("               50. counting_sort");
 		puts("               51. radix_sort");
 		puts("-----------------Hybrid sorts-----------------");
-		puts("               60. intro_sort");
+		puts("               60. introsort");
 		puts("-------------------COMMAND--------------------");
 		puts("                0. restore random state.");
 		puts("                1. view all numbers");
@@ -150,7 +150,6 @@ int main(int argc, char *argv[]) {
 
 		time_start = clock();
 		switch (index) {
-			// --- Exchange sorts
 		case 10:
 			bubble_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
@@ -158,40 +157,35 @@ int main(int argc, char *argv[]) {
 			cocktail_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 12:
-			quick_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
+			quicksort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
-			// --- Selection sorts
 		case 20:
-			select_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
+			selection_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 21:
 			puts("\ndoing...\n");
 			break;
-			// --- Insertion sorts
 		case 30:
-			insert_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
+			insertion_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 31:
-			binary_insert_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
+			binary_insertion_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 32:
-			binary_shell_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
+			binary_shellsort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 33:
-			shell_sort_2(_numbers, _total, sizeof(_numbers[0]), cmp_int);
+			shellsort_2(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
-			// --- Merge sorts
 		case 40:
 			merge_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
-			// --- Distribution sorts
 		case 50:
 			puts("\ndoing...\n");
 			break;
 		case 51:
 			puts("\ndoing...\n");
 			break;
-			// Hybrid sorts
 		case 60:
 			puts("\ndoing...\n");
 			break;

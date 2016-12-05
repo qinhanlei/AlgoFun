@@ -14,7 +14,7 @@ void cocktail_sort(void *base, size_t num, size_t size,
 				   int (*cmp_func)(const void*, const void*));
 
 
-void quick_sort(void *base, size_t num, size_t size, 
+void quicksort(void *base, size_t num, size_t size, 
 				int (*cmp_func)(const void*, const void*));
 
 
