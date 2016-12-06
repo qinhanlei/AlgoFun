@@ -4,8 +4,9 @@
 #include <stddef.h>
 
 
-void insertion_sort(void *base, size_t num, size_t size, 
+void generic_insertion_sort(void *base, size_t num, size_t size, 
 				 int (*cmp_func)(const void*, const void*));
+void insertion_sort(int arr[], size_t n);
 
 
 // binary optimized

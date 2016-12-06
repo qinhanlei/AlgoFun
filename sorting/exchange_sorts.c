@@ -7,7 +7,7 @@ const size_t CUT_OFF = 20;
 
 
 void bubble_sort(int arr[], size_t n) {
-	size_t i, j;
+	int i, j;
 	bool swapped;
 	for (i = 0; i < n - 1; ++i) {
 		swapped = false;
@@ -23,7 +23,7 @@ void bubble_sort(int arr[], size_t n) {
 
 
 void cocktail_sort(int arr[], size_t n) {
-	size_t i, front = 0, rear = n - 1;
+	int i, front = 0, rear = n - 1;
 	bool swapped = true;
 	while (swapped) {
 		swapped = false;
@@ -142,11 +142,16 @@ static void qsort_3(void *base, size_t left, size_t right, size_t size,
 }
 
 
-void quicksort(void *base, size_t num, size_t size, 
+void gneric_quicksort(void *base, size_t num, size_t size, 
 				int (*cmp_func)(const void*, const void*)) {
 	qsort_3(base, 0, num - 1, size, cmp_func);
 	if (CUT_OFF > 0) {
-		insertion_sort(base, num, size, cmp_func);
+		generic_insertion_sort(base, num, size, cmp_func);
 		//binary_insertion_sort(base, num, size, cmp_func);
 	}
+}
+
+
+void quicksort(int arr[], size_t n) {
+	//TODO: ...
 }

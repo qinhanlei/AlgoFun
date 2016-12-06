@@ -24,16 +24,6 @@ int _tmpA[MAX_NUM];
 int _tmpB[MAX_NUM];
 
 
-void print_array(int arr[], size_t n) {
-	size_t i;
-	for (i = 0; i < n; ++i) {
-		//if (i % 5 == 0) puts("");
-		printf("%d \n", arr[i]);
-	}
-	printf("\n");
-}
-
-
 int cmp_int(const void* a, const void* b) {
 	int p = *(int*)a;
 	int q = *(int*)b;
@@ -145,6 +135,7 @@ input:
 		switch (index) {
 		case 99:
 			// the function who will removed.
+			generic_insertion_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 10:
 			bubble_sort(_numbers, _total);
@@ -153,7 +144,7 @@ input:
 			cocktail_sort(_numbers, _total);
 			break;
 		case 12:
-			quicksort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
+			gneric_quicksort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 20:
 			selection_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
@@ -162,7 +153,7 @@ input:
 			puts("\ndoing...\n");
 			break;
 		case 30:
-			insertion_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
+			insertion_sort(_numbers, _total);
 			break;
 		case 31:
 			binary_insertion_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);

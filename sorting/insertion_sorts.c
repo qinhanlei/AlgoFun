@@ -1,39 +1,27 @@
 #include "selection_sorts.h"
 #include "common.h"
 
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <assert.h>
 
 
-void insertion_sort_1(void *base, size_t num, size_t size, 
-				 int (*cmp_func)(const void*, const void*)) {
-	char *ch_base = base;
-	void *a = NULL, *b = NULL;
-	size_t i, j;
-	char *tmp = malloc(size);
-	if (tmp == NULL) return;
-	for (i = 1; i < num; ++i) {
-		a = ch_base + i * size;
-		memcpy(tmp, a, size);
-		for (j = i; j > 0; --j) {
-			b = ch_base + (j - 1) * size;
-			if (cmp_func(tmp, b) < 0) {
-				// move element[j-1] to element[j]
-				memcpy(a, b, size);
-				a = b; // record the old point of element[j-1]
-			} else {
-				break;
-			}
+void insertion_sort(int arr[], size_t n) {
+	int i, j;
+	int tmp;
+	for (i = 1; i < n; ++i) {
+		tmp = arr[i];
+		for (j = i-1; j >= 0 && arr[j] > tmp; --j) {
+			arr[j+1] = arr[j];
 		}
-		if (i != j) memcpy(a, tmp, size);
+		if (i != j) arr[j+1] = tmp;
 	}
-	free(tmp);
 }
 
 
 // try little optimize
-void insertion_sort_2(void *base, size_t num, size_t size, 
+void generic_insertion_sort2(void *base, size_t num, size_t size, 
 				 int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	void *a = NULL, *b = NULL;
@@ -60,7 +48,7 @@ void insertion_sort_2(void *base, size_t num, size_t size,
 
 
 // inspired by C++ STL source code
-void insertion_sort(void *base, size_t num, size_t size, 
+void generic_insertion_sort(void *base, size_t num, size_t size, 
 				 int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL;

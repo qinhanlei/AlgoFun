@@ -1,5 +1,6 @@
 #include "common.h"
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -21,14 +22,6 @@ void int_swap(int *a, int *b) {
 }
 
 
-void shuffle(int arr[], int num) {
-	int i;
-	for (i = 1; i < num; ++i) {
-        int_swap(arr + i, arr + rand()%(i+1));
-	}
-}
-
-
 int bigrand() {
     return RAND_MAX * rand() + rand();
 }
@@ -39,4 +32,22 @@ int randint(int a, int b) {
         return b + bigrand() % (a - b + 1);
     else
         return a + bigrand() % (b - a + 1);
+}
+
+
+void shuffle(int arr[], int num) {
+	int i;
+	for (i = 1; i < num; ++i) {
+        int_swap(arr + i, arr + rand()%(i+1));
+	}
+}
+
+
+void print_array(int arr[], size_t n) {
+	size_t i;
+	for (i = 0; i < n; ++i) {
+		//if (i % 5 == 0) puts("");
+		printf("%d ", arr[i]);
+	}
+	puts("\n");
 }
