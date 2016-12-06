@@ -143,11 +143,15 @@ input:
 
 		time_start = clock();
 		switch (index) {
+		case 99:
+			// the function who will removed.
+			generic_cocktail_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
+			break;
 		case 10:
 			bubble_sort(_numbers, _total);
 			break;
 		case 11:
-			cocktail_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
+			cocktail_sort(_numbers, _total);
 			break;
 		case 12:
 			quicksort(_numbers, _total, sizeof(_numbers[0]), cmp_int);

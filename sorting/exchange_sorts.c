@@ -6,12 +6,12 @@
 const size_t CUT_OFF = 20;
 
 
-void bubble_sort(int arr[], size_t num) {
+void bubble_sort(int arr[], size_t n) {
 	size_t i, j;
 	bool swapped;
-	for (i = 0; i < num - 1; ++i) {
+	for (i = 0; i < n - 1; ++i) {
 		swapped = false;
-		for (j = 0; j < num - 1 - i; ++j) {
+		for (j = 0; j < n - 1 - i; ++j) {
 			if (arr[j] > arr[j+1]) {
 				int_swap(arr+j, arr+j+1);
 				swapped = true;
@@ -22,7 +22,7 @@ void bubble_sort(int arr[], size_t num) {
 }
 
 
-void cocktail_sort(void *base, size_t num, size_t size, 
+void generic_cocktail_sort(void *base, size_t num, size_t size, 
 				   int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL;
@@ -51,6 +51,30 @@ void cocktail_sort(void *base, size_t num, size_t size,
 		++front;
 	}
 }
+
+
+void cocktail_sort(int arr[], size_t n) {
+	size_t i, front = 0, rear = n - 1;
+	bool swapped = true;
+	while (swapped) {
+		swapped = false;
+		for (i = front; i < rear; ++i) {
+			if (arr[i] > arr[i+1]) {
+				int_swap(arr+i, arr+i+1);
+				swapped = true;
+			}
+		}
+		--rear;
+		for (i = rear; i > front; --i) {
+			if (arr[i-1] > arr[i]) {
+				int_swap(arr+i-1, arr+i);
+				swapped = true;
+			}
+		}
+		++front;
+	}
+}
+
 
 
 // the simplest qsort like qsort1 from "programming pearls", and CLRS
