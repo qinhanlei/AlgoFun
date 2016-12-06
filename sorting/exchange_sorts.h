@@ -8,9 +8,6 @@ void bubble_sort(int arr[], size_t n);
 
 
 // a variant of bubble sort (double side bubble)
-// almost no efficiency improvement
-void generic_cocktail_sort(void *base, size_t num, size_t size, 
-				   int (*cmp_func)(const void*, const void*));
 void cocktail_sort(int arr[], size_t n);
 
 

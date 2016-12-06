@@ -22,37 +22,6 @@ void bubble_sort(int arr[], size_t n) {
 }
 
 
-void generic_cocktail_sort(void *base, size_t num, size_t size, 
-				   int (*cmp_func)(const void*, const void*)) {
-	char *ch_base = base;
-	char *a = NULL, *b = NULL;
-	size_t i, front = 0, rear = num - 1;
-	// if no swap, meaning sorted, then interrupt timely
-	char is_swapped = 1;
-	while (is_swapped) {
-		is_swapped = 0;
-		for (i = front; i < rear; ++i) {
-			a = ch_base + i * size;
-			b = a + size;
-			if (cmp_func(b, a) < 0) {
-				generic_swap(a, b, size);
-				is_swapped = 1;
-			}
-		}
-		--rear;
-		for (i = rear; i > front; --i) {
-			b = ch_base + i * size;
-			a = b - size;
-			if (cmp_func(b, a) < 0) {
-				generic_swap(a, b, size);
-				is_swapped = 1;
-			}
-		}
-		++front;
-	}
-}
-
-
 void cocktail_sort(int arr[], size_t n) {
 	size_t i, front = 0, rear = n - 1;
 	bool swapped = true;
