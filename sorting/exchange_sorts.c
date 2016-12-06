@@ -6,7 +6,7 @@
 const size_t CUT_OFF = 20;
 
 
-void bubble_sort(void *base, size_t num, size_t size, 
+void generic_bubble_sort(void *base, size_t num, size_t size, 
 				int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL; // point to adjacent element
@@ -23,6 +23,22 @@ void bubble_sort(void *base, size_t num, size_t size,
 				is_swapped = 1;
 			}
 		}
+	}
+}
+
+
+void bubble_sort(int arr[], size_t num) {
+	size_t i, j;
+	bool swapped;
+	for (i = 0; i < num - 1; ++i) {
+		swapped = false;
+		for (j = 0; j < num - 1 - i; ++j) {
+			if (arr[j] > arr[j+1]) {
+				int_swap(arr+j, arr+j+1);
+				swapped = true;
+			}
+		}
+		if (!swapped) break;
 	}
 }
 

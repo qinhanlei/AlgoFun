@@ -102,6 +102,7 @@ int main(int argc, char *argv[]) {
 		printf("               Sorting (%d integers)\n", _total);
 		puts("-----------------Exchange sorts---------------");
 		puts("              10. bubble_sort");
+		puts("              101. bubble_sort generic");
 		puts("              11. cocktail_sort");
 		puts("              12. quicksort");
 		puts("-----------------Selection sorts--------------");
@@ -122,6 +123,7 @@ int main(int argc, char *argv[]) {
 		puts("-------------------COMMAND--------------------");
 		puts("              0. restore random state.");
 		puts("              1. view all numbers");
+		puts("              6. shuffle numbers");
 		puts("              7. switch auto-restore");
 		puts("              8. re-read data from file");
 		puts("              9. exit");
@@ -143,7 +145,10 @@ input:
 		time_start = clock();
 		switch (index) {
 		case 10:
-			bubble_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
+			bubble_sort(_numbers, _total);
+			break;
+		case 101:
+			generic_bubble_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 11:
 			cocktail_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
@@ -188,6 +193,11 @@ input:
 		case 1:
 			print_array(_numbers, _total);
 			break;
+		case 6:
+			shuffle(_num_init, _total);
+			memcpy(_numbers, _num_init, sizeof(_num_init[0])*_total);
+			printf("\nall numbers has shuffled.\n");
+			break;
 		case 7:
 			auto_restore = !auto_restore;
 			printf("\nauto-restore: %s\n", auto_restore ? "on" : "off");
@@ -206,7 +216,7 @@ input:
 		}
 		time_end = clock();
 
-		if (index > 9 && index <= 90) {
+		if (index > 9) {
 			printf("\ncost time: %lf second.\n", difftime(time_end, time_start)/CLOCKS_PER_SEC);
 			if (cmp_array(_numbers, _num_init, _total) == 0) {
 				if (is_ordered(_numbers, _total)) {
