@@ -6,27 +6,6 @@
 const size_t CUT_OFF = 20;
 
 
-void generic_bubble_sort(void *base, size_t num, size_t size, 
-				int (*cmp_func)(const void*, const void*)) {
-	char *ch_base = base;
-	char *a = NULL, *b = NULL; // point to adjacent element
-	size_t i, j;
-	// if no swap, meaning sorted, then interrupt timely
-	char is_swapped = 1;
-	for (i = 0; i < num - 1 && is_swapped; ++i) {
-		is_swapped = 0;
-		for (j = 0; j < num - 1 - i; ++j) {
-			a = ch_base + j * size;
-			b = a + size;
-			if (cmp_func(b, a) < 0) {
-				generic_swap(a, b, size);
-				is_swapped = 1;
-			}
-		}
-	}
-}
-
-
 void bubble_sort(int arr[], size_t num) {
 	size_t i, j;
 	bool swapped;

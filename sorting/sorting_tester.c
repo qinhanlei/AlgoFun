@@ -102,7 +102,6 @@ int main(int argc, char *argv[]) {
 		printf("               Sorting (%d integers)\n", _total);
 		puts("-----------------Exchange sorts---------------");
 		puts("              10. bubble_sort");
-		puts("              101. bubble_sort generic");
 		puts("              11. cocktail_sort");
 		puts("              12. quicksort");
 		puts("-----------------Selection sorts--------------");
@@ -146,9 +145,6 @@ input:
 		switch (index) {
 		case 10:
 			bubble_sort(_numbers, _total);
-			break;
-		case 101:
-			generic_bubble_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 11:
 			cocktail_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);

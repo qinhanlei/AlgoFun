@@ -4,8 +4,6 @@
 #include <stddef.h>
 
 
-void generic_bubble_sort(void *base, size_t num, size_t size, 
-						 int (*cmp_func)(const void*, const void*));
 void bubble_sort(int arr[], size_t);
 
 
