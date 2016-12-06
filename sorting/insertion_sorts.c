@@ -20,30 +20,18 @@ void insertion_sort(int arr[], size_t n) {
 }
 
 
-// try little optimize
-void generic_insertion_sort2(void *base, size_t num, size_t size, 
-				 int (*cmp_func)(const void*, const void*)) {
-	char *ch_base = base;
-	void *a = NULL, *b = NULL;
-	size_t i, j;
-	char *tmp = malloc(size);
-	if (tmp == NULL) return;
-	for (i = 1; i < num; ++i) {
-		// store the [i]th element
-		memcpy(tmp, ch_base + i * size, size);
-		for (j = i; j > 0; --j) {
-			b = ch_base + (j - 1) * size;
-			if (cmp_func(tmp, b) >= 0) break;
-		}
+void insertion_sort_1(int arr[], size_t n) {
+	int i, j;
+	int tmp;
+	for (i = 1; i < n; ++i) {
+		tmp = arr[i];
+		for (j = i; j > 0 && arr[j-1] > tmp; --j)
+			;
 		if (i != j) {
-			a = ch_base + j * size;
-			b = ch_base + (j + 1) * size;
-			// move just once, may be got better efficiency.
-			memmove(b, a, (i - j) * size);
-			memcpy(a, tmp, size);
+			memmove(arr+j+1, arr+j, (i-j) * sizeof(int));
+			arr[j] = tmp;
 		}
 	}
-	free(tmp);
 }
 
 
@@ -85,6 +73,11 @@ void generic_insertion_sort(void *base, size_t num, size_t size,
 		}
 	}
 	free(tmp);
+}
+
+
+void insertion_sort_2(int arr[], size_t n) {
+	//TODO: ...
 }
 
 

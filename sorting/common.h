@@ -23,6 +23,7 @@ int randint(int a, int b);
 
 void shuffle(int arr[], int num);
 void print_array(int arr[], size_t n);
+bool is_ordered(int arr[], size_t n);
 
 
 #endif //_ALGOFUN_COMMON_H

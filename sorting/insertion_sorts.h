@@ -6,7 +6,12 @@
 
 void generic_insertion_sort(void *base, size_t num, size_t size, 
 				 int (*cmp_func)(const void*, const void*));
+
+// standard insertion sort
 void insertion_sort(int arr[], size_t n);
+// optimize tries
+void insertion_sort_1(int arr[], size_t n);
+void insertion_sort_2(int arr[], size_t n);
 
 
 // binary optimized

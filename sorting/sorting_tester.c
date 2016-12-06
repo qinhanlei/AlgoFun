@@ -42,15 +42,6 @@ int cmp_array(const int arrA[], const int arrB[], size_t n) {
 }
 
 
-int is_ordered(int arr[], size_t n) {
-	size_t i;
-	for (i = 0; i < n - 1; ++i)
-		if (arr[i] > arr[i + 1])
-			return 0;
-	return 1;
-}
-
-
 int read_data() {
 	int tmp;
 	static char filename[] = "./random_num.txt";
@@ -98,10 +89,13 @@ int main(int argc, char *argv[]) {
 		puts("              20. selection_sort");
 		puts("              21. heapsort");
 		puts("-----------------Insertion sorts--------------");
-		puts("              30. insertion_sort");
+		puts("              300. insertion_sort");
+		puts("              301. insertion_sort optimized I");
+		puts("              302. insertion_sort optimized II");
 		puts("              31. binary_insertion_sort");
-		puts("              32. binary_shellsort");
-		puts("              33. shellsort");
+		puts("              321. shellsort 1");
+		puts("              322. shellsort 2");
+		puts("              33. binary_shellsort");
 		puts("-----------------Merge sorts------------------");
 		puts("              40. merge_sort");
 		puts("-----------------Distribution sorts-----------");
@@ -152,17 +146,26 @@ input:
 		case 21:
 			puts("\ndoing...\n");
 			break;
-		case 30:
+		case 300:
 			insertion_sort(_numbers, _total);
+			break;
+		case 301:
+			insertion_sort_1(_numbers, _total);
+			break;
+		case 302:
+			insertion_sort_2(_numbers, _total);
 			break;
 		case 31:
 			binary_insertion_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
-		case 32:
-			binary_shellsort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
+		case 321:
+			shellsort_1(_numbers, _total, sizeof(_numbers[0]), cmp_int);
+			break;
+		case 322:
+			shellsort_2(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 33:
-			shellsort_2(_numbers, _total, sizeof(_numbers[0]), cmp_int);
+			binary_shellsort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 40:
 			merge_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);

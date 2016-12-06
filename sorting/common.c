@@ -51,3 +51,12 @@ void print_array(int arr[], size_t n) {
 	}
 	puts("\n");
 }
+
+
+bool is_ordered(int arr[], size_t n) {
+	size_t i;
+	for (i = 0; i < n - 1; ++i)
+		if (arr[i] > arr[i + 1])
+			return false;
+	return true;
+}
