@@ -4,9 +4,6 @@
 #include <stddef.h>
 
 
-void generic_insertion_sort(void *base, size_t num, size_t size, 
-				 int (*cmp_func)(const void*, const void*));
-
 // standard insertion sort
 void insertion_sort(int arr[], size_t n);
 // optimize tries
@@ -25,8 +22,6 @@ void binary_insertion_sort(void *base, size_t num, size_t size,
 // cause too many swap operate like bubble sort.
 void shellsort_1(void *base, size_t num, size_t size, 
 				  int (*cmp_func)(const void*, const void*));
-
-
 // use simple inser sort
 void shellsort_2(void *base, size_t num, size_t size, 
 				int (*cmp_func)(const void*, const void*));

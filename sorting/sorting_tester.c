@@ -129,7 +129,6 @@ input:
 		switch (index) {
 		case 99:
 			// the function who will removed.
-			generic_insertion_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 10:
 			bubble_sort(_numbers, _total);
