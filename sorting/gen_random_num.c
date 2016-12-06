@@ -6,14 +6,6 @@
 #include "common.h"
 
 
-void shuffle(int arr[], int num) {
-	int i;
-	for (i = 1; i < num; ++i) {
-        generic_swap(arr+i, arr + rand() % (i+1), sizeof(int));
-	}
-}
-
-
 int main(int argc, char *argv[]) {
     int i;
     int num = 0;

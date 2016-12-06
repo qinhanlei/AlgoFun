@@ -14,6 +14,21 @@ void generic_swap(void *a, void *b, int size) {
 }
 
 
+void int_swap(int *a, int *b) {
+	int tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+
+void shuffle(int arr[], int num) {
+	int i;
+	for (i = 1; i < num; ++i) {
+        int_swap(arr + i, arr + rand()%(i+1));
+	}
+}
+
+
 int bigrand() {
     return RAND_MAX * rand() + rand();
 }
