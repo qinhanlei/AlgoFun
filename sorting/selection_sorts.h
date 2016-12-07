@@ -4,8 +4,6 @@
 #include <stddef.h>
 
 
-void generic_selection_sort(void *base, size_t num, size_t size,
-				 int (*cmp_func)(const void*, const void*));
 void selection_sort(int arr[], int n);
 
 
