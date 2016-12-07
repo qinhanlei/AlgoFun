@@ -124,6 +124,7 @@ input:	printf("AF> ");
 		switch (index) {
 		case 99:
 			// the function who will removed.
+			generic_selection_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 10:
 			bubble_sort(_numbers, _total);
@@ -135,7 +136,7 @@ input:	printf("AF> ");
 			gneric_quicksort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 20:
-			selection_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
+			selection_sort(_numbers, _total);
 			break;
 		case 21:
 			puts("\ndoing...\n");

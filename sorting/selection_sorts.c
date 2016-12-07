@@ -3,7 +3,7 @@
 #include "common.h"
 
 
-void selection_sort(void *base, size_t num, size_t size,
+void generic_selection_sort(void *base, size_t num, size_t size,
 				 int (*com_func)(const void*, const void*)) {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL;
@@ -17,6 +17,20 @@ void selection_sort(void *base, size_t num, size_t size,
 		}
 		b = ch_base + i * size;
 		if (a != b) generic_swap(a, b, size);
+	}
+}
+
+
+void selection_sort(int arr[], size_t n) {
+	size_t i, j;
+	for (i = 0; i < n; ++i) {
+		int k = i;
+		for (j = i + 1; j < n; ++j) {
+			if (arr[j] < arr[k]) {
+				k = j;
+			}
+		}
+		if (k != i) int_swap(arr+k, arr+i);
 	}
 }
 
