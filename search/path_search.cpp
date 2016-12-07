@@ -129,7 +129,7 @@ int DFS(Position top) {
     if (top == _pgoal) {
 		return top.step;
 	}
-	
+
     _closed[top.x][top.y] = true;
     print_maze();
     for (int i = 0; i < DIR_NUM; ++i) {
@@ -146,7 +146,7 @@ int DFS(Position top) {
         // backtracking
         _closed[tx][ty] = false;
     }
-	
+
     return -1;
 }
 
@@ -155,7 +155,7 @@ int DFS_stack() {
 	stack<Position> open_set;
 	_extend[_pstart.x][_pstart.y] = true;
 	_pstart.step = 0;
-	
+
 	open_set.push(_pstart);
 	while (!open_set.empty()) {
 		Position top = open_set.top();
@@ -177,7 +177,7 @@ int DFS_stack() {
 			open_set.push(tmp);
 		}
 	}
-	
+
 	return -1;
 }
 
@@ -186,7 +186,7 @@ int BFS() {
 	queue<Position> open_set;
 	_extend[_pstart.x][_pstart.y] = true;
 	_pstart.step = 0;
-	
+
 	open_set.push(_pstart);
 	while (!open_set.empty()) {
 		Position top = open_set.front();
@@ -208,18 +208,18 @@ int BFS() {
 			open_set.push(tmp);
 		}
 	}
-	
+
 	return -1;
 }
 
 
 int Astar() {
 	priority_queue<Position> open_set;
-	
+
 	_extend[_pstart.x][_pstart.y] = true;
 	_pstart.step = 0;
 	_pstart.heuristic(_pgoal);
-	
+
 	open_set.push(_pstart);
 	while (!open_set.empty()) {
 		Position top = open_set.top();
@@ -242,7 +242,7 @@ int Astar() {
 			open_set.push(tmp);
 		}
 	}
-	
+
 	return -1;
 }
 
@@ -251,7 +251,7 @@ int IDSearch(Position top, int depth) {
     if (top == _pgoal) {
 		return top.step;
 	}
-	
+
     _closed[top.x][top.y] = true;
 	print_maze();
     for (int i = 0; i < DIR_NUM; ++i) {
@@ -272,7 +272,7 @@ int IDSearch(Position top, int depth) {
 		}
         // _closed[tx][ty] = false;
     }
-	
+
     return -1;
 }
 
@@ -296,7 +296,7 @@ void init_maze_map() {
 		printf("open file '%s' error!\n", filename);
 		exit(-1);
 	}
-	
+
 	fscanf(fp, "%d,%d", &_maze_col, &_maze_row);
 	memset(_maze_map, 0, sizeof(_maze_map));
 	for (int i = 0; i < _maze_row; ++i) {
@@ -340,7 +340,7 @@ void reset_maze_map() {
 
 int main(int argc, char *argv[]) {
 	init_maze_map();
-	
+
     do {
 menu:
 		puts("");
@@ -371,7 +371,7 @@ input:
         int index = 0;
 		sscanf(input_str, "%d", &index);
 		printf("\nyour choose index:%d\n", index);
-        
+
         prepare();
         clock_t time_start = clock();
         int result = 0;
@@ -409,7 +409,7 @@ input:
 			puts("This maze have no solution");
 			continue;
 		}
-		
+
 		printf("The path need %d steps \n", result);
 		Position tmp = _pgoal;
 		while (true) {
@@ -421,7 +421,7 @@ input:
 		}
 		print_maze();
 	} while (true);
-	
+
 over:
 	return 0;
 }

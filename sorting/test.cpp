@@ -241,7 +241,7 @@ input:	printf("AF> ");
 			}
 		}
 	} while (1);
-	
+
 over:
 	return 0;
 }

@@ -12,11 +12,11 @@ int main(int argc, char *argv[]) {
     char filename[] = "./random_num.txt";
     int* numbers = NULL;
     FILE* fp = NULL;
-	
+
     srand((unsigned)time(NULL));
 	printf("RAND_MAX:%d\n", RAND_MAX);
     printf("How many random numbers you want in '%s': ", filename);
-	
+
     scanf("%d", &num);
     fp = fopen(filename, "w");
     if (!fp) {
@@ -29,12 +29,12 @@ int main(int argc, char *argv[]) {
         numbers[i] = i;
     }
 	shuffle(numbers, num);
-    
+
 	for (i = 0; i < num; ++i) {
 		fprintf(fp, "%d\n", numbers[i]);
 	}
     fflush(fp);
     fclose(fp);
-	
+
     return 0;
 }

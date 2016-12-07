@@ -6,7 +6,7 @@
 
 
 static void _merge(void *tmp, void *base,
-				  size_t left, size_t mid, size_t right, size_t size, 
+				  size_t left, size_t mid, size_t right, size_t size,
 				  int (*cmp_func)(const void*, const void*)) {
 	size_t i = left, j = mid + 1, k = left;
 	char *ch_base = base, *ch_tmp = tmp;
@@ -39,12 +39,12 @@ static void _merge(void *tmp, void *base,
 		b += size;
 		c += size;
 	}
-	memcpy(ch_base + left * size, ch_tmp + left * size, 
+	memcpy(ch_base + left * size, ch_tmp + left * size,
 		size * (right - left + 1));
 }
 
 
-static void _merge_sort(void *tmp, void *base, 
+static void _merge_sort(void *tmp, void *base,
 						size_t left, size_t right, size_t size,
 						int (*cmp_func)(const void*, const void*)) {
 	if (left < right) {
@@ -56,11 +56,10 @@ static void _merge_sort(void *tmp, void *base,
 }
 
 
-void merge_sort(void *base, size_t num, size_t size, 
+void merge_sort(void *base, size_t num, size_t size,
 			   int (*cmp_func)(const void*, const void*)) {
 	char *tmp = malloc(num * size);
 	if (tmp == NULL) return; // Unhandled exception
 	_merge_sort(tmp, base, 0, num - 1, size, cmp_func);
 	free(tmp);
 }
-

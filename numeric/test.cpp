@@ -10,7 +10,7 @@ void test_bigint() {
     big_integer x = 42;
 	big_integer y = 73;
 	string ch;
-    
+
 	cout << "input expression like '1 + 2' then Enter.\n"
 		<< "if x==42 and  y==73 to exit.\n"
 		<< "notice: need spaces in expression.\n";
@@ -38,9 +38,9 @@ void test_bigint() {
 void test_factorial() {
     int N;
 	big_integer x = 42;
-	
+
 	cout << "input number N than calculate N!\n"
-		<< "notice: the digit of result must lessthan " 
+		<< "notice: the digit of result must lessthan "
 		<< big_integer::limit_digits() << endl;
 
     while (cin >> N) {
@@ -50,7 +50,7 @@ void test_factorial() {
             x = x * i;
         clock_t et = clock();
 		cout << x << endl;
-		cout << "cost time " 
+		cout << "cost time "
 			<< (double)(et - st) / CLOCKS_PER_SEC
 			<< "s." << endl;
     }
@@ -59,8 +59,8 @@ void test_factorial() {
 
 int main(int argc, char *argv[]) {
     cout << "Hello World!" << endl;
-    
+
     test_factorial();
-    
+
     return 0;
 }
