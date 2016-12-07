@@ -1,8 +1,11 @@
 
-#include <time.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <ctime>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+
+#include <algorithm>
+using namespace std;
 
 #include "common.h"
 #include "sorts.h"
@@ -88,6 +91,11 @@ void show_menu() {
 	puts("              51. radix_sort");
 	puts("-----------------Hybrid sorts-----------------");
 	puts("              60. introsort");
+	puts("------------ Standard library sorts-----------");
+	puts("              90. qsort C std");
+	puts("              91. sort C++ STL");
+	puts("              92. stable_sort C++ STL");
+	puts("              93. heap_sort C++ STL");
 	puts("******************* COMMAND *******************");
 	puts("              0. show menu");
 	puts("              1. view all numbers");
@@ -169,6 +177,19 @@ input:	printf("AF> ");
 			break;
 		case 60:
 			puts("\ndoing...\n");
+			break;
+		case 90:
+			qsort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
+			break;
+		case 91:
+			sort(_numbers, _numbers + _total);
+			break;
+		case 92:
+			stable_sort(_numbers, _numbers + _total);
+			break;
+		case 93:
+			make_heap(_numbers, _numbers + _total);
+			sort_heap(_numbers, _numbers + _total);
 			break;
 		case 0:
 			show_menu();
