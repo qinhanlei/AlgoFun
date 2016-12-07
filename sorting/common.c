@@ -46,7 +46,7 @@ int randint(int a, int b) {
 
 void shuffle(int arr[], int n) {
 	int i;
-	for (i = 1; i < num; ++i) {
+	for (i = 1; i < n; ++i) {
         int_swap(arr + i, arr + rand()%(i+1));
 	}
 }
