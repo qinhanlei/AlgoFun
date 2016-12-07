@@ -5,9 +5,12 @@
 
 
 // introspective sort, need heap sort
-// PS: most C++ STL implement version's sort() is like this.
-void introsort(void *base, size_t num, size_t size, 
-				 int (*cmp_func)(const void*, const void*));
+// the way of most C++ STL sort implement
+void introsort(int arr[], size_t n);
+
+
+// the way of Python sort implement
+void timsort(int arr[], size_t n);
 
 
 #endif //_ALGOFUN_HYBRID_SORTS_H
