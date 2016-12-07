@@ -27,5 +27,4 @@ TODO: ...
 
 ## How to run
 - Open console or terminal
-- First `sh gennum.sh`
-- Then `sh ctester.sh` or `sh cpptester.sh`
+- `sh ctester.sh` or `sh cpptester.sh`
