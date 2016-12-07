@@ -5,13 +5,7 @@
 #include <string.h>
 
 #include "common.h"
-#include "distribution_sorts.h"
-#include "exchange_sorts.h"
-#include "hybrid_sorts.h"
-#include "insertion_sorts.h"
-#include "merge_sorts.h"
-#include "selection_sorts.h"
-
+#include "sorts.h"
 
 #define MAX_INPUT 64
 #define MAX_NUM 1000000
