@@ -40,7 +40,7 @@ void test_factorial() {
 	big_integer x = 42;
 	
 	cout << "input number N than calculate N!\n"
-		<< "notice: the digit of result must lessthan " 
+		<< "notice: the digit of result must lessthan "
 		<< big_integer::limit_digits() << endl;
 
     while (cin >> N) {
@@ -50,7 +50,7 @@ void test_factorial() {
             x = x * i;
         clock_t et = clock();
 		cout << x << endl;
-		cout << "cost time " 
+		cout << "cost time "
 			<< (double)(et - st) / CLOCKS_PER_SEC
 			<< "s." << endl;
     }

@@ -8,4 +8,3 @@ I borrow some idea from https://github.com/chris-vaszauskas/bigint, especial in 
 A test scaffold to calculate N!, use `factorial.py` to check correctness.
 
 It may bugs and not efficient enough, will optimize it in future.
-

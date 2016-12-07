@@ -11,7 +11,7 @@ void bubble_sort(int arr[], size_t n);
 void cocktail_sort(int arr[], size_t n);
 
 
-void gneric_quicksort(void *base, size_t num, size_t size, 
+void gneric_quicksort(void *base, size_t num, size_t size,
 				int (*cmp_func)(const void*, const void*));
 void quicksort(int arr[], size_t n);
 

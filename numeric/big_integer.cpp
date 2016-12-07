@@ -124,9 +124,9 @@ bool big_integer::operator<(const big_integer& a) const {
 	if (first_index_ > a.first_index_) return true;
 	if (first_index_ < a.first_index_) return false;
 	for (int i = first_index_; i < MAX_ELEMENT_NUM; ++i) {
-		if (data_[i] < a.data_[i]) 
+		if (data_[i] < a.data_[i])
 			return true;
-		else if (data_[i] > a.data_[i]) 
+		else if (data_[i] > a.data_[i])
 			return false;
 	}
 	return false;
@@ -322,7 +322,7 @@ big_integer big_integer::Add(const big_integer& a) const {
 	}
 	if (sum.data_[i] == 0)
 		sum.first_index_ = low;
-	else 
+	else
 		sum.first_index_ = low - 1;
 	return sum;
 }
@@ -331,8 +331,8 @@ big_integer big_integer::Add(const big_integer& a) const {
 big_integer big_integer::Minus(const big_integer& a) const {
 	int i;
 	big_integer ret;
-	// bigger of absolute value 
-	const big_integer& bigger = (first_index_ < a.first_index_ || 
+	// bigger of absolute value
+	const big_integer& bigger = (first_index_ < a.first_index_ ||
 		data_[first_index_] > a.data_[a.first_index_]) ? *this : a;
 	const big_integer& smaller = (&bigger == this) ? a : *this;
 	for (i = MAX_ELEMENT_NUM - 1; i >= bigger.first_index_; --i) {
@@ -376,7 +376,7 @@ std::ostream& operator<<(std::ostream& o_stream, const big_integer& a) {
 std::istream& operator>>(std::istream& i_stream, big_integer& a) {
 	char ch;
 	std::string tmp;
-	// skip: single space, tab, vertical tab, 
+	// skip: single space, tab, vertical tab,
 	// form feed, carriage return, or newline.
 	i_stream.get(ch);
 	while (isspace(ch)) {
@@ -394,4 +394,3 @@ std::istream& operator>>(std::istream& i_stream, big_integer& a) {
 	a = tmp;
 	return i_stream;
 }
-
