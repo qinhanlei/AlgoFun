@@ -44,7 +44,7 @@ int randint(int a, int b) {
 }
 
 
-void shuffle(int arr[], int num) {
+void shuffle(int arr[], int n) {
 	int i;
 	for (i = 1; i < num; ++i) {
         int_swap(arr + i, arr + rand()%(i+1));
@@ -52,8 +52,8 @@ void shuffle(int arr[], int num) {
 }
 
 
-void print_array(int arr[], size_t n) {
-	size_t i;
+void print_array(int arr[], int n) {
+	int i;
 	for (i = 0; i < n; ++i) {
 		printf("%d ", arr[i]);
 	}
@@ -61,8 +61,8 @@ void print_array(int arr[], size_t n) {
 }
 
 
-bool is_ordered(int arr[], size_t n) {
-	size_t i;
+bool is_ordered(int arr[], int n) {
+	int i;
 	for (i = 0; i < n - 1; ++i)
 		if (arr[i] > arr[i + 1])
 			return false;

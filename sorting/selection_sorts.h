@@ -6,10 +6,10 @@
 
 void generic_selection_sort(void *base, size_t num, size_t size,
 				 int (*cmp_func)(const void*, const void*));
-void selection_sort(int arr[], size_t n);
+void selection_sort(int arr[], int n);
 
 
-void heapsort_(int arr[], size_t n);
+void heapsort_(int arr[], int n);
 
 
 #endif //_ALGOFUN_SELECTION_SORTS_H

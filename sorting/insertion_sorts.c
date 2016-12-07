@@ -7,9 +7,8 @@
 #include <assert.h>
 
 
-void insertion_sort(int arr[], size_t n) {
-	int i, j;
-	int tmp;
+void insertion_sort(int arr[], int n) {
+	int i, j, tmp;
 	for (i = 1; i < n; ++i) {
 		tmp = arr[i];
 		for (j = i-1; j >= 0 && arr[j] > tmp; --j) {
@@ -20,9 +19,8 @@ void insertion_sort(int arr[], size_t n) {
 }
 
 
-void insertion_sort_1(int arr[], size_t n) {
-	int i, j;
-	int tmp;
+void insertion_sort_1(int arr[], int n) {
+	int i, j, tmp;
 	for (i = 1; i < n; ++i) {
 		tmp = arr[i];
 		for (j = i; j > 0 && arr[j-1] > tmp; --j)
@@ -36,9 +34,8 @@ void insertion_sort_1(int arr[], size_t n) {
 
 
 // inspired by C++ STL source code
-void insertion_sort_2(int arr[], size_t n) {
-	int i, j;
-	int tmp;
+void insertion_sort_2(int arr[], int n) {
+	int i, j, tmp;
 	for (i = 1; i < n; ++i) {
 		tmp = arr[i];
 		if (tmp < arr[0]) {

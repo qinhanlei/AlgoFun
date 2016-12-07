@@ -5,10 +5,10 @@
 
 
 // standard insertion sort
-void insertion_sort(int arr[], size_t n);
+void insertion_sort(int arr[], int n);
 // optimize tries
-void insertion_sort_1(int arr[], size_t n);
-void insertion_sort_2(int arr[], size_t n);
+void insertion_sort_1(int arr[], int n);
+void insertion_sort_2(int arr[], int n);
 
 
 // binary optimized

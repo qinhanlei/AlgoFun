@@ -8,10 +8,10 @@
 #include <stdlib.h>
 #include <assert.h>
 
-const size_t CUT_OFF = 20;
+const int CUT_OFF = 20;
 
 
-void bubble_sort(int arr[], size_t n) {
+void bubble_sort(int arr[], int n) {
 	int i, j;
 	bool swapped;
 	for (i = 0; i < n - 1; ++i) {
@@ -27,7 +27,7 @@ void bubble_sort(int arr[], size_t n) {
 }
 
 
-void cocktail_sort(int arr[], size_t n) {
+void cocktail_sort(int arr[], int n) {
 	int i, front = 0, rear = n - 1;
 	bool swapped = true;
 	while (swapped) {
@@ -186,6 +186,6 @@ void gneric_quicksort(void *base, size_t num, size_t size,
 }
 
 
-void quicksort(int arr[], size_t n) {
+void quicksort(int arr[], int n) {
 	//TODO: ...
 }

@@ -2,11 +2,11 @@
 #include "common.h"
 
 
-void introsort(int arr[], size_t n) {
+void introsort(int arr[], int n) {
 	//TODO: ...
 }
 
 
-void timsort(int arr[], size_t n) {
+void timsort(int arr[], int n) {
 	//TODO: ...
 }

@@ -22,7 +22,7 @@ int _tmpB[MAX_NUM];
 int _auto_restore = 1;
 
 
-int cmp_array(const int arrA[], const int arrB[], size_t n) {
+int cmp_array(const int arrA[], const int arrB[], int n) {
 	memcpy(_tmpA, arrA, sizeof(arrA[0]) * n);
 	memcpy(_tmpB, arrB, sizeof(arrB[0]) * n);
 	qsort(_tmpA, n, sizeof(_tmpA[0]), cmp_int);

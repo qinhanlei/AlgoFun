@@ -26,9 +26,9 @@ int bigrand();
 int randint(int a, int b);
 
 
-void shuffle(int arr[], int num);
-void print_array(int arr[], size_t n);
-bool is_ordered(int arr[], size_t n);
+void shuffle(int arr[], int n);
+void print_array(int arr[], int n);
+bool is_ordered(int arr[], int n);
 
 
 #ifdef __cplusplus

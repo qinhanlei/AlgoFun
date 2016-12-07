@@ -6,11 +6,11 @@
 
 // introspective sort, need heap sort
 // the way of most C++ STL sort implement
-void introsort(int arr[], size_t n);
+void introsort(int arr[], int n);
 
 
 // the way of Python sort implement
-void timsort(int arr[], size_t n);
+void timsort(int arr[], int n);
 
 
 #endif //_ALGOFUN_HYBRID_SORTS_H

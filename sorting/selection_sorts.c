@@ -21,10 +21,10 @@ void generic_selection_sort(void *base, size_t num, size_t size,
 }
 
 
-void selection_sort(int arr[], size_t n) {
-	size_t i, j;
+void selection_sort(int arr[], int n) {
+	int i, j, k;
 	for (i = 0; i < n; ++i) {
-		int k = i;
+		k = i;
 		for (j = i + 1; j < n; ++j) {
 			if (arr[j] < arr[k]) {
 				k = j;
@@ -35,6 +35,6 @@ void selection_sort(int arr[], size_t n) {
 }
 
 
-void heapsort_(int arr[], size_t n) {
+void heapsort_(int arr[], int n) {
 	//TODO: ...
 }
