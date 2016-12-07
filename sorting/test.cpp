@@ -77,13 +77,13 @@ void show_menu() {
 	puts("	20. selection_sort");
 	puts("	21. heapsort");
 	puts("- Insertion sorts");
-	puts("	300. insertion_sort");
-	puts("	301. insertion_sort optimized I");
-	puts("	302. insertion_sort optimized II");
-	puts("	31. binary_insertion_sort");
-	puts("	321. shellsort 1");
-	puts("	322. shellsort 2");
-	puts("	33. binary_shellsort");
+	puts("	30. insertion_sort");
+	puts("	31. insertion_sort optimized I");
+	puts("	32. insertion_sort optimized II");
+	puts("	33. binary_insertion_sort");
+	puts("	34. shellsort 1");
+	puts("	35. shellsort 2");
+	puts("	36. binary_shellsort");
 	puts("- Merge sorts");
 	puts("	40. merge_sort");
 	puts("- Distribution sorts");
@@ -141,25 +141,25 @@ input:	printf("AF> ");
 		case 21:
 			puts("\ndoing...\n");
 			break;
-		case 300:
+		case 30:
 			insertion_sort(_numbers, _total);
 			break;
-		case 301:
+		case 31:
 			insertion_sort_1(_numbers, _total);
 			break;
-		case 302:
+		case 32:
 			insertion_sort_2(_numbers, _total);
 			break;
-		case 31:
+		case 33:
 			binary_insertion_sort(_numbers, _total);
 			break;
-		case 321:
+		case 34:
 			shellsort_1(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
-		case 322:
+		case 35:
 			shellsort_2(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
-		case 33:
+		case 36:
 			binary_shellsort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 40:
