@@ -34,7 +34,7 @@ public:
 	big_integer operator+(const big_integer&) const;
 	big_integer operator-(const big_integer&) const;
 	big_integer operator*(const big_integer&) const;
-	big_integer operator/(const big_integer&) const; //TODO: improve this
+	big_integer operator/(const big_integer&) const; //TODO: to improvement 
 	big_integer operator%(const big_integer&) const;
 	// exponentiate
 	big_integer operator^(big_integer) const;
@@ -44,7 +44,7 @@ public:
 	big_integer& operator*=(const big_integer&);
 	big_integer& operator/=(const big_integer&);
 	big_integer& operator%=(const big_integer&);
-
+	
 	big_integer& operator++();
 	big_integer operator++(int);
 	big_integer& operator--();
@@ -74,7 +74,7 @@ private:
 	static const int MAX_ELEMENT_NUM = 10000; //TODO: not flexible enough
 	// maximum value of individual element
 	static const int MAX_ELEMENT_VALUE;
-
+	
 	// first valid number index
 	int first_index_;
 	// signed

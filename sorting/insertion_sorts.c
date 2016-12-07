@@ -54,7 +54,7 @@ void insertion_sort_2(int arr[], size_t n) {
 }
 
 
-void binary_insertion_sort(void *base, size_t num, size_t size,
+void binary_insertion_sort(void *base, size_t num, size_t size, 
 						int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL;
@@ -64,7 +64,7 @@ void binary_insertion_sort(void *base, size_t num, size_t size,
 	for (i = 1; i < num; ++i) {
 		// store the [i]th element
 		memcpy(tmp, ch_base + i * size, size);
-		if (cmp_func(tmp, ch_base) < 0) {
+		if (cmp_func(tmp, ch_base) < 0) { 
 			// less than current minimum, move at once.
 			memmove(ch_base + size, ch_base, i * size);
 			memcpy(ch_base, tmp, size);
@@ -87,7 +87,7 @@ void binary_insertion_sort(void *base, size_t num, size_t size,
 }
 
 
-void shellsort_1(void *base, size_t num, size_t size,
+void shellsort_1(void *base, size_t num, size_t size, 
 				  int (*cmp_func)(const void*, const void*))
 {
 	char *ch_base = base;
@@ -109,7 +109,7 @@ void shellsort_1(void *base, size_t num, size_t size,
 }
 
 
-void shellsort_2(void *base, size_t num, size_t size,
+void shellsort_2(void *base, size_t num, size_t size, 
 				int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL;
@@ -136,7 +136,7 @@ void shellsort_2(void *base, size_t num, size_t size,
 }
 
 
-void binary_shellsort(void *base, size_t num, size_t size,
+void binary_shellsort(void *base, size_t num, size_t size, 
 					   int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL;
@@ -165,7 +165,7 @@ void binary_shellsort(void *base, size_t num, size_t size,
 				memcpy(b, b - gap * size, size);
 				b -= gap * size;
 			}
-			if (b != ch_base + i * size)
+			if (b != ch_base + i * size) 
 				memcpy(b + gap * size, tmp, size);//*/
 			a = ch_base + i * size;
 			for (j = i - gap; j >= left; j -= gap) {

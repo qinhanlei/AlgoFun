@@ -4,7 +4,7 @@
 #include <stddef.h>
 
 
-void selection_sort(void *base, size_t num, size_t size,
+void selection_sort(void *base, size_t num, size_t size, 
 				 int (*cmp_func)(const void*, const void*));
 
 

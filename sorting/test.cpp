@@ -10,8 +10,7 @@ using namespace std;
 #include "common.h"
 #include "sorts.h"
 
-#define MAX_INPUT 64
-#define MAX_NUM 1000000
+const int MAX_NUM = 1000000;
 
 int _total = 20000;
 int _num_init[MAX_NUM] = {0};
@@ -112,9 +111,6 @@ void show_menu() {
 int main(int argc, char *argv[]) {
 	int i;
 	int index;
-	int input_len = 0;
-	char input_str[MAX_INPUT] = {0};
-
 	clock_t time_start, time_end;
 
 	init_data();
@@ -245,7 +241,7 @@ input:	printf("AF> ");
 			}
 		}
 	} while (1);
-
+	
 over:
 	return 0;
 }

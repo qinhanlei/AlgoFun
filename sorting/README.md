@@ -2,7 +2,7 @@
 
 ## Generic sort implements (\***BAD CHOICE**\* deprecated)
 
-At first I want use C++ create a generic sorting lib, but STL works well and I am inexpertness at C++ template programming.
+At first I want use C++ create a generic sorting lib, but STL works well and I am inexpertness at C++ template programming. 
 
 So I decide use C do some thing I have never done.  
 
