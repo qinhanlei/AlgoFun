@@ -34,7 +34,7 @@ public:
 	big_integer operator+(const big_integer&) const;
 	big_integer operator-(const big_integer&) const;
 	big_integer operator*(const big_integer&) const;
-	big_integer operator/(const big_integer&) const; //TODO: to improvement
+	big_integer operator/(const big_integer&) const; //TODO: improve this
 	big_integer operator%(const big_integer&) const;
 	// exponentiate
 	big_integer operator^(big_integer) const;

@@ -306,7 +306,6 @@ void big_integer::print() {
 	printf("%d", data_[first_index_]);
 	for (int i = first_index_ + 1; i < MAX_ELEMENT_NUM; ++i)
 		printf(str, data_[i]);
-	//puts("");
 }
 
 
@@ -364,7 +363,6 @@ std::ostream& operator<<(std::ostream& o_stream, const big_integer& a) {
 	}
 	for (int i = a.first_index_; i < a.MAX_ELEMENT_NUM; ++i) {
 		if (i != a.first_index_) {
-			// format output
 			o_stream << std::setw(big_integer::ELEMENT_DIGIT) << std::setfill('0');
 		}
 		o_stream << a.data_[i];
@@ -377,7 +375,7 @@ std::istream& operator>>(std::istream& i_stream, big_integer& a) {
 	char ch;
 	std::string tmp;
 	// skip: single space, tab, vertical tab,
-	// form feed, carriage return, or newline.
+	//		form feed, carriage return, or newline.
 	i_stream.get(ch);
 	while (isspace(ch)) {
 		i_stream.get(ch);
