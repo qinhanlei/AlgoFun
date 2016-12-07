@@ -12,8 +12,9 @@ void insertion_sort_2(int arr[], int n);
 
 
 // binary optimized
-void binary_insertion_sort(void *base, size_t num, size_t size,
+void generic_binary_insertion_sort(void *base, size_t num, size_t size,
 						int (*cmp_func)(const void*, const void*));
+void binary_insertion_sort(int arr[], int n);
 
 
 // simple implement

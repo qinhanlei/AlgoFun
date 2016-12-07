@@ -10,6 +10,7 @@ using namespace std;
 #include "common.h"
 #include "sorts.h"
 
+
 const int MAX_NUM = 1000000;
 
 int _total = 20000;
@@ -124,6 +125,7 @@ input:	printf("AF> ");
 		switch (index) {
 		case 99:
 			// the function who will removed.
+			generic_binary_insertion_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 10:
 			bubble_sort(_numbers, _total);
@@ -150,7 +152,7 @@ input:	printf("AF> ");
 			insertion_sort_2(_numbers, _total);
 			break;
 		case 31:
-			binary_insertion_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
+			binary_insertion_sort(_numbers, _total);
 			break;
 		case 321:
 			shellsort_1(_numbers, _total, sizeof(_numbers[0]), cmp_int);

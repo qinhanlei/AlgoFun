@@ -23,8 +23,7 @@ void insertion_sort_1(int arr[], int n) {
 	int i, j, tmp;
 	for (i = 1; i < n; ++i) {
 		tmp = arr[i];
-		for (j = i; j > 0 && arr[j-1] > tmp; --j)
-			;
+		for (j = i; j > 0 && arr[j-1] > tmp; --j); // one line loop
 		if (i != j) {
 			memmove(arr+j+1, arr+j, (i-j) * sizeof(int));
 			arr[j] = tmp;
@@ -42,8 +41,7 @@ void insertion_sort_2(int arr[], int n) {
 			memmove(arr+1, arr, i * sizeof(int));
 			arr[0] = tmp;
 		} else {
-			for (j = i - 1; tmp < arr[j]; --j)
-				;
+			for (j = i - 1; tmp < arr[j]; --j); // one line loop
 			memmove(arr+j+2, arr+j+1, (i-j-1)*sizeof(int));
 			arr[j+1] = tmp;
 		}
@@ -51,7 +49,7 @@ void insertion_sort_2(int arr[], int n) {
 }
 
 
-void binary_insertion_sort(void *base, size_t num, size_t size,
+void generic_binary_insertion_sort(void *base, size_t num, size_t size,
 						int (*cmp_func)(const void*, const void*)) {
 	char *ch_base = base;
 	char *a = NULL, *b = NULL;
@@ -81,6 +79,23 @@ void binary_insertion_sort(void *base, size_t num, size_t size,
 		}
 	}
 	free(tmp);
+}
+
+
+void binary_insertion_sort(int arr[], int n) {
+	int i, left, right, mid, tmp;
+	for (i = 1; i < n; ++i) {
+		tmp = arr[i];
+		left = 0;
+		right = i - 1;
+		while (left <= right) {
+			mid = (left + right) / 2;
+			if (tmp >= arr[mid]) left = mid + 1;
+			else right = mid - 1;
+		}
+		memmove(arr+left+1, arr+left, (i-left)*sizeof(int));
+		arr[left] = tmp;
+	}
 }
 
 
