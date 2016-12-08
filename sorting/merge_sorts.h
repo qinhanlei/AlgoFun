@@ -6,6 +6,7 @@
 
 void merge_sort(int arr[], int n);
 
-//TODO: inplace mergesort
+void merge_sort_inplace(int arr[], int n);
+
 
 #endif //_ALGOFUN_MERGE_SORTS_H

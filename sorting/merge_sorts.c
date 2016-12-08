@@ -36,6 +36,22 @@ void merge_sort(int arr[], int n) {
 		perror("malloc()");
 		return;
 	}
-	_merge_sort(arr, 0, n - 1);
+	_merge_sort(arr, 0, n - 1); //TODO: let it be [0, n), not [0, n-1]
 	free(_tmp);
+}
+
+
+static void _merge_sort_inplace(int arr[], int left, int right) {
+	if (left + 1 < right) {
+		int mid = (left + right) / 2;
+		_merge_sort_inplace(arr, left, mid);
+		_merge_sort_inplace(arr, mid, right);
+		int i = left, j = mid + 1, k = left;
+		//TODO: merge it
+	}
+}
+
+
+void merge_sort_inplace(int arr[], int n) {
+	_merge_sort_inplace(arr, 0, n);
 }
