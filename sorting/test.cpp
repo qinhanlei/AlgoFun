@@ -113,6 +113,9 @@ int main(int argc, char *argv[]) {
 	int index;
 	clock_t time_start, time_end;
 
+	// srand((unsigned)time(NULL));
+	srand(42); // fixed random number sequence
+	
 	init_data();
 	show_menu();
 

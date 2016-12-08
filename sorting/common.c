@@ -15,13 +15,6 @@ void generic_swap(void *a, void *b, int size) {
 }
 
 
-void int_swap(int *a, int *b) {
-	int tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
-
-
 int cmp_int(const void* a, const void* b) {
 	int p = *(int*)a;
 	int q = *(int*)b;
@@ -47,7 +40,7 @@ int randint(int a, int b) {
 void shuffle(int arr[], int n) {
 	int i;
 	for (i = 1; i < n; ++i) {
-        int_swap(arr + i, arr + rand()%(i+1));
+        swap(arr[i], arr[rand()%(i+1)]);
 	}
 }
 

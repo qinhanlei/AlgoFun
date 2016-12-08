@@ -7,15 +7,15 @@
 #ifdef __cplusplus
 extern "C" {
 #else
-    #define bool char
-    #define true  1
-    #define false 0
+#define bool char
+#define true  1
+#define false 0
+#define swap(x, y) {int tmp = (x); (x) = (y); (y) = tmp;}
 #endif //__cplusplus
 
 
 // from Linux kernel source
 void generic_swap(void *a, void *b, int size);
-void int_swap(int *a, int *b);
 
 // for functions like qsort in stdlib of C
 int cmp_int(const void* a, const void* b);

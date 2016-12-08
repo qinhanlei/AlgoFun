@@ -13,16 +13,15 @@ const int CUT_OFF = 20;
 
 void bubble_sort(int arr[], int n) {
 	int i, j;
-	bool swapped;
-	for (i = 0; i < n - 1; ++i) {
+	bool swapped = true;
+	for (i = 0; i < n - 1 && swapped; ++i) {
 		swapped = false;
 		for (j = 0; j < n - 1 - i; ++j) {
 			if (arr[j] > arr[j+1]) {
-				int_swap(arr+j, arr+j+1);
+				swap(arr[j], arr[j+1]);
 				swapped = true;
 			}
 		}
-		if (!swapped) break;
 	}
 }
 
@@ -34,14 +33,14 @@ void cocktail_sort(int arr[], int n) {
 		swapped = false;
 		for (i = front; i < rear; ++i) {
 			if (arr[i] > arr[i+1]) {
-				int_swap(arr+i, arr+i+1);
+				swap(arr[i], arr[i+1]);
 				swapped = true;
 			}
 		}
 		--rear;
 		for (i = rear; i > front; --i) {
 			if (arr[i-1] > arr[i]) {
-				int_swap(arr+i-1, arr+i);
+				swap(arr[i-1], arr[i]);
 				swapped = true;
 			}
 		}
