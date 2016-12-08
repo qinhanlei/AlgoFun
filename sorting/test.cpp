@@ -81,7 +81,7 @@ void show_menu() {
 	puts("	31. insertion_sort optimized I");
 	puts("	32. insertion_sort optimized II");
 	puts("	33. binary_insertion_sort");
-	puts("	34. shellsort 1");
+	puts("	34. shellsort");
 	puts("	35. shellsort 2");
 	puts("	36. binary_shellsort");
 	puts("- Merge sorts");
@@ -125,6 +125,7 @@ input:	printf("AF> ");
 		switch (index) {
 		case 99:
 			// the function who will removed.
+			shellsort_1(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 10:
 			bubble_sort(_numbers, _total);
@@ -154,7 +155,7 @@ input:	printf("AF> ");
 			binary_insertion_sort(_numbers, _total);
 			break;
 		case 34:
-			shellsort_1(_numbers, _total, sizeof(_numbers[0]), cmp_int);
+			shellsort(_numbers, _total);
 			break;
 		case 35:
 			shellsort_2(_numbers, _total, sizeof(_numbers[0]), cmp_int);

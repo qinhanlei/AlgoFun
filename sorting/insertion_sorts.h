@@ -23,6 +23,7 @@ void shellsort_1(void *base, size_t num, size_t size,
 // use simple inser sort
 void shellsort_2(void *base, size_t num, size_t size,
 				int (*cmp_func)(const void*, const void*));
+void shellsort(int arr[], int n);
 
 
 // use binary insert sort.
