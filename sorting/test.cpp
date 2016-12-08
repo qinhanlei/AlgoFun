@@ -3,9 +3,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-
 #include <algorithm>
-using namespace std;
 
 #include "common.h"
 #include "sorts.h"
@@ -17,18 +15,17 @@ int _total = 20000;
 int _num_init[MAX_NUM] = {0};
 int _numbers[MAX_NUM] = {0};
 
-int _tmpA[MAX_NUM];
-int _tmpB[MAX_NUM];
-
 int _auto_restore = 1;
 
 
 int cmp_array(const int arrA[], const int arrB[], int n) {
-	memcpy(_tmpA, arrA, sizeof(arrA[0]) * n);
-	memcpy(_tmpB, arrB, sizeof(arrB[0]) * n);
-	qsort(_tmpA, n, sizeof(_tmpA[0]), cmp_int);
-	qsort(_tmpB, n, sizeof(_tmpB[0]), cmp_int);
-	return memcmp(_tmpA, _tmpB, sizeof(_tmpA[0]) * n);
+	static int tmpA[MAX_NUM];
+	static int tmpB[MAX_NUM];
+	memcpy(tmpA, arrA, sizeof(arrA[0]) * n);
+	memcpy(tmpB, arrB, sizeof(arrB[0]) * n);
+	std::sort(tmpA, tmpA + n);
+	std::sort(tmpB, tmpB + n);
+	return memcmp(tmpA, tmpB, sizeof(int) * n);
 }
 
 
@@ -177,14 +174,14 @@ input:	printf("AF> ");
 			qsort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 91:
-			sort(_numbers, _numbers + _total);
+			std::sort(_numbers, _numbers + _total);
 			break;
 		case 92:
-			stable_sort(_numbers, _numbers + _total);
+			std::stable_sort(_numbers, _numbers + _total);
 			break;
 		case 93:
-			make_heap(_numbers, _numbers + _total);
-			sort_heap(_numbers, _numbers + _total);
+			std::make_heap(_numbers, _numbers + _total);
+			std::sort_heap(_numbers, _numbers + _total);
 			break;
 		case 0:
 			show_menu();
