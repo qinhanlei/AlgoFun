@@ -16,16 +16,8 @@ void binary_insertion_sort(int arr[], int n);
 
 
 void shellsort(int arr[], int n);
-
-
-// use binary insert sort.
-// I recommend against this method.
-// the binary with gap is complex to code, and no more efficient. :(
-void binary_shellsort(void *base, size_t num, size_t size,
-					   int (*cmp_func)(const void*, const void*));
-
-
-//TODO: choice better increment sequence for shell sort
+// better increment sequence
+void shellsort_1(int arr[], int n);
 
 
 #endif //_ALGOFUN_INSERTION_SORTS_H

@@ -79,46 +79,26 @@ void shellsort(int arr[], int n) {
 	}
 }
 
+// python3:  [4**k+3*(2**(k-1))+1 for k in range(1,16)][::-1]+[1]
+static int _gaps[] = {
+	1073790977, 268460033, 67121153, 16783361, 4197377, 1050113,
+	262913, 65921, 16577, 4193, 1073, 281, 77, 23, 8, 1
+};
+static int _gaps_len = sizeof(_gaps)/sizeof(_gaps[0]);
 
-void binary_shellsort(void *base, size_t num, size_t size,
-					   int (*cmp_func)(const void*, const void*)) {
-	char *ch_base = base;
-	char *a = NULL, *b = NULL;
-	size_t i, gap, t;
-	int j, left, right, mid;
-	char *tmp = malloc(size);
-	if (tmp == NULL) return;
-	// loop gap, let global looks orderly
-	for (gap = num / 2; gap > 0; gap /= 2) {
-		for (i = gap; i < num; ++i) {
-			memcpy(tmp, ch_base + i * size, size);
-			left = i % gap; // notice!
-			right = i - gap;
-			while (left <= right) {
-				// shrink to no gap, binary, and back
-				t = (right - left) / gap + 1;
-				mid = t / 2 * gap + left;
-				a = ch_base + mid * size;
-				if (cmp_func(tmp, a) >= 0) left = mid + gap;
-				else right = mid - gap;
+void shellsort_1(int arr[], int n) {
+	int i, j, k, gap, left, right, mid, tmp;
+	for (k = 0; k < _gaps_len; ++k) {
+		if (_gaps[k] < n) break;
+	}
+	for (; k < _gaps_len; ++k) {
+		gap = _gaps[k];
+		for (i = gap; i < n; ++i) {
+			tmp = arr[i];
+			for (j = i-gap; j >= 0 && arr[j] > tmp; j -= gap) {
+				arr[j+gap] = arr[j];
 			}
-			/*
-			a = ch_base + left * size;
-			b = ch_base + i * size;
-			while (b >= a) {
-				memcpy(b, b - gap * size, size);
-				b -= gap * size;
-			}
-			if (b != ch_base + i * size)
-				memcpy(b + gap * size, tmp, size);//*/
-			a = ch_base + i * size;
-			for (j = i - gap; j >= left; j -= gap) {
-				b = ch_base + j * size;
-				memcpy(a, b, size);
-				a = b;
-			}
-			if (i != j + gap) memcpy(a, tmp, size);//*/
+			if (i != j) arr[j+gap] = tmp;
 		}
 	}
-	free(tmp);
 }
