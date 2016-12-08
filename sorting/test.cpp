@@ -11,7 +11,7 @@
 
 const int MAX_NUM = 1000000;
 
-int _total = 20000;
+int _total = 1000000;
 int _num_init[MAX_NUM] = {0};
 int _numbers[MAX_NUM] = {0};
 
@@ -70,6 +70,7 @@ void show_menu() {
 	puts("	10. bubble_sort");
 	puts("	11. cocktail_sort");
 	puts("	12. quicksort");
+	puts("	13. quicksort optimied");
 	puts("- Selection sorts");
 	puts("	20. selection_sort");
 	puts("	21. heapsort");
@@ -134,6 +135,9 @@ input:	printf("AlgoFun> ");
 			break;
 		case 12:
 			quicksort(_numbers, _total);
+			break;
+		case 13:
+			quicksort1(_numbers, _total);
 			break;
 		case 20:
 			selection_sort(_numbers, _total);

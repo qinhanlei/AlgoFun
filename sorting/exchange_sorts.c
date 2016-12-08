@@ -8,7 +8,8 @@
 #include <stdlib.h>
 #include <assert.h>
 
-const int CUT_OFF = 20;
+
+static int _cut_off = 16;
 
 
 void bubble_sort(int arr[], int n) {
@@ -49,6 +50,7 @@ void cocktail_sort(int arr[], int n) {
 }
 
 
+const int CUT_OFF = 20;
 
 static void qsort_1(void *base, size_t left, size_t right, size_t size,
 			 int (*cmp_func)(const void*, const void*)) {
@@ -184,23 +186,58 @@ void gneric_quicksort(void *base, size_t num, size_t size,
 }
 
 
-// simples qsort from "programming pearls" and CLRS
+// simplest qsort from "programming pearls" and CLRS
 static void _quicksort(int arr[], int left, int right) {
 	if (left < right) {
-		int i, m = left, pivot = left, k = randint(left, right);
-		swap(arr, pivot, k); // improve pivot element
+		int i, m = left, pivot = arr[left];
 		for (i = left + 1; i < right; ++i) {
-			if (arr[i] < arr[pivot]) {
+			if (arr[i] < pivot) {
 				swap(arr, i, ++m);
 			}
 		}
-		swap(arr, m, pivot);
+		swap(arr, left, m);
 		_quicksort(arr, left, m);
 		_quicksort(arr, m + 1, right);
 	}
 }
 
-
 void quicksort(int arr[], int n) {
 	_quicksort(arr, 0, n);
+}
+
+
+static int _median(int arr[], int left, int right) {
+	int a = arr[left], b = arr[(left+right)/2], c = arr[right-1];
+	if (a < b) {
+		if (b < c) return (left+right)/2;
+		if (a < c) return right-1;
+		return left;
+	}
+	if (a < c)
+		return left;
+	if (b < c)
+		return right-1;
+	return (left+right)/2;
+}
+
+static void _quicksort1(int arr[], int left, int right) {
+	if (left + _cut_off < right) {
+		int i = left, j = right, pivot;
+		swap(arr, left, _median(arr, left, right));
+		pivot = arr[left];
+		while (true) {
+			do ++i; while(i < right && arr[i] < pivot);
+			do --j; while(arr[j] > pivot); // index guaranteed by pivot
+			if (i >= j) break;
+			swap(arr, i, j);
+		}
+		swap(arr, left, j);
+		_quicksort1(arr, left, j);
+		_quicksort1(arr, j + 1, right);
+	}
+}
+
+void quicksort1(int arr[], int n) {
+	_quicksort1(arr, 0, n);
+	insertion_sort(arr, n);
 }

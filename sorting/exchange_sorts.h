@@ -14,6 +14,7 @@ void cocktail_sort(int arr[], int n);
 void gneric_quicksort(void *base, size_t num, size_t size,
 				int (*cmp_func)(const void*, const void*));
 void quicksort(int arr[], int n);
+void quicksort1(int arr[], int n);
 
 
 #endif //_ALGOFUN_EXCHANGE_SORTS_H
