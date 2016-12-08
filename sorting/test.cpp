@@ -127,6 +127,7 @@ input:	printf("AF> ");
 		switch (index) {
 		case 99:
 			// the function who will removed.
+			generic_merge_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 10:
 			bubble_sort(_numbers, _total);
@@ -162,7 +163,7 @@ input:	printf("AF> ");
 			shellsort_1(_numbers, _total);
 			break;
 		case 40:
-			merge_sort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
+			merge_sort(_numbers, _total);
 			break;
 		case 50:
 			puts("\ndoing...\n");
