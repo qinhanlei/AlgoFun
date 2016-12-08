@@ -18,7 +18,7 @@ void bubble_sort(int arr[], int n) {
 		swapped = false;
 		for (j = 0; j < n - 1 - i; ++j) {
 			if (arr[j] > arr[j+1]) {
-				swap(arr[j], arr[j+1]);
+				swap(arr, j, j+1);
 				swapped = true;
 			}
 		}
@@ -33,14 +33,14 @@ void cocktail_sort(int arr[], int n) {
 		swapped = false;
 		for (i = front; i < rear; ++i) {
 			if (arr[i] > arr[i+1]) {
-				swap(arr[i], arr[i+1]);
+				swap(arr, i, i+1);
 				swapped = true;
 			}
 		}
 		--rear;
 		for (i = rear; i > front; --i) {
 			if (arr[i-1] > arr[i]) {
-				swap(arr[i-1], arr[i]);
+				swap(arr, i-1, i);
 				swapped = true;
 			}
 		}
@@ -184,17 +184,17 @@ void gneric_quicksort(void *base, size_t num, size_t size,
 }
 
 
-// simples qsort from "programming pearls" or CLRS
+// simples qsort from "programming pearls" and CLRS
 static void _quicksort(int arr[], int left, int right) {
 	if (left < right) {
-		int i, m = left, pivot = left;
+		int i, m = left, pivot = left, k = randint(left, right);
+		swap(arr, pivot, k); // improve pivot element
 		for (i = left + 1; i < right; ++i) {
 			if (arr[i] < arr[pivot]) {
-				++m;
-				swap(arr[i], arr[m]);
+				swap(arr, i, ++m);
 			}
 		}
-		swap(arr[m], arr[pivot]);
+		swap(arr, m, pivot);
 		_quicksort(arr, left, m);
 		_quicksort(arr, m + 1, right);
 	}

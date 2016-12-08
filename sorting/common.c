@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 
 
 void generic_swap(void *a, void *b, int size) {
@@ -15,24 +16,20 @@ void generic_swap(void *a, void *b, int size) {
 }
 
 
-int bigrand() {
+unsigned int bigrand() {
     return RAND_MAX * rand() + rand();
 }
 
 
 int randint(int a, int b) {
-    if (a > b)
-        return b + bigrand() % (a - b + 1);
-    else
-        return a + bigrand() % (b - a + 1);
+    return a + bigrand() % (b - a);
 }
 
 
 void shuffle(int arr[], int n) {
 	int i, k;
 	for (i = 1; i < n; ++i) {
-		k = rand() % (i + 1);
-        swap(arr[i], arr[k]);
+        swap(arr, i, rand() % (i + 1));
 	}
 }
 
@@ -52,4 +49,11 @@ bool is_ordered(int arr[], int n) {
 		if (arr[i-1] > arr[i])
 			return false;
 	return true;
+}
+
+
+void swap(int arr[], int i, int j) {
+	int tmp = arr[i];
+	arr[i] = arr[j];
+	arr[j] = tmp;
 }
