@@ -221,15 +221,15 @@ input:	printf("AF> ");
 		time_end = clock();
 
 		if (index > 9) {
-			printf("Cost time: %lf second.\n", difftime(time_end, time_start)/CLOCKS_PER_SEC);
 			if (cmp_array(_numbers, _num_init, _total) == 0) {
 				if (is_ordered(_numbers, _total)) {
-					puts("Sort successed. :)");
+					printf("Sort successed, cost time: %lf second.\n",
+							difftime(time_end, time_start)/CLOCKS_PER_SEC);
 				} else {
-					puts("Sort failed! :(");
+					puts("Sort failed!!!");
 				}
 			} else {
-				puts("Sort error: value changed, check the algorithm!");
+				puts("Sort error: value changed, check the algorithm!!!");
 			}
 			if (_auto_restore) {
 				memcpy(_numbers, _num_init, sizeof(_num_init[0])*_total);
