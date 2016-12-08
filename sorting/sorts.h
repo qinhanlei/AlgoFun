@@ -14,9 +14,12 @@ extern "C" {
 #include "selection_sorts.h"
 
 
+// for functions like qsort in stdlib of C
+int cmp_int(const void* a, const void* b);
+
+
 #ifdef __cplusplus
 }
 #endif //__cplusplus
-
 
 #endif //_ALGOFUN_SORTS_H

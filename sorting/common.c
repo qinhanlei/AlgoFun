@@ -15,15 +15,6 @@ void generic_swap(void *a, void *b, int size) {
 }
 
 
-int cmp_int(const void* a, const void* b) {
-	int p = *(int*)a;
-	int q = *(int*)b;
-	if (p < q) return -1;
-	if (p > q) return 1;
-	return 0;
-}
-
-
 int bigrand() {
     return RAND_MAX * rand() + rand();
 }
@@ -56,8 +47,8 @@ void print_array(int arr[], int n) {
 
 bool is_ordered(int arr[], int n) {
 	int i;
-	for (i = 0; i < n - 1; ++i)
-		if (arr[i] > arr[i + 1])
+	for (i = 1; i < n; ++i)
+		if (arr[i-1] > arr[i])
 			return false;
 	return true;
 }
