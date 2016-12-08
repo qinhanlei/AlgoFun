@@ -88,10 +88,10 @@ void show_menu() {
 	puts("- Hybrid sorts");
 	puts("	60. introsort");
 	puts("- Standard library sorts");
-	puts("	90. qsort C std");
-	puts("	91. sort C++ STL");
-	puts("	92. stable_sort C++ STL");
-	puts("	93. heap_sort C++ STL");
+	puts("	90. qsort");
+	puts("	91. std::partial_sort");
+	puts("	92. std::stable_sort");
+	puts("	93. std::sort");
 	puts("- COMMAND");
 	puts("	0. show menu");
 	puts("	1. view all numbers");
@@ -174,14 +174,13 @@ input:	printf("AF> ");
 			qsort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 91:
-			std::sort(_numbers, _numbers + _total);
+			std::partial_sort(_numbers, _numbers + _total, _numbers + _total);
 			break;
 		case 92:
 			std::stable_sort(_numbers, _numbers + _total);
 			break;
 		case 93:
-			std::make_heap(_numbers, _numbers + _total);
-			std::sort_heap(_numbers, _numbers + _total);
+			std::sort(_numbers, _numbers + _total);
 			break;
 		case 0:
 			show_menu();
