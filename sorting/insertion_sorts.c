@@ -79,7 +79,10 @@ void shellsort(int arr[], int n) {
 	}
 }
 
-// python3:  [4**k+3*(2**(k-1))+1 for k in range(1,16)][::-1]+[1]
+
+// https://en.wikipedia.org/wiki/Shellsort
+// O(N^(4/3))	Sedgewick, 1986[6]
+// python:  [4**k+3*(2**(k-1))+1 for k in range(1,16)][::-1]+[1]
 static int _gaps[] = {
 	1073790977, 268460033, 67121153, 16783361, 4197377, 1050113,
 	262913, 65921, 16577, 4193, 1073, 281, 77, 23, 8, 1
