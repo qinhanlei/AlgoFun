@@ -46,3 +46,6 @@ obj/
 # Executables
 *.exe
 *.out
+
+# for Atom Editor
+*.tags*
