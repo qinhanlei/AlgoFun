@@ -32,7 +32,7 @@ Keep it simple and stupid, but not simpler.
 ### Search
 - Blind search
     - Breadth-first search
-    - Depth-first search, recursive and non-recursive(use stack) implement.
+    - Depth-first search
 - Heuristic search
     - `A*`(A-star) search algorithm
         - `IDA*`(Iterative deepening A-star)
@@ -59,7 +59,7 @@ Keep it simple and stupid, but not simpler.
 
 
 ### Numeric
-- Big integer, C++ implement.
+- Big integer
 - Prime number
 
 
