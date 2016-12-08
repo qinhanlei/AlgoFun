@@ -47,7 +47,7 @@ static void _merge_sort_inplace(int arr[], int left, int right) {
 		_merge_sort_inplace(arr, left, mid);
 		_merge_sort_inplace(arr, mid, right);
 		int i = left, j = mid, k = left;
-		//TODO: merge it
+		//TODO: merge it without buffer
 	}
 }
 

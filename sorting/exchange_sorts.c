@@ -50,7 +50,6 @@ void cocktail_sort(int arr[], int n) {
 
 
 
-// the simplest qsort like qsort1 from "programming pearls", and CLRS
 static void qsort_1(void *base, size_t left, size_t right, size_t size,
 			 int (*cmp_func)(const void*, const void*)) {
 	if (right > CUT_OFF + left) {
@@ -185,6 +184,23 @@ void gneric_quicksort(void *base, size_t num, size_t size,
 }
 
 
+// simples qsort from "programming pearls" or CLRS
+static void _quicksort(int arr[], int left, int right) {
+	if (left < right) {
+		int i, m = left, pivot = left;
+		for (i = left + 1; i < right; ++i) {
+			if (arr[i] < arr[pivot]) {
+				++m;
+				swap(arr[i], arr[m]);
+			}
+		}
+		swap(arr[m], arr[pivot]);
+		_quicksort(arr, left, m);
+		_quicksort(arr, m + 1, right);
+	}
+}
+
+
 void quicksort(int arr[], int n) {
-	//TODO: ...
+	_quicksort(arr, 0, n);
 }

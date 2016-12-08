@@ -117,13 +117,14 @@ int main(int argc, char *argv[]) {
 	show_menu();
 
 	do {
-input:	printf("AF> ");
+input:	printf("AlgoFun> ");
 		scanf("%d", &index);
 
 		time_start = clock();
 		switch (index) {
 		case 99:
 			// the function who will removed.
+			gneric_quicksort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
 			break;
 		case 10:
 			bubble_sort(_numbers, _total);
@@ -132,7 +133,7 @@ input:	printf("AF> ");
 			cocktail_sort(_numbers, _total);
 			break;
 		case 12:
-			gneric_quicksort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
+			quicksort(_numbers, _total);
 			break;
 		case 20:
 			selection_sort(_numbers, _total);
