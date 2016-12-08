@@ -40,14 +40,14 @@ Keep it simple and stupid, but not simpler.
 
 ### Sorting
 - Exchange sorts
-    - Bubble sort, easy, simple, stable.
-    - Cocktail sort, a Bubble Sort variant.
-    - Quicksort, simple implement, even slower than Merge Sort.
+    - Bubble sort
+    - Cocktail sort
+    - Quicksort
 - Selection sorts
-    - Select sort, more simple, faster than Bubble sort. unstable.
+    - Selection sort
     - Heap sort
 - Insertion sorts
-    - Insertion sort, fast `O(n^2)` sort algorithm, can optimized by binary.
+    - Insertion sort
     - Shellsort
 - Merge sorts
     - Merge sort
