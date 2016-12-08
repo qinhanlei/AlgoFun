@@ -6,16 +6,6 @@
 #include <assert.h>
 
 
-void generic_swap(void *a, void *b, int size) {
-	char *tmp = malloc(size);
-	if (tmp == NULL) return;
-	memcpy(tmp, a, size);
-	memcpy(a, b, size);
-	memcpy(b, tmp, size);
-	free(tmp);
-}
-
-
 unsigned int bigrand() {
     return RAND_MAX * rand() + rand();
 }

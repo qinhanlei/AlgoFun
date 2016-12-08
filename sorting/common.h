@@ -13,11 +13,6 @@ extern "C" {
 #endif //__cplusplus
 
 
-// from Linux kernel source
-void generic_swap(void *a, void *b, int size); //TODO: remove latter
-
-
-
 // from programming pearls
 unsigned int bigrand();
 // pseudo-random number in [a,b)

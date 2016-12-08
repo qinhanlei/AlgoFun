@@ -123,10 +123,6 @@ input:	printf("AlgoFun> ");
 
 		time_start = clock();
 		switch (index) {
-		case 99:
-			// the function who will removed.
-			gneric_quicksort(_numbers, _total, sizeof(_numbers[0]), cmp_int);
-			break;
 		case 10:
 			bubble_sort(_numbers, _total);
 			break;
