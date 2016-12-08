@@ -46,6 +46,7 @@ Keep it simple and stupid, but not simpler.
 - Selection sorts
     - Selection sort
     - Heap sort
+    - Smoothsort
 - Insertion sorts
     - Insertion sort
     - Shellsort
