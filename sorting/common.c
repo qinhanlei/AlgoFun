@@ -29,9 +29,10 @@ int randint(int a, int b) {
 
 
 void shuffle(int arr[], int n) {
-	int i;
+	int i, k;
 	for (i = 1; i < n; ++i) {
-        swap(arr[i], arr[rand()%(i+1)]);
+		k = rand() % (i + 1);
+        swap(arr[i], arr[k]);
 	}
 }
 
