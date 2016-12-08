@@ -9,10 +9,8 @@ void insertion_sort(int arr[], int n);
 // optimize tries
 void insertion_sort_1(int arr[], int n);
 void insertion_sort_2(int arr[], int n);
-
 // binary optimized
 void binary_insertion_sort(int arr[], int n);
-
 
 
 void shellsort(int arr[], int n);
