@@ -115,7 +115,7 @@ void show_menu() {
 	puts("	6. shuffle numbers");
 	puts("	7. switch auto-restore");
 	puts("	8. re-read data from file");
-	puts("	9. exit");
+	puts("	9. exit (or CTRL + C)");
 	printf("\tauto-restore is %s\n", _auto_restore ? "on" : "off");
 }
 
