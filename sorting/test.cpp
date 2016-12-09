@@ -3,59 +3,73 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+
+#include <vector>
+#include <iostream>
 #include <algorithm>
 
 #include "common.h"
 #include "sorts.h"
 
 
-const int MAX_NUM = 1000000;
-
 int _total = 1000000;
-int _num_init[MAX_NUM] = {0};
-int _numbers[MAX_NUM] = {0};
+int *_num_init = NULL;
+int *_numbers = NULL;
 
 int _auto_restore = 1;
 
 
-int cmp_array(const int arrA[], const int arrB[], int n) {
-	static int tmpA[MAX_NUM];
-	static int tmpB[MAX_NUM];
-	memcpy(tmpA, arrA, sizeof(arrA[0]) * n);
-	memcpy(tmpB, arrB, sizeof(arrB[0]) * n);
-	std::sort(tmpA, tmpA + n);
-	std::sort(tmpB, tmpB + n);
-	return memcmp(tmpA, tmpB, sizeof(int) * n);
+template<typename T>
+std::ostream& operator<<(std::ostream& s, const std::vector<T>& v) {
+    s.put('[');
+    char comma[3] = {'\0', ' ', '\0'};
+    for (const auto& e : v) {
+        s << comma << e;
+        comma[0] = ',';
+    }
+    return s << ']';
+}
+
+bool same_collection(const int arr1[], const int arr2[], int n) {
+	std::vector<int> v1(arr1, arr1+n);
+	std::vector<int> v2(arr2, arr2+n);
+	std::sort(v1.begin(), v1.end());
+	std::sort(v2.begin(), v2.end());
+	return v1 == v2;
 }
 
 
-int read_data() {
-	int tmp;
+bool read_data() {
+	int i = 0, tmp;
 	static char filename[] = "./random_num.txt";
 	FILE* fp = fopen(filename, "r");
 	if (!fp) {
 		printf("open file '%s' error!\n", filename);
-		return 0;
+		return false;
 	}
 
 	_total = 0;
+	fscanf(fp, "%d", &_total);
+	free(_num_init);
+	free(_numbers);
+	_num_init = (int*)malloc(_total * sizeof(int));
+	_numbers = (int*)malloc(_total * sizeof(int));
 	while (fscanf(fp, "%d", &tmp) != EOF) {
-		_num_init[_total++] = tmp;
-		if (_total > MAX_NUM) {
-			puts("file content error, too more data!");
-			fclose(fp);
-			return 0;
-		}
+		_num_init[i++] = tmp;
 	}
 	memcpy(_numbers, _num_init, sizeof(_num_init[0])*_total);
 	fclose(fp);
-	return 1;
+	
+	return true;
 }
 
 
 void init_data() {
-	int i;
-	for (i = 0; i < _total; ++i) {
+	free(_num_init);
+	free(_numbers);
+	_num_init = (int*)malloc(_total * sizeof(int));
+	_numbers = (int*)malloc(_total * sizeof(int));
+	for (int i = 0; i < _total; ++i) {
 		_num_init[i] = i;
 	}
 	shuffle(_num_init, _total);
@@ -222,7 +236,7 @@ input:	printf("AlgoFun> ");
 		time_end = clock();
 
 		if (index > 9) {
-			if (cmp_array(_numbers, _num_init, _total) == 0) {
+			if (same_collection(_numbers, _num_init, _total)) {
 				if (is_ordered(_numbers, _total)) {
 					printf("Sort successed, cost time: %lf second.\n",
 							difftime(time_end, time_start)/CLOCKS_PER_SEC);
@@ -238,6 +252,9 @@ input:	printf("AlgoFun> ");
 			}
 		}
 	} while (1);
+	
+	free(_num_init);
+	free(_numbers);
 	
 over:
 	return 0;

@@ -23,6 +23,7 @@ int main(int argc, char *argv[]) {
         printf("create file '%s' failed!", filename);
         return 0;
     }
+    fprintf(fp, "%d\n", num);
     
     numbers = malloc(num * sizeof(int));
     for (i = 0; i < num; ++i) {
