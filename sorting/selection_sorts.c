@@ -19,3 +19,8 @@ void selection_sort(int arr[], int n) {
 void heapsort_(int arr[], int n) {
 	//TODO: ...
 }
+
+
+void smoothsort(int arr[], int n) {
+	//TODO: ...
+}
