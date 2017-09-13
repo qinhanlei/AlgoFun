@@ -7,19 +7,19 @@
 
 
 unsigned int bigrand() {
-    return RAND_MAX * rand() + rand();
+	return RAND_MAX * rand() + rand();
 }
 
 
 int randint(int a, int b) {
-    return a + bigrand() % (b - a);
+	return a + bigrand() % (b - a);
 }
 
 
 void shuffle(int arr[], int n) {
 	int i, k;
 	for (i = 1; i < n; ++i) {
-        swap(arr, i, rand() % (i + 1));
+		swap(arr, i, rand() % (i + 1));
 	}
 }
 

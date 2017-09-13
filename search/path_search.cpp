@@ -44,7 +44,7 @@ struct Position {
 	Position() {}
 	Position(int a, int b):x(a), y(b), step(0), h1(0), h2(0),h3(0) {}
 	Position(int a, int b, int c):x(a), y(b), step(c), h1(0), h2(0),h3(0) {}
-	bool operator == (const Position &a) const {
+	bool operator == (const Position& a) const {
 		return (x == a.x && y == a.y);
 	}
 	void heuristic(const Position& p) {
@@ -55,7 +55,7 @@ struct Position {
 		// Manhattan
 		h3 = abs(p.x - x) + abs(p.y - y);
 	}
-	bool operator < (const Position &a) const {
+	bool operator < (const Position& a) const {
 		// evaluation function
 		double f = step + h1;
 		double fa = a.step + a.h1;
@@ -99,15 +99,15 @@ void delay() {
 
 
 void prepare() {
-    memset(_closed, false, sizeof(_closed));
+	memset(_closed, false, sizeof(_closed));
 	memset(_extend, false, sizeof(_extend));
-    for (int i = 0; i < _maze_row; ++i) {
+	for (int i = 0; i < _maze_row; ++i) {
 		for (int j = 0; j < _maze_col; ++j) {
-            if (_maze_map[i][j] == CH_PATH) {
-                _maze_map[i][j] = ' ';
-            }
-        }
-    }
+			if (_maze_map[i][j] == CH_PATH) {
+				_maze_map[i][j] = ' ';
+			}
+		}
+	}
 }
 
 
@@ -126,28 +126,28 @@ inline bool valid_position(int row, int col) {
 
 
 int DFS(Position top) {
-    if (top == _pgoal) {
+	if (top == _pgoal) {
 		return top.step;
 	}
 	
-    _closed[top.x][top.y] = true;
-    print_maze();
-    for (int i = 0; i < DIR_NUM; ++i) {
-        int tx = top.x + DIR_X[i];
-        int ty = top.y + DIR_Y[i];
-        if (!valid_position(tx, ty)) {
+	_closed[top.x][top.y] = true;
+	print_maze();
+	for (int i = 0; i < DIR_NUM; ++i) {
+		int tx = top.x + DIR_X[i];
+		int ty = top.y + DIR_Y[i];
+		if (!valid_position(tx, ty)) {
 			continue;
 		}
-        _dir_pre[tx][ty] = i;
-        int ret = DFS(Position(tx, ty, top.step + 1));
-        if (ret >= 0) {
+		_dir_pre[tx][ty] = i;
+		int ret = DFS(Position(tx, ty, top.step + 1));
+		if (ret >= 0) {
 			return ret;
 		}
-        // backtracking
-        _closed[tx][ty] = false;
-    }
+		// backtracking
+		_closed[tx][ty] = false;
+	}
 	
-    return -1;
+	return -1;
 }
 
 
@@ -248,44 +248,44 @@ int Astar() {
 
 
 int IDSearch(Position top, int depth) {
-    if (top == _pgoal) {
+	if (top == _pgoal) {
 		return top.step;
 	}
 	
-    _closed[top.x][top.y] = true;
+	_closed[top.x][top.y] = true;
 	print_maze();
-    for (int i = 0; i < DIR_NUM; ++i) {
-        int tx = top.x + DIR_X[i];
-        int ty = top.y + DIR_Y[i];
+	for (int i = 0; i < DIR_NUM; ++i) {
+		int tx = top.x + DIR_X[i];
+		int ty = top.y + DIR_Y[i];
 		if (!valid_position(tx, ty)) {
 			continue;
 		}
-        Position tmp(tx, ty, top.step + 1);
-        tmp.heuristic(_pgoal);
-        if (tmp.h1 + tmp.step > depth) {
+		Position tmp(tx, ty, top.step + 1);
+		tmp.heuristic(_pgoal);
+		if (tmp.h1 + tmp.step > depth) {
 			continue;
 		}
-        _dir_pre[tx][ty] = i;
-        int ret = IDSearch(tmp, depth);
-        if (ret >= 0) {
+		_dir_pre[tx][ty] = i;
+		int ret = IDSearch(tmp, depth);
+		if (ret >= 0) {
 			return ret;
 		}
-        // _closed[tx][ty] = false;
-    }
+		// _closed[tx][ty] = false;
+	}
 	
-    return -1;
+	return -1;
 }
 
 
 int IDAstar() {
-    _pstart.heuristic(_pgoal);
-    for (int depth = _pstart.h1; depth < _maze_col * _maze_row; ++depth) {
-        printf("depth:%d \n", depth);
-        memset(_closed, false, sizeof(_closed));
-        int ret = IDSearch(_pstart, depth);
-        if (ret >= 0) return ret;
-    }
-    return -1;
+	_pstart.heuristic(_pgoal);
+	for (int depth = _pstart.h1; depth < _maze_col * _maze_row; ++depth) {
+		printf("depth:%d \n", depth);
+		memset(_closed, false, sizeof(_closed));
+		int ret = IDSearch(_pstart, depth);
+		if (ret >= 0) return ret;
+	}
+	return -1;
 }
 
 
@@ -338,16 +338,16 @@ void reset_maze_map() {
 }
 
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
 	init_maze_map();
 	
-    do {
+	do {
 menu:
 		puts("");
-        puts("=========== Routing Algorithms ===========");
+		puts("=========== Routing Algorithms ===========");
 		puts("----------------- DFS --------------");
 		puts("    1. Depth-first search, recursive");
-    	puts("    2. Depth-first search, stack");
+		puts("    2. Depth-first search, stack");
 		puts("----------------- BFS ------------------");
 		puts("    3. Breadth-first search");
 		puts("    4. A* search algorithm");
@@ -357,8 +357,8 @@ menu:
 		puts("    9. exit");
 		puts("==============================================");
 		printf("    input index number: ");
-
-        char input_str[64] = {0};
+		
+		char input_str[64] = {0};
 input:
 		fgets(input_str, sizeof(input_str), stdin);
 		int input_len = strlen(input_str) - 1;
@@ -368,42 +368,42 @@ input:
 				goto input;
 			}
 		}
-        int index = 0;
+		int index = 0;
 		sscanf(input_str, "%d", &index);
 		printf("\nyour choose index:%d\n", index);
-        
-        prepare();
-        clock_t time_start = clock();
-        int result = 0;
-        switch (index) {
-        case 1:
-            result = DFS(_pstart);
-            break;
-        case 2:
-            result = DFS_stack();
-            break;
-        case 3:
-            result = BFS();
-            break;
-        case 4:
-            result = Astar();
-            break;
+		
+		prepare();
+		clock_t time_start = clock();
+		int result = 0;
+		switch (index) {
+		case 1:
+			result = DFS(_pstart);
+			break;
+		case 2:
+			result = DFS_stack();
+			break;
+		case 3:
+			result = BFS();
+			break;
+		case 4:
+			result = Astar();
+			break;
 		case 5:
-            result = IDAstar();
+			result = IDAstar();
 			break;
 		case 8:
 			reset_maze_map();
 			goto menu;
 		case 9:
-            puts("\nsee you :)\n");
+			puts("\nsee you :)\n");
 			goto over;
 		default:
-            puts("input error, please try again.");
-            goto input;
+			puts("input error, please try again.");
+			goto input;
 		}
-        clock_t time_end = clock();
-
-        double cost_time = (double)(time_end - time_start)/CLOCKS_PER_SEC;
+		clock_t time_end = clock();
+		
+		double cost_time = (double)(time_end - time_start)/CLOCKS_PER_SEC;
 		printf("search cost time: %lfs\n", cost_time);
 		if (result == -1) {
 			puts("This maze have no solution");

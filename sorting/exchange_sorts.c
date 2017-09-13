@@ -88,8 +88,10 @@ static void _quicksort1(int arr[], int left, int right) {
 		swap(arr, left, _median(arr, left, right));
 		pivot = arr[left];
 		while (true) {
-			do ++i; while(i < right && arr[i] < pivot);
-			do --j; while(arr[j] > pivot); // index guaranteed by pivot
+			do ++i;
+			while (i < right && arr[i] < pivot);
+			do --j;
+			while (arr[j] > pivot); // index guaranteed by pivot
 			if (i >= j) break;
 			swap(arr, i, j);
 		}

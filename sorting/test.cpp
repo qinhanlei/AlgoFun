@@ -13,21 +13,21 @@
 
 
 int _total = 1000000;
-int *_num_init = NULL;
-int *_numbers = NULL;
+int* _num_init = NULL;
+int* _numbers = NULL;
 
 int _auto_restore = 1;
 
 
 template<typename T>
 std::ostream& operator<<(std::ostream& s, const std::vector<T>& v) {
-    s.put('[');
-    char comma[3] = {'\0', ' ', '\0'};
-    for (const auto& e : v) {
-        s << comma << e;
-        comma[0] = ',';
-    }
-    return s << ']';
+	s.put('[');
+	char comma[3] = {'\0', ' ', '\0'};
+	for (const auto& e : v) {
+		s << comma << e;
+		comma[0] = ',';
+	}
+	return s << ']';
 }
 
 bool same_collection(const int arr1[], const int arr2[], int n) {
@@ -47,7 +47,7 @@ bool read_data() {
 		printf("open file '%s' error!\n", filename);
 		return false;
 	}
-
+	
 	_total = 0;
 	fscanf(fp, "%d", &_total);
 	free(_num_init);
@@ -120,21 +120,22 @@ void show_menu() {
 }
 
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
 	int i;
 	int index;
 	clock_t time_start, time_end;
-
+	
 	// srand((unsigned)time(NULL));
 	srand(42); // fixed random number sequence
 	
 	init_data();
 	show_menu();
-
+	
 	do {
-input:	printf("AlgoFun> ");
+input:
+		printf("AlgoFun> ");
 		scanf("%d", &index);
-
+		
 		time_start = clock();
 		switch (index) {
 		case 10:
@@ -234,12 +235,12 @@ input:	printf("AlgoFun> ");
 			goto input;
 		}
 		time_end = clock();
-
+		
 		if (index > 9) {
 			if (same_collection(_numbers, _num_init, _total)) {
 				if (is_ordered(_numbers, _total)) {
 					printf("Sort successed, cost time: %lf second.\n",
-							difftime(time_end, time_start)/CLOCKS_PER_SEC);
+						   difftime(time_end, time_start)/CLOCKS_PER_SEC);
 				} else {
 					puts("Sort failed!!!");
 				}

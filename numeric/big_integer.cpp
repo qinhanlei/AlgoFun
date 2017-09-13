@@ -332,7 +332,7 @@ big_integer big_integer::Minus(const big_integer& a) const {
 	big_integer ret;
 	// bigger of absolute value
 	const big_integer& bigger = (first_index_ < a.first_index_ ||
-		data_[first_index_] > a.data_[a.first_index_]) ? *this : a;
+								 data_[first_index_] > a.data_[a.first_index_]) ? *this : a;
 	const big_integer& smaller = (&bigger == this) ? a : *this;
 	for (i = MAX_ELEMENT_NUM - 1; i >= bigger.first_index_; --i) {
 		ret.data_[i] += bigger.data_[i] - smaller.data_[i];
