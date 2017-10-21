@@ -29,6 +29,11 @@ Keep it simple and stupid, but not simpler.
 - Suffix array
 
 
+### String
+- Plalindrome
+- Match
+
+
 ### Search
 - Blind search
     - Breadth-first search
