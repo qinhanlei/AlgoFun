@@ -41,7 +41,7 @@ bool same_collection(const int arr1[], const int arr2[], int n) {
 
 bool read_data() {
 	int i = 0, tmp;
-	static char filename[] = "./random_num.txt";
+	static char filename[] = "./numbers.txt";
 	FILE* fp = fopen(filename, "r");
 	if (!fp) {
 		printf("open file '%s' error!\n", filename);
@@ -134,7 +134,7 @@ int main(int argc, char* argv[]) {
 	do {
 input:
 		printf("AlgoFun> ");
-		scanf("%d", &index);
+		scanf("%d", &index); //TODO: get input as string
 		
 		time_start = clock();
 		switch (index) {

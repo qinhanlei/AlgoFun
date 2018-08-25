@@ -9,7 +9,7 @@
 int main(int argc, char* argv[]) {
 	int i;
 	int num = 0;
-	char filename[] = "./random_num.txt";
+	char filename[] = "./numbers.txt";
 	int* numbers = NULL;
 	FILE* fp = NULL;
 	

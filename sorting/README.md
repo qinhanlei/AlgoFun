@@ -1,6 +1,6 @@
 # Sorting
 
-## Generic sort implements (\***BAD CHOICE**\* deprecated)
+## Generic sort implements (**DEPRECATED!**)
 
 At first I want use C++ create a generic sorting lib, but STL works well and I am inexpertness at C++ template programming.
 
@@ -20,11 +20,24 @@ For example:
 
 Here, `cmp_int` is a function which prototype like `int cmp_int(const void*, const void*);`, create it according to your own will.
 
+**NOTE**: deprecated and removed now!
+
 
 ## Simple implements
-TODO: ...
+Just sort for integer array with size as below:
+```c
+insertion_sort(int arr[], int n)
+```
 
 
 ## How to run
-- Open console or terminal
-- `sh ctester.sh` or `sh cpptester.sh`
+- `sh randnum.sh`
+- `sh runtest.sh`
+
+
+## TODO
+- distribution sorts
+- hybird sorts
+- selection sorts
+  - heap sort
+  - smoothsort
