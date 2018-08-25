@@ -6,7 +6,7 @@ At first I want use C++ create a generic sorting lib, but STL works well and I a
 
 So I decide use C do some thing I have never done.  
 
-Most of sorting funciton is use like C standard library function qsort, below:
+Most of sorting function is use like C standard library function qsort, below:
 ```
 void qsort(void *buf, size_t num, size_t size, int (*compare)(const void *, const void *));
 ```
