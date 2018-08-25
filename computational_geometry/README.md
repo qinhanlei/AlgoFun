@@ -1,4 +1,2 @@
 # Computational Geometry
-
-## Convex Hull
-- TODO
+TODO...

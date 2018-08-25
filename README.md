@@ -1,82 +1,83 @@
 # Algorithms for fun
-
-https://en.wikipedia.org/wiki/Category:Algorithms
-
-## Introduction
-Algorithms is fascinating, implement it just for fun.  
+[Algorithms](https://en.wikipedia.org/wiki/Category:Algorithms) is fascinating.  
 Keep it simple and stupid, but not simpler.
 
 
-## Subjects
-### Data Structure
+## Combinatorial
+- Permutation
+- Combination
+
+## Computational geometry
+- Convex hull
+- Triangulation
+
+## [Data Structure](https://en.wikipedia.org/wiki/Data_structure)
 - Linked list
-    - Merge sort
+  - Merge sort
 - Tree
-    - Self-balancing binary search tree
-        - AVL Tree
-        - Red–black tree
-    - Heap
-        - Binary heap
-        - Binomial heap
-        - Fibonacci heap
-    - Trie
-        - Suffix tree
-    - Fenwick tree
+  - Self-balancing binary search tree
+    - AVL Tree
+    - Red–black tree
+  - Heap
+    - Binary heap
+    - Binomial heap
+    - Fibonacci heap
+  - Trie
+    - Suffix tree
+  - Fenwick tree
 - Graph
 - Hash table
 - Disjoint-set
 - Suffix array
 
+## Graph
+- Minimum spanning tree
+- Shortest path problem
+- Knight's tour
+- Traveling salesman problem (TSP)
+- Network flow problem
 
-### String
-- Palindrome
-- Match
-
-
-### Search
-- Blind search
-    - Breadth-first search
-    - Depth-first search
-- Heuristic search
-    - `A*`(A-star) search algorithm
-        - `IDA*`(Iterative deepening A-star)
-
-
-### Sorting
-- Exchange sorts
-    - Bubble sort
-    - Cocktail sort
-    - Quicksort
-- Selection sorts
-    - Selection sort
-    - Heap sort
-    - Smoothsort
-- Insertion sorts
-    - Insertion sort
-    - Shellsort
-- Merge sorts
-    - Merge sort
-- Distribution sorts
-    - Radix sort
-- Hybrid sorts
-    - Introsort
-    - Timsort
-
-
-### Numeric
+## Numeric
 - Big integer
 - Prime number
+- Fast Fourier transform
 
+## Optimization
+- Dynamic programming
+- Linear programming
+- Metaheuristics
 
-### Combinatorial
-- Permutation
-- Combination
-- Optimization
-    - Dynamic programming
+## Search
+- Hashing
+- Pathfinding
+  - Breadth-first search
+  - Depth-first search
+  - `A*`(A-star) search algorithm
+  - `IDA*`(Iterative deepening A-star)
 
+## Sorting
+- Exchange sorts
+  - Bubble sort
+  - Cocktail sort
+  - Quicksort
+- Selection sorts
+  - Selection sort
+  - Heap sort
+  - Smoothsort
+- Insertion sorts
+  - Insertion sort
+  - Shellsort
+- Merge sorts
+  - Merge sort
+- Distribution sorts
+  - Radix sort
+- Hybrid sorts
+  - Introsort
+  - Timsort
 
-### Computational geometry
-- Convex hull
+## String
+  - Palindrome
+  - Matching
 
 
 # License
