@@ -28,7 +28,7 @@ Keep it simple and stupid, but not simpler.
 
 
 ### String
-- Plalindrome
+- Palindrome 
 - Match
 
 
