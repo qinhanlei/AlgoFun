@@ -1,5 +1,7 @@
 # Sorting
 
+https://en.wikipedia.org/wiki/Sorting_algorithm
+
 ## Generic sort implements (**DEPRECATED!**)
 
 At first I want use C++ create a generic sorting lib, but STL works well and I am inexpertness at C++ template programming.
@@ -7,7 +9,7 @@ At first I want use C++ create a generic sorting lib, but STL works well and I a
 So I decide use C do some thing I have never done.  
 
 Most of sorting function is use like C standard library function qsort, below:
-```
+```c
 void qsort(void *buf, size_t num, size_t size, int (*compare)(const void *, const void *));
 ```
 

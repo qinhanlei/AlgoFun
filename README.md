@@ -1,8 +1,9 @@
 # Algorithms for fun
 
-## Introduction
-Algorithms is fascinating, implement it just for fun.
+https://en.wikipedia.org/wiki/Category:Algorithms
 
+## Introduction
+Algorithms is fascinating, implement it just for fun.  
 Keep it simple and stupid, but not simpler.
 
 
@@ -28,7 +29,7 @@ Keep it simple and stupid, but not simpler.
 
 
 ### String
-- Palindrome 
+- Palindrome
 - Match
 
 
