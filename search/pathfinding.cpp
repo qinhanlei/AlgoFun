@@ -344,7 +344,7 @@ int main(int argc, char* argv[]) {
 	do {
 menu:
 		puts("");
-		puts("=========== Routing Algorithms ===========");
+		puts("=========== Pathfinding Algorithms ===========");
 		puts("----------------- DFS --------------");
 		puts("    1. Depth-first search, recursive");
 		puts("    2. Depth-first search, stack");

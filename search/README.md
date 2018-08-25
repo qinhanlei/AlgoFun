@@ -1,5 +1,5 @@
 # Searching
-Just some old code of path search algorithms now.
+Some old codes of pathfinding algorithms
 
 ## TODO
 - graph search algorithms

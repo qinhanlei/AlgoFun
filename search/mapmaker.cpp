@@ -20,13 +20,15 @@ int main(int argc, char* argv[]) {
 		return 0;
 	}
 	
+	int N, M;
 	while (true) {
-		printf("Input size of maze (columns, rows): ");
-		int N, M;
+		printf("Input maze's columns and rows (whitespace separated): ");
 		scanf("%d %d", &N, &M);
-		if (N < 3 || M < 3 || M > 500 || N > 500) break;
+		if (N < 3 || M < 3 || M > 500 || N > 500) {
+			printf("Error! N:%d M:%d must in [4,500] try again... \n", N, M);
+			continue;
+		}
 		fprintf(fout, "%d,%d\n", N, M);
-		
 		memset(maze_map, 0, sizeof(maze_map));
 		for (int i = 0; i < M; ++i) {
 			for (int j = 0; j < N; ++j) {
@@ -40,16 +42,14 @@ int main(int argc, char* argv[]) {
 		}
 		maze_map[1][1] = 's';
 		maze_map[M-2][N-2] = 'e';
-		
 		for (int i = 0; i < M; ++i) {
 			fprintf(fout, "%s\n", maze_map[i]);
 			printf("%s\n", maze_map[i]);
 		}
 		puts("\nMaze has made \n");
-		
 		fflush(fout);
 	}
-	fclose(fout);
 	
+	fclose(fout);
 	return 0;
 }
