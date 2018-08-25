@@ -38,6 +38,7 @@ insertion_sort(int arr[], int n)
 ## TODO
 - distribution sorts
 - hybird sorts
+- merge sort inplace
 - selection sorts
   - heap sort
   - smoothsort
