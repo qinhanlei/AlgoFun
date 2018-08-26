@@ -228,11 +228,11 @@ input:
 			goto input;
 		}
 		time_end = clock();
+		printf("Cost time: %lf second.\n", difftime(time_end, time_start)/CLOCKS_PER_SEC);
 		if (idx > 9) {
 			if (same_collection(_numbers, _initnum, _total)) {
 				if (is_ordered(_numbers, _total)) {
-					printf("Succeed! cost time: %lf second.\n",
-						difftime(time_end, time_start)/CLOCKS_PER_SEC);
+					puts("Sort succeed !");
 				} else {
 					puts("Sort failed !");
 				}

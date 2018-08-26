@@ -21,7 +21,7 @@ void test_bigint() {
 		} else if (ch == "-") {
 			cout << x - y << endl;
 		} else if (ch == "*") {
-			cout << x * y << endl;
+			cout << (x * y) << endl;
 		} else if (ch == "/") {
 			cout << x / y << endl;
 		} else if (ch == "%") {

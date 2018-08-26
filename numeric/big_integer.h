@@ -5,7 +5,7 @@
 
 
 class big_integer {
-public:
+  public:
 	// constructors, use assignment operator indrect
 	big_integer();
 	big_integer(int);
@@ -61,7 +61,7 @@ public:
 	friend std::ostream& operator<<(std::ostream&, const big_integer&);
 	friend std::ostream& operator>>(std::ostream&, big_integer&);
 	
-private:
+  private:
 	// add someone ignore sign
 	big_integer Add(const big_integer&) const;
 	// minus someone ignore sign

@@ -7,6 +7,7 @@ fi
 
 astyle \
 --mode=c \
+--style=google \
 --indent=force-tab \
 --attach-namespaces \
 --attach-classes \
