@@ -12,23 +12,12 @@
 #include "sorts.h"
 
 
-int _total = 1000000;
-int* _num_init = NULL;
-int* _numbers = NULL;
-
 int _auto_restore = 1;
 
+int _total = 1000000;
+int* _initnum = NULL;
+int* _numbers = NULL;
 
-template<typename T>
-std::ostream& operator<<(std::ostream& s, const std::vector<T>& v) {
-	s.put('[');
-	char comma[3] = {'\0', ' ', '\0'};
-	for (const auto& e : v) {
-		s << comma << e;
-		comma[0] = ',';
-	}
-	return s << ']';
-}
 
 bool same_collection(const int arr1[], const int arr2[], int n) {
 	std::vector<int> v1(arr1, arr1+n);
@@ -39,105 +28,141 @@ bool same_collection(const int arr1[], const int arr2[], int n) {
 }
 
 
-bool read_data() {
-	int i = 0, tmp;
+int* read_numbers(int* n) {
 	static char filename[] = "./numbers.txt";
 	FILE* fp = fopen(filename, "r");
 	if (!fp) {
 		printf("open file '%s' error!\n", filename);
-		return false;
+		return NULL;
 	}
-	
-	_total = 0;
-	fscanf(fp, "%d", &_total);
-	free(_num_init);
-	free(_numbers);
-	_num_init = (int*)malloc(_total * sizeof(int));
-	_numbers = (int*)malloc(_total * sizeof(int));
-	while (fscanf(fp, "%d", &tmp) != EOF) {
-		_num_init[i++] = tmp;
+	fscanf(fp, "%d", n);
+	int* buf = (int*)malloc(*n * sizeof(int));
+	for (int i = 0, tmp; fscanf(fp, "%d", &tmp) != EOF; ++i) {
+		buf[i] = tmp;
 	}
-	memcpy(_numbers, _num_init, sizeof(_num_init[0])*_total);
 	fclose(fp);
-	
-	return true;
-}
-
-
-void init_data() {
-	free(_num_init);
-	free(_numbers);
-	_num_init = (int*)malloc(_total * sizeof(int));
-	_numbers = (int*)malloc(_total * sizeof(int));
-	for (int i = 0; i < _total; ++i) {
-		_num_init[i] = i;
-	}
-	shuffle(_num_init, _total);
-	memcpy(_numbers, _num_init, sizeof(_num_init[0])*_total);
+	printf("read '%s' data succeed!\n", filename);
+	return buf;
 }
 
 
 void show_menu() {
 	puts("\n");
 	printf("\tSorting %d integers\n", _total);
-	puts("- Exchange sorts");
-	puts("	10. bubble_sort");
-	puts("	11. cocktail_sort");
-	puts("	12. quicksort");
-	puts("	13. quicksort optimied");
-	puts("- Selection sorts");
-	puts("	20. selection_sort");
-	puts("	21. heapsort");
-	puts("- Insertion sorts");
-	puts("	30. insertion_sort");
-	puts("	31. insertion_sort optimized I");
-	puts("	32. insertion_sort optimized II");
-	puts("	33. binary_insertion_sort");
-	puts("	34. shellsort");
-	puts("	35. shellsort gap optimized");
-	puts("- Merge sorts");
-	puts("	40. merge_sort");
-	puts("- Distribution sorts");
-	puts("	50. counting_sort");
-	puts("	51. radix_sort");
-	puts("- Hybrid sorts");
-	puts("	60. introsort");
-	puts("- Standard library sorts");
-	puts("	90. qsort");
-	puts("	91. std::partial_sort");
-	puts("	92. std::stable_sort");
-	puts("	93. std::sort");
 	puts("- COMMAND");
-	puts("	0. show menu");
-	puts("	1. view all numbers");
-	puts("	2. restore random state.");
-	puts("	5. init numbers");
-	puts("	6. shuffle numbers");
-	puts("	7. switch auto-restore");
-	puts("	8. re-read data from file");
-	puts("	9. exit (or CTRL + C)");
+	puts("    0. show menu");
+	puts("    1. view all numbers");
+	puts("    2. restore random state");
+	puts("    5. init numbers");
+	puts("    6. shuffle numbers");
+	puts("    7. switch auto-restore");
+	puts("    8. read data from file");
+	puts("    9. exit (or CTRL + C)");
+	puts("- Exchange sorts");
+	puts("    10. bubble_sort");
+	puts("    11. cocktail_sort");
+	puts("    12. quicksort");
+	puts("    13. quicksort optimied");
+	puts("- Selection sorts");
+	puts("    20. selection_sort");
+	puts("    21. heapsort");
+	puts("- Insertion sorts");
+	puts("    30. insertion_sort");
+	puts("    31. insertion_sort optimized I");
+	puts("    32. insertion_sort optimized II");
+	puts("    33. binary_insertion_sort");
+	puts("    34. shellsort");
+	puts("    35. shellsort gap optimized");
+	puts("- Merge sorts");
+	puts("    40. merge_sort");
+	puts("- Distribution sorts");
+	puts("    50. counting_sort");
+	puts("    51. radix_sort");
+	puts("- Hybrid sorts");
+	puts("    60. introsort");
+	puts("- Standard library sorts");
+	puts("    90. qsort");
+	puts("    91. std::partial_sort");
+	puts("    92. std::stable_sort");
+	puts("    93. std::sort");
 	printf("\tauto-restore is %s\n", _auto_restore ? "on" : "off");
 }
 
 
 int main(int argc, char* argv[]) {
-	int i;
-	int index;
+	int idx;
+	char ibuf[128] = {0};
 	clock_t time_start, time_end;
 	
 	// srand((unsigned)time(NULL));
 	srand(42); // fixed random number sequence
-	
-	init_data();
 	show_menu();
+	
+	_initnum = (int*)malloc(_total * sizeof(int));
+	_numbers = (int*)malloc(_total * sizeof(int));
+	for (int i = 0; i < _total; ++i) {
+		_initnum[i] = i;
+	}
+	shuffle(_initnum, _total);
+	memcpy(_numbers, _initnum, sizeof(_initnum[0])*_total);
 	
 	do {
 input:
 		printf("AlgoFun> ");
-		scanf("%d", &index); //TODO: get input as string
-		
+		scanf("%s", ibuf);
+		for (int i = 0; i < strlen(ibuf); ++i) {
+			if (!isdigit(ibuf[i])) {
+				puts("Input is not a number index!");
+				goto input;
+			}
+		}
+		idx = atoi(ibuf);
 		time_start = clock();
-		switch (index) {
+		switch (idx) {
+		case 0:
+			show_menu();
+			break;
+		case 1:
+			print_array(_numbers, _total);
+			break;
+		case 2:
+			memcpy(_numbers, _initnum, sizeof(_initnum[0])*_total);
+			printf("There are %d random numbers.\n", _total);
+			break;
+		case 5:
+			printf("How many random numbers you want: ");
+			scanf("%d", &_total);
+			free(_initnum);
+			free(_numbers);
+			_initnum = (int*)malloc(_total * sizeof(int));
+			_numbers = (int*)malloc(_total * sizeof(int));
+			for (int i = 0; i < _total; ++i) {
+				_initnum[i] = i;
+			}
+			shuffle(_initnum, _total);
+			memcpy(_numbers, _initnum, sizeof(_initnum[0])*_total);
+			break;
+		case 6:
+			shuffle(_initnum, _total);
+			memcpy(_numbers, _initnum, sizeof(_initnum[0])*_total);
+			printf("All numbers has shuffled.\n");
+			break;
+		case 7:
+			_auto_restore = !_auto_restore;
+			printf("Auto-restore is turn %s\n", _auto_restore ? "on" : "off");
+			break;
+		case 8: {
+			int* buf = read_numbers(&_total);
+			free(_initnum);
+			free(_numbers);
+			_initnum = buf;
+			memcpy(_numbers, _initnum, sizeof(_initnum[0])*_total);
+			printf("There are %d random numbers.\n", _total);
+			break;
+		}
+		case 9:
+			puts("See you :)");
+			goto over;
 		case 10:
 			bubble_sort(_numbers, _total);
 			break;
@@ -198,65 +223,30 @@ input:
 		case 93:
 			std::sort(_numbers, _numbers + _total);
 			break;
-		case 0:
-			show_menu();
-			break;
-		case 1:
-			print_array(_numbers, _total);
-			break;
-		case 2:
-			memcpy(_numbers, _num_init, sizeof(_num_init[0])*_total);
-			printf("There are %d random numbers.\n", _total);
-			break;
-		case 5:
-			printf("How many random numbers you want:");
-			scanf("%d", &_total);
-			init_data();
-			break;
-		case 6:
-			shuffle(_num_init, _total);
-			memcpy(_numbers, _num_init, sizeof(_num_init[0])*_total);
-			printf("All numbers has shuffled.\n");
-			break;
-		case 7:
-			_auto_restore = !_auto_restore;
-			printf("Auto-restore is turn %s\n", _auto_restore ? "on" : "off");
-			break;
-		case 8:
-			read_data();
-			memcpy(_numbers, _num_init, sizeof(_num_init[0])*_total);
-			printf("There are %d random numbers.\n", _total);
-			break;
-		case 9:
-			puts("See you :)");
-			goto over;
 		default:
 			puts("Input error, please try again.");
 			goto input;
 		}
 		time_end = clock();
-		
-		if (index > 9) {
-			if (same_collection(_numbers, _num_init, _total)) {
+		if (idx > 9) {
+			if (same_collection(_numbers, _initnum, _total)) {
 				if (is_ordered(_numbers, _total)) {
-					printf("Sort successed, cost time: %lf second.\n",
-						   difftime(time_end, time_start)/CLOCKS_PER_SEC);
+					printf("Succeed! cost time: %lf second.\n",
+						difftime(time_end, time_start)/CLOCKS_PER_SEC);
 				} else {
-					puts("Sort failed!!!");
+					puts("Sort failed !");
 				}
 			} else {
-				puts("Sort error: value changed, check the algorithm!!!");
+				puts("Sort error: value changed !");
 			}
 			if (_auto_restore) {
-				memcpy(_numbers, _num_init, sizeof(_num_init[0])*_total);
-				puts("Numbers has restored to initial random state.");
+				memcpy(_numbers, _initnum, sizeof(_initnum[0])*_total);
+				puts("Numbers restored to initial random state.");
 			}
 		}
-	} while (1);
-	
-	free(_num_init);
+	} while (true);
+	free(_initnum);
 	free(_numbers);
-	
 over:
 	return 0;
 }
