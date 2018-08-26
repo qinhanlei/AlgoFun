@@ -13,16 +13,16 @@ extern "C" {
 #endif //__cplusplus
 
 
+void swap(int* a, int* b);
+
 // from programming pearls
 unsigned int bigrand();
 // pseudo-random number in [a,b)
 int randint(int a, int b);
-
-
 void shuffle(int arr[], int n);
+
 void print_array(int arr[], int n);
 bool is_ordered(int arr[], int n);
-void swap(int arr[], int i, int j);
 
 
 #ifdef __cplusplus

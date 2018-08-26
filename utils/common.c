@@ -6,6 +6,13 @@
 #include <assert.h>
 
 
+void swap(int* a, int* b) {
+	int tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+
 unsigned int bigrand() {
 	return RAND_MAX * rand() + rand();
 }
@@ -19,7 +26,7 @@ int randint(int a, int b) {
 void shuffle(int arr[], int n) {
 	int i, k;
 	for (i = 1; i < n; ++i) {
-		swap(arr, i, rand() % (i + 1));
+		swap(arr+i, arr+rand()%(i+1));
 	}
 }
 
@@ -39,11 +46,4 @@ bool is_ordered(int arr[], int n) {
 		if (arr[i-1] > arr[i])
 			return false;
 	return true;
-}
-
-
-void swap(int arr[], int i, int j) {
-	int tmp = arr[i];
-	arr[i] = arr[j];
-	arr[j] = tmp;
 }

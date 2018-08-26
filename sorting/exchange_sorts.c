@@ -16,7 +16,7 @@ void bubble_sort(int arr[], int n) {
 		swapped = false;
 		for (j = 0; j < n - 1 - i; ++j) {
 			if (arr[j] > arr[j+1]) {
-				swap(arr, j, j+1);
+				swap(arr+j, arr+j+1);
 				swapped = true;
 			}
 		}
@@ -31,14 +31,14 @@ void cocktail_sort(int arr[], int n) {
 		swapped = false;
 		for (i = front; i < rear; ++i) {
 			if (arr[i] > arr[i+1]) {
-				swap(arr, i, i+1);
+				swap(arr+i, arr+i+1);
 				swapped = true;
 			}
 		}
 		--rear;
 		for (i = rear; i > front; --i) {
 			if (arr[i-1] > arr[i]) {
-				swap(arr, i-1, i);
+				swap(arr+i-1, arr+i);
 				swapped = true;
 			}
 		}
@@ -53,10 +53,10 @@ static void _quicksort(int arr[], int left, int right) {
 		int i, m = left, pivot = arr[left];
 		for (i = left + 1; i < right; ++i) {
 			if (arr[i] < pivot) {
-				swap(arr, i, ++m);
+				swap(&arr[i], &arr[++m]);
 			}
 		}
-		swap(arr, left, m);
+		swap(arr+left, arr+m);
 		_quicksort(arr, left, m);
 		_quicksort(arr, m + 1, right);
 	}
@@ -85,7 +85,7 @@ static int _cut_off = 16;
 static void _quicksort1(int arr[], int left, int right) {
 	if (left + _cut_off < right) {
 		int i = left, j = right, pivot;
-		swap(arr, left, _median(arr, left, right));
+		swap(arr+left, arr+_median(arr, left, right));
 		pivot = arr[left];
 		while (true) {
 			do ++i;
@@ -93,9 +93,9 @@ static void _quicksort1(int arr[], int left, int right) {
 			do --j;
 			while (arr[j] > pivot); // index guaranteed by pivot
 			if (i >= j) break;
-			swap(arr, i, j);
+			swap(arr+i, arr+j);
 		}
-		swap(arr, left, j);
+		swap(arr+left, arr+j);
 		_quicksort1(arr, left, j);
 		_quicksort1(arr, j + 1, right);
 	}
