@@ -19,10 +19,9 @@ void swap(int* a, int* b);
 unsigned int bigrand();
 // pseudo-random number in [a,b)
 int randint(int a, int b);
-void shuffle(int arr[], int n);
 
-void print_array(int arr[], int n);
-bool is_ordered(int arr[], int n);
+void shuffle(int arr[], int n);
+bool ordered(int arr[], int n);
 
 
 #ifdef __cplusplus

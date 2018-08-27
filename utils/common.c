@@ -31,16 +31,7 @@ void shuffle(int arr[], int n) {
 }
 
 
-void print_array(int arr[], int n) {
-	int i;
-	for (i = 0; i < n; ++i) {
-		printf("%d ", arr[i]);
-	}
-	puts("");
-}
-
-
-bool is_ordered(int arr[], int n) {
+bool ordered(int arr[], int n) {
 	int i;
 	for (i = 1; i < n; ++i)
 		if (arr[i-1] > arr[i])

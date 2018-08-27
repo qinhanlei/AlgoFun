@@ -47,8 +47,7 @@ int* read_numbers(int* n) {
 
 
 void show_menu() {
-	puts("\n");
-	printf("\tSorting %d integers\n", _total);
+	puts("\n======== Sorting ========");
 	puts("- COMMAND");
 	puts("    0. show menu");
 	puts("    1. view all numbers");
@@ -85,7 +84,10 @@ void show_menu() {
 	puts("    91. std::partial_sort");
 	puts("    92. std::stable_sort");
 	puts("    93. std::sort");
-	printf("\tauto-restore is %s\n", _auto_restore ? "on" : "off");
+	puts("-------------------------");
+	printf("%d integers in total\n", _total);
+	printf("auto-restore is %s\n", _auto_restore ? "on" : "off");
+	puts("=========================");
 }
 
 
@@ -123,7 +125,10 @@ input:
 			show_menu();
 			break;
 		case 1:
-			print_array(_numbers, _total);
+			for (int i = 0; i < _total; ++i) {
+				printf("%d ", _numbers[i]);
+			}
+			puts("");
 			break;
 		case 2:
 			memcpy(_numbers, _initnum, sizeof(_initnum[0])*_total);
@@ -231,7 +236,7 @@ input:
 		printf("Cost time: %lf second.\n", difftime(time_end, time_start)/CLOCKS_PER_SEC);
 		if (idx > 9) {
 			if (same_collection(_numbers, _initnum, _total)) {
-				if (is_ordered(_numbers, _total)) {
+				if (ordered(_numbers, _total)) {
 					puts("Sort succeed !");
 				} else {
 					puts("Sort failed !");
