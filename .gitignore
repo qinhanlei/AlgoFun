@@ -1,25 +1,6 @@
 *.swp
 
 
-# for code::bloks
-
-bin/
-obj/
-*.depend
-*.layout
-
-
-# for visual studio
-
-[Dd]ebug/
-[Rr]elease/
-*.ncb
-*.user
-*.suo
-
-
-# below from: https://github.com/github/gitignore
-
 # Compiled Object files
 *.slo
 *.lo
@@ -46,6 +27,3 @@ obj/
 # Executables
 *.exe
 *.out
-
-# for Atom Editor
-*.tags*
